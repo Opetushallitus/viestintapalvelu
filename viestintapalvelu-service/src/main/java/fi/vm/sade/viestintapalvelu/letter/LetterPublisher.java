@@ -139,9 +139,6 @@ class S3LetterPublisher implements LetterPublisher {
     private final LetterReceiverLetterDAO letterReceiverLetterDAO;
     private static final Logger logger = LoggerFactory.getLogger(S3LetterPublisher.class);
 
-    @Value("${viestintapalvelu.letter.publish.dir}")
-    private File letterPublishDir;
-
     @Value("${viestintapalvelu.downloadfiles.s3.bucket}")
     private String bucket;
 
@@ -202,11 +199,11 @@ class S3LetterPublisher implements LetterPublisher {
         return responses;
     }
 
-    private CompletableFuture<PutObjectResponse> addFileObject(final LetterReceiverLetter letter, String foldername) throws IOException {
+    private CompletableFuture<PutObjectResponse> addFileObject(final LetterReceiverLetter letter, String folderName) throws IOException {
         final Path tempFile = Files.createTempFile(letter.getLetterReceivers().getOidApplication(), ".pdf");
         Long length = (long) letter.getLetter().length;
         Map<String, String> metadata = new HashMap<>();
-        String id = Paths.get(letterPublishDir.getAbsolutePath(),foldername,tempFile.toString()).toString();
+        String id = folderName + File.separator + tempFile.getFileName().toString();
         final PutObjectRequest request = PutObjectRequest.builder()
                 .bucket(bucket)
                 .contentType(letter.getContentType())
