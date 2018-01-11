@@ -200,10 +200,13 @@ class S3LetterPublisher implements LetterPublisher {
     }
 
     private CompletableFuture<PutObjectResponse> addFileObject(final LetterReceiverLetter letter, String folderName) throws IOException {
-        final Path tempFile = Files.createTempFile(letter.getLetterReceivers().getOidApplication(), ".pdf");
+        final String oidApplication = letter.getLetterReceivers().getOidApplication();
+        final Path tempFile = Files.createTempFile(oidApplication, ".pdf");
+        Files.write(tempFile, letter.getLetter(), StandardOpenOption.WRITE);
+
         Long length = (long) letter.getLetter().length;
         Map<String, String> metadata = new HashMap<>();
-        String id = folderName + File.separator + tempFile.getFileName().toString();
+        String id = folderName + File.separator + oidApplication + ".pdf";
         final PutObjectRequest request = PutObjectRequest.builder()
                 .bucket(bucket)
                 .contentType(letter.getContentType())
@@ -211,7 +214,7 @@ class S3LetterPublisher implements LetterPublisher {
                 .metadata(metadata)
                 .key(id)
                 .build();
-        Files.write(tempFile, letter.getLetter(), StandardOpenOption.WRITE);
+
         AsyncRequestProvider asyncRequestProvider = AsyncRequestProvider.fromFile(tempFile);
         try(S3AsyncClient client = getClient()) {
             return client.putObject(request, asyncRequestProvider).whenComplete((putObjectResponse, throwable) -> {
