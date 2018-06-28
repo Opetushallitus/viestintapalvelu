@@ -37,4 +37,5 @@ public interface ReportedRecipientReplacementDAO extends JpaDAO<ReportedRecipien
      */
     List<ReportedRecipientReplacement> findReportedRecipientReplacements(ReportedRecipient reportedRecipient);
 
+    ReportedRecipientReplacement insertAndFlush(ReportedRecipientReplacement reportedRecipientReplacement);
 }

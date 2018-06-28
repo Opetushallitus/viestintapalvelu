@@ -36,4 +36,18 @@ public class ReportedRecipentReplacementDAOImpl extends AbstractJpaDAOImpl<Repor
     public List<ReportedRecipientReplacement> findReportedRecipientReplacements(ReportedRecipient reportedRecipient) {
         return findBy("reportedRecipient", reportedRecipient);
     }
+
+    @Override
+    public
+    ReportedRecipientReplacement insertAndFlush(ReportedRecipientReplacement reportedRecipientReplacement) {
+        getEntityManager().persist(reportedRecipientReplacement);
+        getEntityManager().flush();
+        return reportedRecipientReplacement;
+    }
+
+    @Override
+    public ReportedRecipientReplacement insert(ReportedRecipientReplacement reportedRecipientReplacement) {
+        getEntityManager().persist(reportedRecipientReplacement);
+        return reportedRecipientReplacement;
+    }
 }

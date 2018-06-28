@@ -81,7 +81,7 @@ public class ReportedRecipientReplacementDAOTest {
 
         ReportedRecipientReplacement reportedRecipientReplacement = RaportointipalveluTestData.getReportedRecipientReplacement(savedReportedRecipient);
 
-        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insert(reportedRecipientReplacement);
+        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insertAndFlush(reportedRecipientReplacement);
 
         assertNotNull(savedReportedRecipientReplacement);
         assertNotNull(savedReportedRecipientReplacement.getId());
@@ -98,7 +98,7 @@ public class ReportedRecipientReplacementDAOTest {
         ReportedRecipient savedReportedRecipient = reportedRecipientDAO.insert(reportedRecipient);
 
         ReportedRecipientReplacement reportedRecipientReplacement = RaportointipalveluTestData.getReportedRecipientReplacement(savedReportedRecipient);
-        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insert(reportedRecipientReplacement);
+        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insertAndFlush(reportedRecipientReplacement);
 
         List<ReportedRecipientReplacement> reportedRecipientReplacements = reportedRecipientReplacementDAO.findAll();
 
@@ -117,7 +117,7 @@ public class ReportedRecipientReplacementDAOTest {
         ReportedRecipient savedReportedRecipient = reportedRecipientDAO.insert(reportedRecipient);
 
         ReportedRecipientReplacement reportedRecipientReplacement = RaportointipalveluTestData.getReportedRecipientReplacement(savedReportedRecipient);
-        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insert(reportedRecipientReplacement);
+        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insertAndFlush(reportedRecipientReplacement);
 
         Long id = savedReportedRecipientReplacement.getId();
         ReportedRecipientReplacement searchedReportedRecipientReplacement = reportedRecipientReplacementDAO.read(id);
@@ -137,7 +137,7 @@ public class ReportedRecipientReplacementDAOTest {
         ReportedRecipient savedReportedRecipient = reportedRecipientDAO.insert(reportedRecipient);
 
         ReportedRecipientReplacement reportedRecipientReplacement = RaportointipalveluTestData.getReportedRecipientReplacement(savedReportedRecipient);
-        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insert(reportedRecipientReplacement);
+        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insertAndFlush(reportedRecipientReplacement);
 
         List<ReportedRecipientReplacement> reportedRecipientReplacements = reportedRecipientReplacementDAO
                 .findReportedRecipientReplacements(savedReportedRecipient);
@@ -157,7 +157,7 @@ public class ReportedRecipientReplacementDAOTest {
         ReportedRecipient savedReportedRecipient = reportedRecipientDAO.insert(reportedRecipient);
 
         ReportedRecipientReplacement reportedRecipientReplacement = RaportointipalveluTestData.getReportedRecipientReplacement(savedReportedRecipient);
-        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insert(reportedRecipientReplacement);
+        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insertAndFlush(reportedRecipientReplacement);
 
         assertEquals(new Long(0), savedReportedRecipientReplacement.getVersion());
 
@@ -178,7 +178,7 @@ public class ReportedRecipientReplacementDAOTest {
         ReportedRecipient savedReportedRecipient = reportedRecipientDAO.insert(reportedRecipient);
 
         ReportedRecipientReplacement reportedRecipientReplacement = RaportointipalveluTestData.getReportedRecipientReplacement(savedReportedRecipient);
-        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insert(reportedRecipientReplacement);
+        ReportedRecipientReplacement savedReportedRecipientReplacement = reportedRecipientReplacementDAO.insertAndFlush(reportedRecipientReplacement);
 
         long id = savedReportedRecipientReplacement.getId();
         reportedRecipientReplacementDAO.remove(savedReportedRecipientReplacement);
@@ -208,7 +208,7 @@ public class ReportedRecipientReplacementDAOTest {
         List<ReportedRecipientReplacement> replacements = replacementConverter.convert(recipient, Arrays.asList(replacementDTO));
         assertEquals(1, replacements.size());
         ReportedRecipientReplacement replacement = replacements.get(0);
-        reportedRecipientReplacementDAO.insert(replacement);
+        reportedRecipientReplacementDAO.insertAndFlush(replacement);
 
         assertNull(replacement.getValue());
         assertNotNull(replacement.getJsonValue());
@@ -247,7 +247,7 @@ public class ReportedRecipientReplacementDAOTest {
         List<ReportedRecipientReplacement> replacements = replacementConverter.convert(recipient, Arrays.asList(replacementDTO));
         assertEquals(1, replacements.size());
         ReportedRecipientReplacement replacement = replacements.get(0);
-        reportedRecipientReplacementDAO.insert(replacement);
+        reportedRecipientReplacementDAO.insertAndFlush(replacement);
         assertNull(replacement.getValue());
         assertNotNull(replacement.getJsonValue());
         assertEquals("\"TEST \\\"with\\\" some \\\\ data\"", replacement.getJsonValue());
@@ -276,7 +276,7 @@ public class ReportedRecipientReplacementDAOTest {
         List<ReportedRecipientReplacement> replacements = replacementConverter.convert(recipient, Arrays.asList(replacementDTO));
         assertEquals(1, replacements.size());
         ReportedRecipientReplacement replacement = replacements.get(0);
-        reportedRecipientReplacementDAO.insert(replacement);
+        reportedRecipientReplacementDAO.insertAndFlush(replacement);
 
         assertNull(replacement.getJsonValue());
         assertNotNull(replacement.getValue());
