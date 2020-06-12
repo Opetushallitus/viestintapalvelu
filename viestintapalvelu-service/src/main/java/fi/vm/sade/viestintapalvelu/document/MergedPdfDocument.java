@@ -97,21 +97,23 @@ public class MergedPdfDocument {
             // TODO: logging?
             return 0;
         } finally {
+            close(doc);
+        }
+    }
+
+    private void close(PDDocument pdDocument) {
+        if (pdDocument != null) {
             try {
-                close(doc);
+                pdDocument.close();
             } catch (IOException e) {}
         }
     }
 
-    private void close(PDDocument pdDocument) throws IOException {
-        if (pdDocument != null) {
-            pdDocument.close();
-        }
-    }
-
-    private void close(InputStream is) throws IOException {
+    private void close(InputStream is) {
         if (is != null) {
-            is.close();
+            try {
+                is.close();
+            } catch (IOException e) {}
         }
     }
 
@@ -119,13 +121,15 @@ public class MergedPdfDocument {
         return documentMetadata;
     }
 
-    public byte[] buildDocument() throws IOException, COSVisitorException {
-        pdfMerger.mergeDocuments();
+    public byte[] buildDocument() {
 
         // produce final PDF document
         InputStream is = null;
         PDDocument document = null;
         try {
+            intermediaryOutput.flush();
+            pdfMerger.mergeDocuments();
+
             is = new ByteArrayInputStream(intermediaryOutput.toByteArray());
             document = PDDocument.load(is);
 
@@ -138,6 +142,7 @@ public class MergedPdfDocument {
             documentCatalog.getViewerPreferences().setDisplayDocTitle(true);
 
             document.save(output);
+        } catch (COSVisitorException | IOException e) {
         } finally {
             close(is);
             close(document);
