@@ -62,7 +62,7 @@ public class PdfDocument {
         return (contents != null) ? contents.size() : -1;
     }
 
-    public InputStream getContentStream(int index) {
+    public ByteArrayInputStream getContentStream(int index) {
         return new ByteArrayInputStream(contents.get(index).getContentData());
     }
 
@@ -70,14 +70,14 @@ public class PdfDocument {
         contents.add(content);
     }
 
-    public InputStream getFrontPage() {
+    public ByteArrayInputStream getFrontPage() {
         if (frontPage != null) {
             return new ByteArrayInputStream(frontPage.getFrontPageData());
         }
         return null;
     }
 
-    public InputStream getAttachment() {
+    public ByteArrayInputStream getAttachment() {
         // There are no attachments in e.g. koekutsukirje
         if (attachment != null) {
             return new ByteArrayInputStream(attachment.getAttachmentData());
