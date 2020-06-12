@@ -33,7 +33,6 @@ import fi.vm.sade.viestintapalvelu.document.DocumentMetadata;
 import fi.vm.sade.viestintapalvelu.document.MergedPdfDocument;
 import fi.vm.sade.viestintapalvelu.document.PdfDocument;
 import fi.vm.sade.viestintapalvelu.letter.dto.AsyncLetterBatchDto;
-import fi.vm.sade.viestintapalvelu.letter.dto.LetterBatchDetails;
 import fi.vm.sade.viestintapalvelu.letter.html.Cleaner;
 import fi.vm.sade.viestintapalvelu.letter.html.XhtmlCleaner;
 import fi.vm.sade.viestintapalvelu.model.LetterReceiverLetter;
@@ -111,7 +110,7 @@ public class LetterBuilder {
         documents.put(templateName + ".pdf", new Supplier<byte[]>() {
             @Override
             public byte[] get() {
-                return pdf.toByteArray();
+                return pdf.buildDocument();
             }
         });
         documents.put(templateName + ".xml", new Supplier<byte[]>() {
@@ -426,7 +425,7 @@ public class LetterBuilder {
                 throw e;
             }
         }
-        letterReceiverLetter.setLetter(documentBuilder.merge(currentDocument).toByteArray());
+        letterReceiverLetter.setLetter(documentBuilder.merge(currentDocument).buildDocument());
         letterReceiverLetter.setContentType(ContentTypes.CONTENT_TYPE_PDF);
         letterReceiverLetter.setOriginalContentType(ContentTypes.CONTENT_TYPE_PDF);
     }

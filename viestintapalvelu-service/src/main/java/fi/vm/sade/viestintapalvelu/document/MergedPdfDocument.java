@@ -37,66 +37,42 @@ public class MergedPdfDocument {
     public static final String FALLBACK_PDF_LANGUAGE = "fi";
 
     private List<DocumentMetadata> documentMetadata;
+    private ByteArrayOutputStream intermediaryOutput;
     private ByteArrayOutputStream output;
 
     private int currentPageNumber;
+    private PDFMergerUtility pdfMerger;
+    private String language;
 
     public MergedPdfDocument() {
         this.documentMetadata = new ArrayList<>();
         this.output = new ByteArrayOutputStream();
+        this.intermediaryOutput = new ByteArrayOutputStream();
         this.currentPageNumber = 0;
+        this.pdfMerger = new PDFMergerUtility();
+        pdfMerger.setDestinationStream(intermediaryOutput);
     }
 
     public void write(PdfDocument pdfDocument) throws IOException, COSVisitorException {
-        final ByteArrayOutputStream intermediaryOutput = new ByteArrayOutputStream();
-
-        PDFMergerUtility pdfMerger = new PDFMergerUtility();
-
         int startPage = currentPageNumber + 1;
         int pages = 0;
-        try {
-            pdfMerger.setDestinationStream(intermediaryOutput);
+        language = pdfDocument.getLanguage();
 
-            if (pdfDocument.getFrontPage() != null) {
-                pages += writePage(pdfMerger, pdfDocument.getFrontPage());
-            }
-
-            if (pdfDocument.getAttachment() != null) {
-                pages += writePage(pdfMerger, pdfDocument.getAttachment());
-            }
-
-            if (pdfDocument.getContentSize() > 0) {
-                for (int i = 0; i < pdfDocument.getContentSize(); i++) {
-                    pages += writePage(pdfMerger, pdfDocument.getContentStream(i));
-                }
-            }
-
-            documentMetadata.add(new DocumentMetadata(pdfDocument.getAddressLabel(), startPage, pages));
-            pdfMerger.mergeDocuments();
-        } finally {
-            intermediaryOutput.flush();
+        if (pdfDocument.getFrontPage() != null) {
+            pages += writePage(pdfMerger, pdfDocument.getFrontPage());
         }
 
-        // produce final PDF document
-        InputStream is = null;
-        PDDocument document = null;
-        try {
-            is = new ByteArrayInputStream(intermediaryOutput.toByteArray());
-            document = PDDocument.load(is);
-
-            PDDocumentCatalog documentCatalog = document.getDocumentCatalog();
-            documentCatalog.setLanguage(
-                    Optional.ofNullable(pdfDocument.getLanguage())
-                            .orElse(FALLBACK_PDF_LANGUAGE)
-                            .toLowerCase());
-            documentCatalog.setViewerPreferences(new PDViewerPreferences(new COSDictionary()));
-            documentCatalog.getViewerPreferences().setDisplayDocTitle(true);
-
-            document.save(output);
-        } finally {
-            close(is);
-            close(document);
+        if (pdfDocument.getAttachment() != null) {
+            pages += writePage(pdfMerger, pdfDocument.getAttachment());
         }
+
+        if (pdfDocument.getContentSize() > 0) {
+            for (int i = 0; i < pdfDocument.getContentSize(); i++) {
+                pages += writePage(pdfMerger, pdfDocument.getContentStream(i));
+            }
+        }
+
+        documentMetadata.add(new DocumentMetadata(pdfDocument.getAddressLabel(), startPage, pages));
     }
 
     /**
@@ -143,7 +119,29 @@ public class MergedPdfDocument {
         return documentMetadata;
     }
 
-    public byte[] toByteArray() {
+    public byte[] buildDocument() throws IOException, COSVisitorException {
+        pdfMerger.mergeDocuments();
+
+        // produce final PDF document
+        InputStream is = null;
+        PDDocument document = null;
+        try {
+            is = new ByteArrayInputStream(intermediaryOutput.toByteArray());
+            document = PDDocument.load(is);
+
+            PDDocumentCatalog documentCatalog = document.getDocumentCatalog();
+            documentCatalog.setLanguage(
+                    Optional.ofNullable(language)
+                            .orElse(FALLBACK_PDF_LANGUAGE)
+                            .toLowerCase());
+            documentCatalog.setViewerPreferences(new PDViewerPreferences(new COSDictionary()));
+            documentCatalog.getViewerPreferences().setDisplayDocTitle(true);
+
+            document.save(output);
+        } finally {
+            close(is);
+            close(document);
+        }
         return output.toByteArray();
     }
 }
