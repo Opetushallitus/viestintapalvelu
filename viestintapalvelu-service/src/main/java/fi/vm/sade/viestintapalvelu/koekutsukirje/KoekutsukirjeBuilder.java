@@ -82,7 +82,7 @@ public class KoekutsukirjeBuilder {
                     new PdfDocument.ContentData(frontPage))
             );
         }
-        return documentBuilder.merge(source).toByteArray();
+        return documentBuilder.merge(source).buildDocument();
     }
 
     private byte[] createFirstPagePDF(String templateName, AddressLabel addressLabel, String hakukohde, String tarjoaja, String letterBodyText)

@@ -29,68 +29,91 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.IntStream;
 
 public class MergedPdfDocument {
     public static final String FALLBACK_PDF_LANGUAGE = "fi";
 
     private List<DocumentMetadata> documentMetadata;
+    private ByteArrayOutputStream intermediaryOutput;
     private ByteArrayOutputStream output;
+
+    private int currentPageNumber;
+    private PDFMergerUtility pdfMerger;
+    private String language;
 
     public MergedPdfDocument() {
         this.documentMetadata = new ArrayList<>();
         this.output = new ByteArrayOutputStream();
+        this.intermediaryOutput = new ByteArrayOutputStream();
+        this.currentPageNumber = 0;
+        this.pdfMerger = new PDFMergerUtility();
+        pdfMerger.setDestinationStream(intermediaryOutput);
     }
 
     public void write(PdfDocument pdfDocument) throws IOException, COSVisitorException {
-        final ByteArrayOutputStream intermediaryOutput = new ByteArrayOutputStream();
+        int startPage = currentPageNumber + 1;
+        int pages = 0;
+        language = pdfDocument.getLanguage();
 
-        try {
-            final PDFMergerUtility pdfMerger = new PDFMergerUtility();
-            pdfMerger.setDestinationStream(intermediaryOutput);
-            IntStream.range(0, pdfDocument.getContentSize())
-                    .mapToObj(pdfDocument::getContentStream)
-                    .forEachOrdered(pdfMerger::addSource);
-            pdfMerger.mergeDocuments();
-        } finally {
-            intermediaryOutput.flush();
+        if (pdfDocument.getFrontPage() != null) {
+            pages += writePage(pdfMerger, pdfDocument.getFrontPage());
         }
 
-        InputStream is = null;
-        PDDocument document = null;
+        if (pdfDocument.getAttachment() != null) {
+            pages += writePage(pdfMerger, pdfDocument.getAttachment());
+        }
+
+        if (pdfDocument.getContentSize() > 0) {
+            for (int i = 0; i < pdfDocument.getContentSize(); i++) {
+                pages += writePage(pdfMerger, pdfDocument.getContentStream(i));
+            }
+        }
+
+        documentMetadata.add(new DocumentMetadata(pdfDocument.getAddressLabel(), startPage, pages));
+    }
+
+    /**
+     * Write current page to merged PDF and return number of pages the written document has.
+     *
+     * @param pdfMerger Merger to use.
+     * @param page BAIS of page contents. BAIS is enforced because this method relies on mark/reset
+     * @return Number of written pages, 0 or more.
+     */
+    private int writePage(PDFMergerUtility pdfMerger, ByteArrayInputStream page) {
+        PDDocument doc = null;
         try {
-            is = new ByteArrayInputStream(intermediaryOutput.toByteArray());
-            document = PDDocument.load(is);
-
-            final PDDocumentCatalog documentCatalog = document.getDocumentCatalog();
-            documentCatalog.setLanguage(
-                    Optional.ofNullable(pdfDocument.getLanguage()).orElse(FALLBACK_PDF_LANGUAGE).toLowerCase()
-            );
-            documentCatalog.setViewerPreferences(new PDViewerPreferences(new COSDictionary()));
-            documentCatalog.getViewerPreferences().setDisplayDocTitle(true);
-
-            documentMetadata.add(new DocumentMetadata(
-                    pdfDocument.getAddressLabel(),
-                    1,
-                    document.getNumberOfPages()
-            ));
-
-            document.save(output);
+            page.mark(-1);
+            // load single doc to extract needed metadata
+            doc = PDDocument.load(page);
+            currentPageNumber += doc.getNumberOfPages();
+            // reset stream back to generate merged output
+            page.reset();
+            pdfMerger.addSource(page);
+            return doc.getNumberOfPages();
+        } catch (IOException e) {
+            // TODO: logging?
+            return 0;
         } finally {
-            close(is);
-            close(document);
+            close(doc);
         }
     }
 
-    private void close(PDDocument pdDocument) throws IOException {
+    private void close(PDDocument pdDocument) {
         if (pdDocument != null) {
-            pdDocument.close();
+            try {
+                pdDocument.close();
+            } catch (IOException e) {}
         }
     }
 
-    private void close(InputStream is) throws IOException {
+    private void close(InputStream is) {
         if (is != null) {
-            is.close();
+            try {
+                is.close();
+            } catch (IOException e) {}
         }
     }
 
@@ -98,7 +121,32 @@ public class MergedPdfDocument {
         return documentMetadata;
     }
 
-    public byte[] toByteArray() {
+    public byte[] buildDocument() {
+
+        // produce final PDF document
+        InputStream is = null;
+        PDDocument document = null;
+        try {
+            intermediaryOutput.flush();
+            pdfMerger.mergeDocuments();
+
+            is = new ByteArrayInputStream(intermediaryOutput.toByteArray());
+            document = PDDocument.load(is);
+
+            PDDocumentCatalog documentCatalog = document.getDocumentCatalog();
+            documentCatalog.setLanguage(
+                    Optional.ofNullable(language)
+                            .orElse(FALLBACK_PDF_LANGUAGE)
+                            .toLowerCase());
+            documentCatalog.setViewerPreferences(new PDViewerPreferences(new COSDictionary()));
+            documentCatalog.getViewerPreferences().setDisplayDocTitle(true);
+
+            document.save(output);
+        } catch (COSVisitorException | IOException e) {
+        } finally {
+            close(is);
+            close(document);
+        }
         return output.toByteArray();
     }
 }

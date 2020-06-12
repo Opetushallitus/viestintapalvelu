@@ -234,7 +234,7 @@ public class PDFPrinterResource extends AsynchronousResource {
             pdfs.add(doc);
         }
         MergedPdfDocument mPdf = documentBuilder.merge(pdfs);
-        return mPdf.toByteArray();
+        return mPdf.buildDocument();
     }
 
     private String getLanguage(byte[] pdf) throws IOException {
