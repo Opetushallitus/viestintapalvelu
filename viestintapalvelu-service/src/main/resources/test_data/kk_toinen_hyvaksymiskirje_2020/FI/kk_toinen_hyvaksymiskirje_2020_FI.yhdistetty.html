@@ -50,6 +50,12 @@
         <dd>
             $hakijaOid
         </dd>
+        <dt>
+            Hakemusnumero
+        </dt>
+        <dd>
+            $hakemusOid
+        </dd>
     </dl>
 </header>
 
@@ -58,14 +64,16 @@
         <h1>$kirjeotsikko</h1>
 
         <section>
-            <dl>
-                <dt>Oppilaitos</dt>
-                <dd>$koulu</dd>
-                <dt>Hakukohde</dt>
-                <dd>$koulutus</dd>
-            </dl>
+            <h2>Hakukohteet</h2>
+            <ol class="hakukohteet">
+                #foreach( $tulos in $tulokset )
+                #if($tulos.hyvaksytty=='true')
+                <li>$tulos.hakukohteenNimi - $tulos.organisaationNimi</li>
+                #end
+                #end
+            </ol>
 
-            <p>Onneksi olkoon! Sinut on hyväksytty syksyn 2019 korkeakoulujen yhteishaussa yllä mainittuun
+            <p>Onneksi olkoon! Sinut on hyväksytty korkeakoulujen kevään 2020 toisessa yhteishaussa yllä mainittuun
                 opiskelupaikkaan.</p>
 
             <p>Tässä kirjeessä on tietoa myös muiden hakukohteittesi tilanteesta. Opiskelijaksi hyväksymisen jälkeen
@@ -81,8 +89,7 @@
         <section>
             <h2>Opiskelupaikan vastaanottaminen</h2>
 
-            <p>Vahvistaaksesi yllä mainitun opiskelupaikan sinun täytyy ottaa se vastaan <span class="bold">9.12.2019 kello 15.00</span>
-                mennessä.
+            <p>Jos et ole ottanut opiskelupaikkaa vielä vastaan sinun tulee tehdä se ennen 22.7.2020 kello 15.00.
                 Ellet ota
                 paikkaa vastaan määräaikana, menetät sen. Ota opiskelupaikka vastaan ensisijaisesti sähköisesti Oma
                 Opintopolku
@@ -132,8 +139,7 @@
                 siihen
                 kirjallisesti oikaisua 14 vuorokauden kuluessa opiskelijavalinnan tuloksen julkistamisesta eli
                 viimeistään
-                <span class="bold">13.12.2019</span>
-                ennen korkeakoulun aukioloajan päättymistä. Tutustu ensin kyseisen hakukohteen valintaperusteisiin sekä
+                29.7.2020 kello 15.00. Tutustu ensin kyseisen hakukohteen valintaperusteisiin sekä
                 oikaisumenettelyä koskevaan ohjeistukseen. Ota tämän jälkeen tarvittaessa yhteyttä siihen korkeakouluun,
                 jonka
                 hakukohdetta tyytymättömyytesi koskee. Sinun on mahdollista tehdä edellä mainittuna määräaikana
@@ -153,48 +159,75 @@
         <section>
             <h2>$sivu_2_otsikko</h2>
 
-            <table>
-                <caption>Hakukohteesi asettamassasi järjestyksessä</caption>
-                <thead>
-                <tr>
-                    <th>Valinnan tulos</th>
-                    <th>Hakukohde</th>
-                    <th>Valintatapa</th>
-                    <th>Pisteesi</th>
-                    <th>Alin hyv.</th>
-                    <th>Varasijasi</th>
-                </tr>
-                </thead>
-
+            
+            <ol class="tulokset">
                 #foreach( $tulos in $tulokset )
-                #set($hyvaksytty = "#if($tulos.hyvaksytty=='true')hyvaksytty#{else}#end")
-                #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
-                #set($jonojenmaara = $tulos.sijoitukset.size())
-                <tbody>
-                #foreach( $sijoitus in $tulos.sijoitukset )
-                <tr class="$hyvaksytty $even">
-                    #if($foreach.count == 1)
-                    <td rowspan="$jonojenmaara">$tulos.valinnanTulos</td>
-                    <td rowspan="$jonojenmaara">$tulos.organisaationNimi, $tulos.hakukohteenNimi<br/>
-                        #if($tulos.hylkaysperuste)<span class="hylkayssyy">Hylkäyksen syy: $tulos.hylkaysperuste</span>#end
-                        #if($tulos.peruuntumisenSyy)<span
-                                class="peruuntumisensyy">Peruuntumisen syy: $tulos.peruuntumisenSyy</span>#end
-                    </td>
-                    #end
-                    <td>$sijoitus.nimi<br/></td>
-                    <td>#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end<br/></td>
-                    <td>#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end<br/></td>
-                    <td>#if($sijoitus.varasija)${sijoitus.varasija}#{else} - #end<br/></td>
-                </tr>
+                <li class="hakukohde">
+                    <div class="hakukohde-tiedot">
+                        <div class="hakukohde-nimi#if($tulos.hyvaksytty=='true') bold#end">
+                            $tulos.hakukohteenNimi - $tulos.organisaationNimi
+                        </div>
+                        <div class="hakukohde-tulos">
+                            <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
+                            #if($tulos.hyvaksymisenEhto)<br /><span>$tulos.hyvaksymisenEhto</span>#end
+                        </div>
+                    </div>
+                    <table class="valintatapajonot-table">
+                        <caption>Hakukohteesi asettamassasi järjestyksessä</caption>
+                        <thead>
+                            <tr>
+                                <th class="sarake sarake-kapea">Valintatapa</th>
+                                <th class="sarake sarake-kapea">Pisteesi</th>
+                                <th class="sarake sarake-kapea">Alin hyväksytty pistemäärä</th>
+                                <th class="sarake sarake-levea">Valinnan tulos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            #foreach( $sijoitus in $tulos.sijoitukset )
+                            <tr>
+                                <th scope="row" class="sarake sarake-kapea">$sijoitus.nimi</th>
+                                <td class="sarake sarake-kapea">#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                                <td class="sarake sarake-kapea">#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                                <td class="sarake sarake-levea">
+                                    <span#if($sijoitus.hyvaksytty=='true') class="bold"#end>$sijoitus.tila</span>
+                                    #if($sijoitus.tilanKuvaus)<br /><span>$sijoitus.tilanKuvaus</span>#end
+                                    #if($sijoitus.hyvaksymisenEhto)<br /><span>$sijoitus.hyvaksymisenEhto</span>#end
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                    <ol class="valintatapajonot-list" aria-hidden="true" tabindex="-1">
+                        #foreach( $sijoitus in $tulos.sijoitukset )
+                        <li class="valintatapajono">
+                            <table class="valintatapajono-table">
+                                <tr>
+                                    <th scope="row" class="sarake">Valintatapa</th>
+                                    <td class="sarake">$sijoitus.nimi</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Pisteesi</th>
+                                    <td class="sarake">#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Alin hyväksytty pistemäärä</th>
+                                    <td class="sarake">#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Valinnan tulos</th>
+                                    <td class="sarake">
+                                        <span#if($sijoitus.hyvaksytty=='true') class="bold"#end>$sijoitus.tila</span>
+                                        #if($sijoitus.tilanKuvaus)<br /><span>$sijoitus.tilanKuvaus</span>#end
+                                        #if($sijoitus.hyvaksymisenEhto)<br /><span>$sijoitus.hyvaksymisenEhto</span>#end
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        #end
+                    </ol>
+                </li>
                 #end
-                </tbody>
-                #end
-                <tfoot>
-                <tr>
-                    <td colspan="6"></td>
-                </tr>
-                </tfoot>
-            </table>
+            </ol>
         </section>
 
         <section>
@@ -296,12 +329,12 @@
 
         <section>
             <h2>Opiskelupaikan vastaanottaminen</h2>
-            <p>Vahvistaaksesi opiskelupaikan sinun täytyy ottaa se vastaan <span class="bold">9.12.2019 kello 15.00</span> mennessä. Voit
+            <p>Vahvistaaksesi opiskelupaikan sinun täytyy ottaa se vastaan ennen 22.7.2020 kello 15.00. Voit
                 tehdä
                 opiskelupaikkaa koskevan vastaanottoilmoituksen vain kerran, etkä voi muuttaa tekemääsi ilmoitusta
                 jälkikäteen.
                 Voit
-                vastaanottaa vain yhden korkeakoulupaikan samana lukukautena alkavasta koulutuksesta (1.1.-31.7.2020).
+                vastaanottaa vain yhden korkeakoulupaikan samana lukukautena alkavasta koulutuksesta (1.8.-31.12.2020).
                 Yhden
                 korkeakoulupaikan sääntö koskee sekä korkeakoulujen yhteis- että erillishakuja (pois lukien siirtohaut).
             </p>
@@ -311,14 +344,9 @@
                 verkkopankkitunnukset, mobiilivarmenteen tai sirullisen henkilökortin ja sen lukijalaitteen. Oma
                 Opintopolku
                 -palvelussa on ohjeet opiskelupaikan sähköiseen vastaanottoon.</p>
-            <p>Jos et voi ottaa opiskelupaikkaa vastaan sähköisesti, käytä paikan vastaanottamiseen opiskelupaikan
-                vastaanottolomaketta (<a href="#opiskelupaikan_vastaanottoilmoitus">katso kappale "Opiskelupaikan
-                    vastaanottoilmoitus"</a>).
-                Toimita lomake lomakkeen alareunassa annettuun osoitteeseen siten, että se on
-                perillä <span class="bold">9.12.2019 kello 15.00</span> mennessä. Jos vastaanottoilmoitus saapuu korkeakouluun myöhässä,
-                menetät
-                opiskelupaikan.</p>
-
+            <p>Jos et voi ottaa opiskelupaikkaa vastaan sähköisesti, ota yhteyttä korkeakouluun, mistä haluat ottaa 
+                opiskelupaikan vastaan. Tieto opiskelupaikan vastaanottamisesta tulee olla kirjallisesti korkeakoululla 
+                tiedossa 22.7.2020 kello 15.00 mennessä. Jos vastaanottoilmoitus saapuu korkeakouluun myöhässä, menetät opiskelupaikan </p>
             <p>Kun otat opiskelupaikan vastaan, et ole tulevissa hauissa ensikertalainen. Lisätietoa osoitteesta
                 Opintopolku.fi: Koulutuksen valinta > Yhteishaku > Haku korkeakouluihin > Ensikertalaiskiintiö.
                 Opiskelupaikan
@@ -354,67 +382,12 @@
                 §/Ammattikorkeakoululaki 32 §).</p>
         </section>
 
+        #if($ohjeetUudelleOpiskelijalle)
         <section>
-            <h2 id="ohjeet_uusille_opiskelijoille">Ohjeet uusille opiskelijoille</h2>
-            <p>#if($ohjeetUudelleOpiskelijalle)${ohjeetUudelleOpiskelijalle}#end</p>
+            <h2 id="ohjeet_uusille_opiskelijoille">Ohjeet uudelle opiskelijalle</h2>
+            <p><a href="$ohjeetUudelleOpiskelijalle">$ohjeetUudelleOpiskelijalle</a></p>
         </section>
-    </article>
-
-    <article>
-        <h1 id="opiskelupaikan_vastaanottoilmoitus">Opiskelupaikan vastaanottoilmoitus</h1>
-
-        <section>
-            <dl>
-                <dt>Opiskelija</dt>
-                <dd>$addressLabel.firstName <span class="bold">$addressLabel.lastName</span></dd>
-                <dt>Hakemusnumero</dt>
-                <dd>$hakemusOid</dd>
-                <dt>Oppilaitos</dt>
-                <dd>$koulu</dd>
-                <dt>Hakukohde</dt>
-                <dd>$koulutus</dd>
-            </dl>
-        </section>
-
-        <section>
-            $vastaanotto_1
-        </section>
-
-        <section>
-            <ul class="opiskelupaikan-vastaanottoilmoitus-kaavake">
-                <li class="opiskelupaikan-vastaanottoilmoitus-kaavake__vaihtoehto">
-                    $vastaanotto_vaihtoehto_1
-                </li>
-                <li class="opiskelupaikan-vastaanottoilmoitus-kaavake__vaihtoehto">
-                    $vastaanotto_vaihtoehto_2
-                </li>
-                <li class="opiskelupaikan-vastaanottoilmoitus-kaavake__vaihtoehto">
-                    $vastaanotto_vaihtoehto_3
-                </li>
-            </ul>
-
-            <p>Paikka ja päivämäärä: _________________________ ____.____.$vastaanotto_allekirjoitus_vuosi</p>
-            <p>Allekirjoitus: ______________________________</p>
-
-            <dl>
-                #if($hakijapalveluidenOsoite)
-                <dt>
-                    Vastaanottaja:
-                </dt>
-                <dd>
-                    $hakijapalveluidenOsoite.organisaationimi
-                </dd>
-                <dd>
-                    $hakijapalveluidenOsoite.addressline
-                </dd>
-                <dd>
-                    #if($hakijapalveluidenOsoite.postalCode != '')
-                    $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city
-                    #end
-                </dd>
-                #end
-            </dl>
-        </section>
+        #end
     </article>
 
 </main>
