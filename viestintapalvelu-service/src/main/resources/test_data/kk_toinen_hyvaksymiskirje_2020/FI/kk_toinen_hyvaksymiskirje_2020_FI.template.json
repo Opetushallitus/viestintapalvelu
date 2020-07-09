@@ -99,7 +99,7 @@
         "description": "Kirjeen otsikko",
         "contentType": "html",
         "numberOfRows": 1
-      }
+      },
       {
         "key": "sivu_2_otsikko",
         "name": "sivu_2_otsikko",
