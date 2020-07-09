@@ -35,6 +35,9 @@
             <div>
                 <br/>Studerandenummer:<br/>$hakijaOid
             </div>
+            <div>
+                <br/>Ansökningsnummer:<br/>$hakemusOid
+            </div>
         </div>
         <div class="syntymaaika">
             <div class="date">$syntymaaika</div>
@@ -44,7 +47,12 @@
 <div class="clear"></div>
 <div>
     <h1 name="hyvaksymiskirje">$kirjeotsikko</h1>
-    <p><b>$koulu<br/>$koulutus</b></p>
+    <p><b>Ansökningsmål</b></p>
+    #foreach( $tulos in $tulokset )
+    #if($tulos.hyvaksytty=='true')
+    <p><b>$tulos.hakukohteenNimi - $tulos.organisaationNimi</b></p>
+    #end
+    #end
 
     $sisalto
     <h2>Anvisningar för nya studerand</h2>
