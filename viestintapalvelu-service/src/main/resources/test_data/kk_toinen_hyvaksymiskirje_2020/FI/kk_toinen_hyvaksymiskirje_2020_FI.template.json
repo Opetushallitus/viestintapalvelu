@@ -42,12 +42,6 @@
             "name": "sivu_3",
             "contentType": "html",
             "content": "{{sivu_3.html}}"
-          },
-          {
-            "role": "body",
-            "name": "sivu_4",
-            "contentType": "html",
-            "content": "{{sivu_4.html}}"
           }
         ]
       },
@@ -105,42 +99,7 @@
         "description": "Kirjeen otsikko",
         "contentType": "html",
         "numberOfRows": 1
-      },
-      {
-        "key": "vastaanotto_1",
-        "name": "vastaanotto_1",
-        "description": "Vastaanoton teksti 1",
-        "contentType": "html",
-        "numberOfRows": 1
-      },
-      {
-        "key": "vastaanotto_vaihtoehto_1",
-        "name": "vastaanotto_vaihtoehto_1",
-        "description": "Vastaanoton vaihtoehto 1",
-        "contentType": "html",
-        "numberOfRows": 20
-      },
-      {
-        "key": "vastaanotto_vaihtoehto_2",
-        "name": "vastaanotto_vaihtoehto_2",
-        "description": "Vastaanoton vaihtoehto 2",
-        "contentType": "html",
-        "numberOfRows": 20
-      },
-      {
-        "key": "vastaanotto_vaihtoehto_3",
-        "name": "vastaanotto_vaihtoehto_3",
-        "description": "Vastaanoton vaihtoehto 3",
-        "contentType": "html",
-        "numberOfRows": 20
-      },
-      {
-        "key": "vastaanotto_allekirjoitus_vuosi",
-        "name": "vastaanotto_allekirjoitus_vuosi",
-        "description": "Vastaanoton vallekirjoituksen vuosi",
-        "contentType": "html",
-        "numberOfRows": 1
-      },
+      }
       {
         "key": "sivu_2_otsikko",
         "name": "sivu_2_otsikko",
@@ -181,43 +140,13 @@
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen yhteishaussa syksyllä 2019",
-      "mandatory": false
-    },
-    {
-      "id": 5,
-      "name": "vastaanotto_1",
-      "defaultValue": "<p>Sinut on hyväksytty syksyn 2019 korkeakoulujen yhteishaussa yllä mainittuun opiskelupaikkaan.</p><p>Jos et käytä Oma Opintopolku -palvelua, toimita tämä ilmoitus täytettynä ja allekirjoitettuna alla annettuun osoitteeseen siten, että se on perillä 9.12.2019 kello 15:00 mennessä. Jos olet ottanut opiskelupaikan sähköisesti vastaan, sinun ei tarvitse lähettää opiskelupaikan vastaanottoilmoitusta postitse.</p><p><em>Ilmoitan yllä mainitun opiskelupaikan vastaanottamisesta sitovasti seuraavaa (rastita yksi ruutu):</em></p>",
-      "mandatory": false
-    },
-    {
-      "id": 6,
-      "name": "vastaanotto_vaihtoehto_1",
-      "defaultValue": "Otan opiskelupaikan vastaan. En ole ennen tätä ilmoitusta ottanut vastaan korkeakoulututkintoon johtavaa opiskelupaikkaa, jossa koulutus alkaa kevätlukukaudella 2020. Tämän ilmoituksen tehtyäni en voi ottaa vastaan toista korkeakoulupaikkaa, jossa koulutus alkaa kevätlukukaudella 2020.",
-      "mandatory": false
-    },
-    {
-      "id": 7,
-      "name": "vastaanotto_vaihtoehto_2",
-      "defaultValue": "Otan opiskelupaikan vastaan, mutta jään odottamaan hakukohdejärjestyksessäni ylemmällä sijalla olevaa opiskelupaikkaa, johon olen varasijalla. Jos minut hyväksytään ylemmälle hakukohteelleni 17.12.2019 kello 15.00 mennessä, nyt tarjottu opiskelupaikka peruuntuu automaattisesti. Jos en tule hyväksytyksi ylemmälle hakukohteelleni 17.12.2019 kello 15.00 mennessä, tässä lomakkeessa mainitun opiskelupaikan vastaanotto jää voimaan.",
-      "mandatory": false
-    },
-    {
-      "id": 8,
-      "name": "vastaanotto_vaihtoehto_3",
-      "defaultValue": "En ota opiskelupaikkaa vastaan.",
-      "mandatory": false
-    },
-    {
-      "id": 8,
-      "name": "vastaanotto_allekirjoitus_vuosi",
-      "defaultValue": "2019",
+      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen kevään 2020 toisessa yhteishaussa",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Tilanteesi syksyn 2019 korkeakoulujen yhteishaussa",
+      "defaultValue": "Tilanteesi korkeakoulujen kevään 2020 toisessa yhteishaussa",
       "mandatory": false
     }
   ]
