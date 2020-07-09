@@ -54,14 +54,14 @@
         <section>
             <p>Hyvä hakija,</p>
 
-            <p>Hait opiskelupaikkaa syksyn 2019 korkeakoulujen yhteishaussa. Sinua ei valitettavasti ole valittu
+            <p>Hait opiskelupaikkaa korkeakoulujen kevään 2020 toisessa yhteishaussa. Sinua ei valitettavasti ole valittu
                 koulutuksiin, joihin hait.
                 Tämän kirjeen toisella sivulla on tietoa hakukohteittesi tilanteesta opiskelijavalinnassa. Jos olet
                 hakukohteeseen varasijalla,
                 voit vielä tulla siihen valituksi, mikäli paikkoja vapautuu. Vapautuvat paikat täytetään
                 varasijajärjestyksessä. Saat tiedon
                 sähköpostiisi, jos tulet valituksi varasijalta. Varasijoilta valitseminen päättyy viimeistään
-                17.12.2019. Näet myös Oma
+                3.8.2020. Näet myös Oma
                 Opintopolku -palvelussa, monennellako varasijalla olet.
             </p>
 
@@ -80,8 +80,7 @@
             <p>Jos opiskelijavalinnassa ja valintaperusteiden soveltamisessa on mielestäsi tapahtunut virhe, voit vaatia
                 siihen
                 kirjallisesti oikaisua 14 vuorokauden kuluessa opiskelijavalinnan tuloksen julkistamisesta eli
-                viimeistään 13.12.2019
-                ennen korkeakoulun aukioloajan päättymistä. Tutustu aina ensiksi kyseisen hakukohteen
+                viimeistään ennen 29.7.2020 kello 15.00. Tutustu aina ensiksi kyseisen hakukohteen
                 valintaperusteisiin sekä
                 oikaisumenettelyä koskevaan ohjeistukseen. Ota tämän jälkeen tarvittaessa yhteyttä siihen korkeakouluun,
                 jonka
@@ -102,8 +101,7 @@
             <h2>Lisähaku</h2>
 
             <p>Osa korkeakouluista saattaa järjestää omia lisähakuja, jos syksyn yhteishausta on jäänyt vapaita
-                opiskelupaikkoja. Mahdolliset
-                lisähaut järjestetään aikavälillä 2.12.-13.12.2019. Tarkista kunkin hakukohteen mahdollinen tarkka
+                opiskelupaikkoja. Tarkista kunkin hakukohteen mahdollinen tarkka
                 lisähaun hakuaika
                 Opintopolku.fi-sivustolta.</p>
         </section>
@@ -123,56 +121,81 @@
 
         <section>
             <h2>Syksyn yhteishaku</h2>
-            <p>Seuraava korkeakoulujen yhteishaku on 8.1.-22.1.2020 ja 18.3.-1.4.2020 osoitteessa Opintopolku.fi.
+            <p>Seuraava korkeakoulujen yhteishaku on 2.9.-16.9.2020 osoitteessa Opintopolku.fi.
                 Lisätietoa kevään yhteishaussa
                 mukana olevista koulutuksista saat Opintopolku.fi -sivustolta.</p>
         </section>
 
         <section>
             <h2>$sivu_2_otsikko</h2>
-
-            <table>
-                <caption>Hakukohteesi asettamassasi järjestyksessä</caption>
-                <thead>
-                <tr>
-                    <th>Valinnan tulos</th>
-                    <th>Hakukohde</th>
-                    <th>Valintatapa</th>
-                    <th>Pisteesi</th>
-                    <th>Alin hyv.</th>
-                    <th>Varasijasi</th>
-                </tr>
-                </thead>
-
+            <p>Hakukohteesi asettamassasi järjestyksessä</p>
+            <ol class="tulokset">
                 #foreach( $tulos in $tulokset )
-                #set($hyvaksytty = "#if($tulos.hyvaksytty=='true')hyvaksytty#{else}#end")
-                #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
-                #set($jonojenmaara = $tulos.sijoitukset.size())
-                <tbody>
-                #foreach( $sijoitus in $tulos.sijoitukset )
-                <tr class="$hyvaksytty $even">
-                    #if($foreach.count == 1)
-                    <td rowspan="$jonojenmaara">$tulos.valinnanTulos</td>
-                    <td rowspan="$jonojenmaara">$tulos.organisaationNimi, $tulos.hakukohteenNimi<br/>
-                        #if($tulos.hylkaysperuste)<span class="hylkayssyy">Hylkäyksen syy: $tulos.hylkaysperuste</span>#end
-                        #if($tulos.peruuntumisenSyy)<span
-                                class="peruuntumisensyy">Peruuntumisen syy: $tulos.peruuntumisenSyy</span>#end
-                    </td>
-                    #end
-                    <td>$sijoitus.nimi<br/></td>
-                    <td>#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end<br/></td>
-                    <td>#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end<br/></td>
-                    <td>#if($sijoitus.varasija)${sijoitus.varasija}#{else} - #end<br/></td>
-                </tr>
+                <li class="hakukohde">
+                    <div class="hakukohde-tiedot">
+                        <div class="hakukohde-nimi#if($tulos.hyvaksytty=='true') bold#end">
+                            $tulos.hakukohteenNimi - $tulos.organisaationNimi
+                        </div>
+                        <div class="hakukohde-tulos">
+                            <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
+                            #if($tulos.hyvaksymisenEhto)<br /><span>$tulos.hyvaksymisenEhto</span>#end
+                        </div>
+                    </div>
+                    <table class="valintatapajonot-table">
+                        <thead>
+                            <tr>
+                                <th class="sarake sarake-kapea">Valintatapa</th>
+                                <th class="sarake sarake-kapea">Pisteesi</th>
+                                <th class="sarake sarake-kapea">Alin hyväksytty pistemäärä</th>
+                                <th class="sarake sarake-levea">Valinnan tulos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            #foreach( $sijoitus in $tulos.sijoitukset )
+                            <tr>
+                                <th scope="row" class="sarake sarake-kapea">$sijoitus.nimi</th>
+                                <td class="sarake sarake-kapea">#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                                <td class="sarake sarake-kapea">#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                                <td class="sarake sarake-levea">
+                                    <span#if($sijoitus.hyvaksytty=='true') class="bold"#end>$sijoitus.tila</span>
+                                    #if($sijoitus.tilanKuvaus)<br /><span>$sijoitus.tilanKuvaus</span>#end
+                                    #if($sijoitus.hyvaksymisenEhto)<br /><span>$sijoitus.hyvaksymisenEhto</span>#end
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                    <ol class="valintatapajonot-list" aria-hidden="true" tabindex="-1">
+                        #foreach( $sijoitus in $tulos.sijoitukset )
+                        <li class="valintatapajono">
+                            <table class="valintatapajono-table">
+                                <tr>
+                                    <th scope="row" class="sarake">Valintatapa</th>
+                                    <td class="sarake">$sijoitus.nimi</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Pisteesi</th>
+                                    <td class="sarake">#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Alin hyväksytty pistemäärä</th>
+                                    <td class="sarake">#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Valinnan tulos</th>
+                                    <td class="sarake">
+                                        <span#if($sijoitus.hyvaksytty=='true') class="bold"#end>$sijoitus.tila</span>
+                                        #if($sijoitus.tilanKuvaus)<br /><span>$sijoitus.tilanKuvaus</span>#end
+                                        #if($sijoitus.hyvaksymisenEhto)<br /><span>$sijoitus.hyvaksymisenEhto</span>#end
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        #end
+                    </ol>
+                </li>
                 #end
-                </tbody>
-                #end
-                <tfoot>
-                <tr>
-                    <td colspan="6"></td>
-                </tr>
-                </tfoot>
-            </table>
+            </ol>
         </section>
 
         <section>
@@ -195,9 +218,9 @@
                     välttämättä lainkaan käytössä. Jos valintatietonasi on hylätty, et voi tulla hyväksytyksi kyseiseen
                     hakukohteeseen,
                     koska et täytä hyväksymisen edellytyksenä olevia vähimmäisvaatimuksia. Näet tällöin
-                    hakukohdekohtaisen
+                    jonokohtaisen
                     hylkäyksen
-                    syysi hakukohteen nimen alla.
+                    syysi.
                 </dd>
                 <dt>
                     Valintatapa - Pisteesi / Alin hyväksytty pistemäärä (Alin hyv.)
