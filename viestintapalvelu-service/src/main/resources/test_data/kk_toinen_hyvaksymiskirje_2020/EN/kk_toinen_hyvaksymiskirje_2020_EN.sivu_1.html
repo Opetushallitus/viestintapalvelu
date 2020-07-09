@@ -32,6 +32,9 @@
             <div>
                 <br/>National learner ID:<br/>$hakijaOid
             </div>
+            <div>
+                <br/>Application number:<br/>$hakemusOid
+            </div>
         </div>
         <div class="syntymaaika">
             <div class="date">$syntymaaika</div>
@@ -41,7 +44,12 @@
 <div class="clear"></div>
 <div>
     <h1>$kirjeotsikko</h1>
-    <p><b>$koulu<br/>$koulutus</b></p>
+    <p><b>Study Programme(s)</b></p>
+    #foreach( $tulos in $tulokset )
+    #if($tulos.hyvaksytty=='true')
+    <p><b>$tulos.hakukohteenNimi - $tulos.organisaationNimi</b></p>
+    #end
+    #end
 
     $sisalto
     <h2>Instructions for new students</h2>
