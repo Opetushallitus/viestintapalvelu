@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fi" dir="ltr">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Jälkiohjauskirje</title>
+    <style>$tyylit</style>
+</head>
+
+<body>
+<header role="banner">
+    <dl>
+        #if($hakijapalveluidenOsoite)
+        <dt>
+            Lähettäjä
+        </dt>
+        <dd>
+            $hakijapalveluidenOsoite.organisaationimi <br/>
+            $hakijapalveluidenOsoite.addressline
+            #if($hakijapalveluidenOsoite.postalCode != '')
+            <br/>
+            $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city
+            #end
+        </dd>
+        <dd>
+        </dd>
+        #end
+        <dt>
+            Päiväys
+        </dt>
+        <dd>
+            $letterDate
+        </dd>
+        <dt>
+            Vastaanottaja
+        </dt>
+        <dd>
+            $osoite
+        </dd>
+        <dt>
+            Syntymäaika
+        </dt>
+        <dd>
+            $syntymaaika
+        </dd>
+    </dl>
+</header>
+
+<main role="main">
+    <article>
+        <h1>$kirjeotsikko</h1>
+
+        <section>
+            <p>Hyvä hakija,</p>
+
+            <p>Hait opiskelupaikkaa syksyn 2019 korkeakoulujen yhteishaussa. Sinua ei valitettavasti ole valittu
+                koulutuksiin, joihin hait.
+                Tämän kirjeen toisella sivulla on tietoa hakukohteittesi tilanteesta opiskelijavalinnassa. Jos olet
+                hakukohteeseen varasijalla,
+                voit vielä tulla siihen valituksi, mikäli paikkoja vapautuu. Vapautuvat paikat täytetään
+                varasijajärjestyksessä. Saat tiedon
+                sähköpostiisi, jos tulet valituksi varasijalta. Varasijoilta valitseminen päättyy viimeistään
+                17.12.2019. Näet myös Oma
+                Opintopolku -palvelussa, monennellako varasijalla olet.
+            </p>
+
+            <p>Jos hakukohteen valinnan tulos on hylätty tai peruuntunut, et voi tulla valituksi siihen varasijalta.</p>
+
+            <p>Opiskelijaksi ottamisessa noudatetaan kunkin korkeakoulun valintaperusteita. Lisätietoa
+                valintaperusteista ja
+                valinnan tuloksesta saat ko. korkeakoulusta. Jos tarvitset apua valinnan tuloksen tulkitsemisessa tai
+                tarkempaa
+                tietoa hylkäysperusteistasi, ota yhteyttä ko. hakukohteen korkeakoulun hakijapalveluihin.</p>
+        </section>
+
+        <section>
+            <h2>Muutoksenhaku</h2>
+
+            <p>Jos opiskelijavalinnassa ja valintaperusteiden soveltamisessa on mielestäsi tapahtunut virhe, voit vaatia
+                siihen
+                kirjallisesti oikaisua 14 vuorokauden kuluessa opiskelijavalinnan tuloksen julkistamisesta eli
+                viimeistään 13.12.2019
+                ennen korkeakoulun aukioloajan päättymistä. Tutustu aina ensiksi kyseisen hakukohteen
+                valintaperusteisiin sekä
+                oikaisumenettelyä koskevaan ohjeistukseen. Ota tämän jälkeen tarvittaessa yhteyttä siihen korkeakouluun,
+                jonka
+                hakukohdetta tyytymättömyytesi koskee. Sinun on mahdollista tehdä edellä mainittuun määräaikaan mennessä
+                kirjallinen,
+                yksilöity oikaisuvaatimus opiskelijavalintaa koskevasta päätöksestä. Tarkemmat tiedot oikaisuvaatimuksen
+                tekemisestä ja
+                yhteystiedot löytyvät ko. korkeakoulun verkkosivulta sekä hakumateriaalista. Oikaisuvaatimus on
+                osoitettava ko. hakukohteen
+                korkeakoulun määrittelemälle toimielimelle ja toimitettava valintaperusteissa ilmoitettuun osoitteeseen
+                edellä mainittuun
+                määräaikaan mennessä.</p>
+
+            <p>Jos jäit ilman korkeakoulupaikkaa, voit tutustua seuraaviin vaihtoehtoihin:</p>
+        </section>
+
+        <section>
+            <h2>Lisähaku</h2>
+
+            <p>Osa korkeakouluista saattaa järjestää omia lisähakuja, jos syksyn yhteishausta on jäänyt vapaita
+                opiskelupaikkoja. Mahdolliset
+                lisähaut järjestetään aikavälillä 2.12.-13.12.2019. Tarkista kunkin hakukohteen mahdollinen tarkka
+                lisähaun hakuaika
+                Opintopolku.fi-sivustolta.</p>
+        </section>
+
+        <section>
+            <h2>Opinnot avoimen korkeakoulun kautta</h2>
+            <p>Sekä avoimessa yliopistossa että avoimessa ammattikorkeakoulussa on mahdollista suorittaa korkeakoulujen
+                opetussuunnitelmien
+                mukaisia, kaikille avoimia opintoja. Em. opinnot ovat hyödynnettävissä osaksi tutkintoa, jos myöhemmin
+                hakeutuu
+                tutkinto-opiskelijaksi. Opinnot antavat myös kuvan siitä, millaista itseä kiinnostavan alan opiskelu on
+                ja mitä se
+                vaatii. Lisätietoa avoimen korkeakoulun opinnoista löydät korkeakoulujen omilta nettisivuilta sekä
+                opintopolku.fi
+                -sivuilta.</p>
+        </section>
+
+        <section>
+            <h2>Syksyn yhteishaku</h2>
+            <p>Seuraava korkeakoulujen yhteishaku on 8.1.-22.1.2020 ja 18.3.-1.4.2020 osoitteessa Opintopolku.fi.
+                Lisätietoa kevään yhteishaussa
+                mukana olevista koulutuksista saat Opintopolku.fi -sivustolta.</p>
+        </section>
+
+        <section>
+            <h2>$sivu_2_otsikko</h2>
+
+            <table>
+                <caption>Hakukohteesi asettamassasi järjestyksessä</caption>
+                <thead>
+                <tr>
+                    <th>Valinnan tulos</th>
+                    <th>Hakukohde</th>
+                    <th>Valintatapa</th>
+                    <th>Pisteesi</th>
+                    <th>Alin hyv.</th>
+                    <th>Varasijasi</th>
+                </tr>
+                </thead>
+
+                #foreach( $tulos in $tulokset )
+                #set($hyvaksytty = "#if($tulos.hyvaksytty=='true')hyvaksytty#{else}#end")
+                #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
+                #set($jonojenmaara = $tulos.sijoitukset.size())
+                <tbody>
+                #foreach( $sijoitus in $tulos.sijoitukset )
+                <tr class="$hyvaksytty $even">
+                    #if($foreach.count == 1)
+                    <td rowspan="$jonojenmaara">$tulos.valinnanTulos</td>
+                    <td rowspan="$jonojenmaara">$tulos.organisaationNimi, $tulos.hakukohteenNimi<br/>
+                        #if($tulos.hylkaysperuste)<span class="hylkayssyy">Hylkäyksen syy: $tulos.hylkaysperuste</span>#end
+                        #if($tulos.peruuntumisenSyy)<span
+                                class="peruuntumisensyy">Peruuntumisen syy: $tulos.peruuntumisenSyy</span>#end
+                    </td>
+                    #end
+                    <td>$sijoitus.nimi<br/></td>
+                    <td>#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end<br/></td>
+                    <td>#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end<br/></td>
+                    <td>#if($sijoitus.varasija)${sijoitus.varasija}#{else} - #end<br/></td>
+                </tr>
+                #end
+                </tbody>
+                #end
+                <tfoot>
+                <tr>
+                    <td colspan="6"></td>
+                </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section>
+            <dl>
+                <dt>
+                    Valinnan tulos
+                </dt>
+                <dd>Valinnan tulos voi olla hyväksytty, hyväksytty (ehdollinen), varalla, hylätty tai peruuntunut.
+                    Valinnan
+                    tulos
+                    on peruuntunut, jos sinut on hyväksytty johonkin ylempään hakukohteeseesi. Valinnan tulos on
+                    peruuntunut
+                    myös,
+                    jos
+                    hakukohteen kaikki aloituspaikat ja varasijat ovat täyttyneet, eikä pistemääräsi ole riittänyt
+                    opiskelupaikan
+                    saamiseen tai varasijalle. Korkeakoulut voivat rajoittaa varasijojen määrää hakukohteissaan, eivätkä
+                    varasijat
+                    ole
+                    välttämättä lainkaan käytössä. Jos valintatietonasi on hylätty, et voi tulla hyväksytyksi kyseiseen
+                    hakukohteeseen,
+                    koska et täytä hyväksymisen edellytyksenä olevia vähimmäisvaatimuksia. Näet tällöin
+                    hakukohdekohtaisen
+                    hylkäyksen
+                    syysi hakukohteen nimen alla.
+                </dd>
+                <dt>
+                    Valintatapa - Pisteesi / Alin hyväksytty pistemäärä (Alin hyv.)
+                </dt>
+                <dd>
+                    Näet tässä oman pistemääräsi
+                    eriteltynä
+                    hakukohteen jokaisen valintatavan mukaan sekä alimman pistemäärän, jolla koulutukseen on hyväksytty
+                    kyseisen
+                    valintatavan mukaan. Jos hakukohteessa on käytössä ensikertalaisten kiintiö, saattaa
+                    ei-ensikertalaisten
+                    alin
+                    pisteraja olla korkeampi kuin taulukossa näkyvä alin pisteraja. Pistemäärä voi koostua useasta eri
+                    osasta,
+                    ja
+                    tietoa
+                    pisteytettävistä tekijöistä löydät hakukohteen valintaperusteista. Pistemäärä ei aina yksin vaikuta
+                    valinnan
+                    tulokseen, sillä esimerkiksi yksittäisestä valintakokeen osasta saatu hylkäävä tulos tai hylätty
+                    kielikoetulos
+                    voi
+                    estää valinnan kokonaispistemäärästä riippumatta. Näet pistemäärän vain, jos sinulle on voitu laskea
+                    pisteet
+                    kyseisen valintatavan mukaisesti. Jos valintatavassa ei lasketa pisteitä tai sinulle ei voida niitä
+                    laskea,
+                    niin
+                    sarake on tyhjä.
+                </dd>
+                <dt>
+                    Varasijasi
+                </dt>
+                <dd>
+                    Näet varasijasi kyseisessä jonossa, jos olet varalla. Voit olla varasijalla yhdessä
+                    hakukohteessa
+                    useammassa jonossa. Valintatavat vastaavat korkeakoulun valintaperusteissaan ilmoittamia
+                    valintatapoja
+                    ja
+                    löydät
+                    niistä tarkempaa tietoa hakukohteen valintaperusteista.
+                </dd>
+                <dt>
+                    Hyväksytty (ehdollinen)
+                </dt>
+                <dd>
+                    Valinnan tulos tarkoittaa, että valintapäätös on ehdollinen ja vahvistuu vasta, kun olet osoittanut
+                    korkeakoululle, että ehto on täyttynyt. Ammattikorkeakoulut käyttävät myös ehdollisten
+                    valintojen kohdalla valintojen tuloksesta termiä "Hyväksytty".
+                </dd>
+            </dl>
+            <p>Jos tarvitset apua valinnan tuloksen tulkitsemisessa tai tarkempaa tietoa hylkäysperusteistasi, ota
+                yhteyttä
+                ko.
+                hakukohteen korkeakoulun hakijapalveluihin.</p>
+        </section>
+    </article>
+</main>
+
+</body>
+
+</html>

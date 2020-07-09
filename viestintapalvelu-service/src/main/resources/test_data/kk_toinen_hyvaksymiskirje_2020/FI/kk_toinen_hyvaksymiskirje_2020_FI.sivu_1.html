@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <bookmarks>
+        <bookmark name="Hyväksymiskirje" href="hyvaksymiskirje" />
+    </bookmarks>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <style type="text/css">$tyylit</style>
+    <title>Hyväksymiskirje</title>
+</head>
+
+<body>
+<div class='header'>
+    <div class="row">
+        <div class="organisaatio">
+            #if($hakijapalveluidenOsoite)
+            <p>
+                Lähettäjä:<br/>
+                $hakijapalveluidenOsoite.organisaationimi,<br/>
+                $hakijapalveluidenOsoite.addressline #if($hakijapalveluidenOsoite.postalCode != ''),<br/>
+                $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city #end
+            </p>
+            #end
+        </div>
+        <div class="letterdate">
+            <div class="date">$letterDate</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class='osoitetarra'>
+            <div>$osoite</div>
+            <div>
+                <br/>Oppijanumero:<br/>$hakijaOid
+            </div>
+        </div>
+        <div class="syntymaaika">
+            <div class="date">$syntymaaika</div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div>
+    <h1 name="hyvaksymiskirje">$kirjeotsikko</h1>
+    <p><b>$koulu<br/>$koulutus</b></p>
+
+    $sisalto
+    <h2>Ohjeet uusille opiskelijoille</h2>
+    <p>#if($ohjeetUudelleOpiskelijalle)${ohjeetUudelleOpiskelijalle}#end</p>
+    <h2>Tervetuloa opiskelemaan!</h2>
+
+</div>
+</body>
+
+</html>
