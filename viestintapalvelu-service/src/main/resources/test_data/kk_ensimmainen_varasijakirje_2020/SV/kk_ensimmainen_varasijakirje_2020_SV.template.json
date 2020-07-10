@@ -120,13 +120,13 @@
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Meddelande om antagningsresultatet i gemensam ansökan till högskolorna hösten 2019",
+      "defaultValue": "Meddelande om antagningsresultatet i högskolornas första gemensamma ansökan våren 2029",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Din situation i gemensam ansökan till högskolor hösten 2019",
+      "defaultValue": "Din situation i högskolornas första gemensamma ansökan våren 2029",
       "mandatory": false
     }
   ]
