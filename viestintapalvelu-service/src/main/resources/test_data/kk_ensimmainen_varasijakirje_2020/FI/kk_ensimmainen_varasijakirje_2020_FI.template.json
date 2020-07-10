@@ -120,13 +120,13 @@
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen yhteishaussa syksyllä 2019",
+      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen kevään 2020 ensimmäisessä yhteishaussa",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Tilanteesi syksyn 2019 korkeakoulujen yhteishaussa",
+      "defaultValue": "Tilanteesi korkeakoulujen kevään 2020 ensimmäisessä yhteishaussa",
       "mandatory": false
     }
   ]
