@@ -20,8 +20,8 @@
     <div class="pull-left">$addressLabel.firstName <b>$addressLabel.lastName</b></div>
     <div class="pull-right">$sivu_2_otsikko</div>
     <br/>
-    <p>Näet tässä hakukohteesi asettamassasi järjestyksessä</p>
     <br/>
+<br/>
     <table>
         <thead>
         <tr>
@@ -41,8 +41,6 @@
             <tr class="$hyvaksytty $even">
                 <td rowspan="$jonojenmaara">
                     $tulos.valinnanTulos
-                    #if($tulos.hylkaysperuste)<br /><span class="hylkayssyy">$tulos.hylkaysperuste</span>#end
-                    #if($tulos.peruuntumisenSyy)<br /><span class="peruuntumisensyy">$tulos.peruuntumisenSyy</span>#end
                     #if($tulos.hyvaksymisenEhto)<br /><span class="ehdollinensyy">$tulos.hyvaksymisenEhto</span>#end
                 </td>
                 <td rowspan="$jonojenmaara">$tulos.hakukohteenNimi - $tulos.organisaationNimi</td>
