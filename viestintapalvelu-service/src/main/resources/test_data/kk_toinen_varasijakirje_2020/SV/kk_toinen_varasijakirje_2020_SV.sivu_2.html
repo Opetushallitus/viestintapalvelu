@@ -30,35 +30,40 @@
             <th>Antagningssätt</th>
             <th>Dina poäng</th>
             <th>Lägsta godk.</th>
-            <th>Reservpl.</th>
+            <th>Antagningsresultat</th>
         </tr>
         </thead>
-        <tbody> #foreach( $tulos in $tulokset )
-        #set($hyvaksytty = "#if($tulos.hyvaksytty=='true')hyvaksytty#{else}#end")
-        #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
-        #set($jonojenmaara = $tulos.sijoitukset.size() + 1)
-        <tr class="$hyvaksytty $even">
-            <td rowspan="$jonojenmaara">$tulos.valinnanTulos</td>
-            <td rowspan="$jonojenmaara">$tulos.organisaationNimi, $tulos.hakukohteenNimi<br/>
-                #if($tulos.hylkaysperuste)<span class="hylkayssyy">Avslagsgrund: $tulos.hylkaysperuste</span>#end
-                #if($tulos.peruuntumisenSyy)<span class="peruuntumisensyy">Annuleringsgrund: $tulos.peruuntumisenSyy</span>#end
-            </td>
-        </tr>
-        #foreach( $sijoitus in $tulos.sijoitukset )
+        <tbody>
+            #foreach( $tulos in $tulokset )
+            #set($hyvaksytty = "#if($tulos.hyvaksytty=='true')hyvaksytty#{else}#end")
+            #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
+            #set($jonojenmaara = $tulos.sijoitukset.size() + 1)
+            <tr class="$hyvaksytty $even">
+                <td rowspan="$jonojenmaara">
+                    $tulos.valinnanTulos
+                    #if($tulos.hyvaksymisenEhto)<br /><span class="ehdollinensyy">$tulos.hyvaksymisenEhto</span>#end
+                </td>
+                <td rowspan="$jonojenmaara">$tulos.hakukohteenNimi - $tulos.organisaationNimi</td>
+            </tr>
 
-        <tr class="$hyvaksytty $even">
-            <td>$sijoitus.nimi<br/></td>
-            <td>#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end<br/></td>
-            <td>#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end<br/></td>
-            <td>#if($sijoitus.varasija)${sijoitus.varasija}#{else} - #end<br/></td>
-        </tr>
-        #end
-        #end
+            #foreach( $sijoitus in $tulos.sijoitukset )
+            <tr class="$hyvaksytty $even">
+                <td>$sijoitus.nimi</td>
+                <td>#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                <td>#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                <td>
+                    $sijoitus.tila
+                    #if($sijoitus.tilanKuvaus)<br /><span class="hylkayssyy">$sijoitus.tilanKuvaus</span>#end
+                    #if($sijoitus.hyvaksymisenEhto)<br /><span class="ehdollinensyy">$sijoitus.hyvaksymisenEhto</span>#end
+                </td>
+            </tr>
+            #end
+            #end
         </tbody>
         <tfoot>
-        <tr>
-            <td colspan="7"></td>
-        </tr>
+            <tr>
+                <td colspan="6"></td>
+            </tr>
         </tfoot>
     </table>
     $sis2
