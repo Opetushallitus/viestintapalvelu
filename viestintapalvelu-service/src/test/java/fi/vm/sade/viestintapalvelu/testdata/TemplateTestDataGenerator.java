@@ -47,7 +47,7 @@ public class TemplateTestDataGenerator {
         //String templateKeys = "kk_ensimmainen_varasijakirje_2020";
         //String templateKeys = "kk_toinen_hyvaksymiskirje_2020";
         //String templateKeys = "kk_toinen_jalkiohjauskirje_2020";
-        String templateKeys = "kk_toinen_varasijakirje_2020";
+        String templateKeys = "nivel_jalkiohjauskirje_2020";
         if(templateKeys != null) {
             for(String templateKey : templateKeys.split(",")) {
                 for (String language : asList("FI", "SV", "EN")) {
