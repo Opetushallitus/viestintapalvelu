@@ -126,7 +126,7 @@
     {
       "id": 4,
       "name": "subject",
-      "defaultValue": "Meddelande om antagningsresultatet i ansökan till handledande utbildningar efter grundskolan 2019",
+      "defaultValue": "Meddelande om antagningsresultatet i ansökan till handledande utbildningar efter grundskolan 2020",
       "mandatory": false
     }
   ]
