@@ -30,7 +30,7 @@
         <!-- build-parent properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <buildversion_prefix />
+        <buildversion_prefix/>
 
         <ant-contrib.version>1.0b3</ant-contrib.version>
 
@@ -63,7 +63,7 @@
         <ehcache-core.version>2.5.0</ehcache-core.version>
         <flying-saucer.version>9.0.2</flying-saucer.version>
         <flyway.version>2.1.1</flyway.version>
-        <hibernate.version>4.1.0.Final</hibernate.version>
+        <hibernate.version>6.0.18.Final</hibernate.version>
         <hsqldb.version>2.0.0</hsqldb.version>
         <http.client.version>4.5.2</http.client.version>
         <icu4j.version>3.4.4</icu4j.version>
@@ -785,7 +785,7 @@
                             </goals>
                             <configuration>
                                 <target>
-                                    <echo message="writing target/${project.build.finalName}/${buildversion_prefix}buildversion.txt" />
+                                    <echo message="writing target/${project.build.finalName}/${buildversion_prefix}buildversion.txt"/>
                                     <echo file="target/${project.build.finalName}/${buildversion_prefix}buildversion.txt">
                                         <![CDATA[artifactId=${project.artifactId}
                                             version=${project.version}
@@ -795,8 +795,8 @@
                                             buildTtime=${maven.build.timestamp}
                                         ]]>
                                     </echo>
-                                    <loadfile property="buildversiontxt" srcFile="target/${project.build.finalName}/${buildversion_prefix}buildversion.txt" />
-                                    <echo message="${buildversiontxt}" />
+                                    <loadfile property="buildversiontxt" srcFile="target/${project.build.finalName}/${buildversion_prefix}buildversion.txt"/>
+                                    <echo message="${buildversiontxt}"/>
                                     <echo file="target/mavenversion.txt">${project.version}</echo>
                                 </target>
                             </configuration>
@@ -977,7 +977,7 @@
                             <requireJavaVersion>
                               <version>8</version>
                             </requireJavaVersion>
-                            <dependencyConvergence />
+                            <dependencyConvergence/>
                           </rules>
                         </configuration>
                       </execution>
@@ -1203,25 +1203,25 @@
                                 </goals>
                                 <configuration>
                                     <target>
-                                        <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.plugin.classpath" />
+                                        <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.plugin.classpath"/>
                                         <if>
-                                            <available file="${project.build.directory}/classes/fi" />
+                                            <available file="${project.build.directory}/classes/fi"/>
                                             <then>
-                                                <taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" classpathref="maven.plugin.classpath" />
+                                                <taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" classpathref="maven.plugin.classpath"/>
 
-                                                <property name="findbugsclasspath" refid="maven.plugin.classpath" />
-                                                <property name="runtime_classpath" refid="maven.runtime.classpath" />
-                                                <property name="compile_classpath" refid="maven.compile.classpath" />
+                                                <property name="findbugsclasspath" refid="maven.plugin.classpath"/>
+                                                <property name="runtime_classpath" refid="maven.runtime.classpath"/>
+                                                <property name="compile_classpath" refid="maven.compile.classpath"/>
 
-                                                <mkdir dir="${project.build.directory}/findbugs" />
+                                                <mkdir dir="${project.build.directory}/findbugs"/>
                                                 <echo>Using localRepository: ${settings.localRepository}</echo>
                                                 <findbugs output="html" outputFile="${project.build.directory}/findbugs/findbugs.html" classpath="${findbugsclasspath}" pluginlist="${settings.localRepository}/net/sourceforge/findbugs/coreplugin/${findbugs.version}/coreplugin-${findbugs.version}.jar" jvmargs="-Xmx256m" reportLevel="medium" effort="default" failOnError="true">
-                                                    <sourcePath location="${project.basedir}/src/main/java" />
-                                                    <class location="${project.build.directory}/classes" />
+                                                    <sourcePath location="${project.basedir}/src/main/java"/>
+                                                    <class location="${project.build.directory}/classes"/>
                                                     <auxClasspath>
-                                                        <path refid="maven.compile.classpath" />
-                                                        <path refid="maven.runtime.classpath" />
-                                                        <path refid="maven.plugin.classpath" />
+                                                        <path refid="maven.compile.classpath"/>
+                                                        <path refid="maven.runtime.classpath"/>
+                                                        <path refid="maven.plugin.classpath"/>
                                                     </auxClasspath>
                                                 </findbugs>
                                             </then>
@@ -1366,7 +1366,7 @@
                                         <echo>Deploy: ${project.version} to ${tomcat-host}</echo>
 
                                         <ant antfile="${project.basedir}\${ant.file}">
-                                            <property name="pom.version" value="${project.version}" />
+                                            <property name="pom.version" value="${project.version}"/>
                                         </ant>
                                     </target>
                                 </configuration>
@@ -1408,7 +1408,7 @@
                                     <target>
                                         <delete includeemptydirs="true" failonerror="false">
                                             <fileset dir="${clover.outputDirectory}_old">
-                                                <include name="**/**" />
+                                                <include name="**/**"/>
                                             </fileset>
                                         </delete>
                                     </target>
@@ -1453,11 +1453,11 @@
                                         <echo>Clean clover output directory from ${clover.base}.</echo>
                                         <delete includeemptydirs="true" failonerror="false">
                                             <fileset dir="${clover.base}">
-                                                <include name="**/**" />
-                                                <exclude name="history/**" />
+                                                <include name="**/**"/>
+                                                <exclude name="history/**"/>
                                             </fileset>
                                         </delete>
-                                        <move failonerror="false" file="${clover.outputDirectory}" tofile="${clover.outputDirectory}_old" />
+                                        <move failonerror="false" file="${clover.outputDirectory}" tofile="${clover.outputDirectory}_old"/>
                                     </target>
                                 </configuration>
                             </execution>
@@ -1557,7 +1557,7 @@
                                         <echo>Remove Scala files from target/clover directory.</echo>
                                         <delete failonerror="false" verbose="true">
                                             <fileset dir="target/clover">
-                                                <include name="**/*.scala" />
+                                                <include name="**/*.scala"/>
                                             </fileset>
                                         </delete>
                                     </target>
@@ -1784,31 +1784,28 @@
                                 </goals>
                                 <configuration>
                                     <target>
-                                        <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.plugin.classpath" />
+                                        <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.plugin.classpath"/>
                                         <if>
-                                            <available file="${schema.file}" />
+                                            <available file="${schema.file}"/>
                                             <then>
                                                 <echo>Generate DB Diagrams fom file '${schema.file}'.</echo>
-                                                <mkdir dir="${dbdiagram.output}" />
+                                                <mkdir dir="${dbdiagram.output}"/>
 
                                                 <!--generate diagrams-->
                                                 <exec executable="${dbdiagram.generator}">
-                                                    <arg value="${schema.file}" />
-                                                    <arg value="${dbdiagram.output}/${dbdiagram.filename}" />
+                                                    <arg value="${schema.file}"/>
+                                                    <arg value="${dbdiagram.output}/${dbdiagram.filename}"/>
                                                 </exec>
 
                                                 <!--copy diagrams with name *-LATEST.*-->
-                                                <copy file="${dbdiagram.output}/${dbdiagram.filename}.html"
-                                                      tofile="${dbdiagram.output}/${project.artifactId}-LATEST.html"/>
+                                                <copy file="${dbdiagram.output}/${dbdiagram.filename}.html" tofile="${dbdiagram.output}/${project.artifactId}-LATEST.html"/>
 
-                                                <copy file="${dbdiagram.output}/${dbdiagram.filename}.png"
-                                                      tofile="${dbdiagram.output}/${project.artifactId}-LATEST.png"/>
+                                                <copy file="${dbdiagram.output}/${dbdiagram.filename}.png" tofile="${dbdiagram.output}/${project.artifactId}-LATEST.png"/>
 
                                                 <!--SCP files to pulpetti apache-->
-                                                <scp todir="bamboo@pulpetti:/var/www/html/db/" trust="true"
-                                                     keyfile="${user.home}/.ssh/id_rsa" passphrase="">
+                                                <scp todir="bamboo@pulpetti:/var/www/html/db/" trust="true" keyfile="${user.home}/.ssh/id_rsa" passphrase="">
                                                     <fileset dir="${dbdiagram.output}">
-                                                        <include name="**/*" />
+                                                        <include name="**/*"/>
                                                     </fileset>
                                                 </scp>
                                             </then>
