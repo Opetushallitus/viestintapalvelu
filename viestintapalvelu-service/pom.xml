@@ -250,7 +250,7 @@
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
-            <version>3.2.5</version>
+            <version>3.2.11</version>
         </dependency>
 
         <dependency>
@@ -788,7 +788,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
