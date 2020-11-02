@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <style type="text/css">$tyylit</style>
+    <title>Approval Letter</title>
+</head>
+
+<body>
+<div class='header'>
+    <div class="row">
+        <div class="organisaatio">
+            #if($hakijapalveluidenOsoite)
+            <p>
+                Sender:<br/>
+                $hakijapalveluidenOsoite.organisaationimi,<br/>
+                $hakijapalveluidenOsoite.addressline #if($hakijapalveluidenOsoite.postalCode != ''),<br/>
+                $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city #end
+            </p>
+            #end
+        </div>
+        <div class="letterdate">
+            <div class="date">$letterDate</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class='osoitetarra'>
+            <div>$osoite</div>
+            <div>
+                <br/>National learner ID:<br/>$hakijaOid
+            </div>
+        </div>
+        <div class="syntymaaika">
+            <div class="date">$syntymaaika</div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div>
+    <h1>$kirjeotsikko</h1>
+    <p><b>$koulu<br/>$koulutus</b></p>
+
+<p>Congratulations! You have been accepted from a waiting list to the study place mentioned above in the autumn 2019 joint application to
+    higher education.</p>
+
+<p>This letter also includes information about the situation of your other study options. After you have been accepted
+    to the study place, your possible lower preferences have been cancelled automatically. If you have been placed on a
+    waiting list for any of your higher preference study options, you can still be accepted to one of them if a place
+    becomes available. You can find more information on the admission criteria of each study programme you have applied
+    to from Studyinfo.fi and the higher education institution in question.</p>
+
+<h2>Confirming a study place</h2>
+<p>You have to confirm the study place mentioned above by <b>$palautusTimestampEn</b> or you will lose the study place. Confirm
+    the study place preferably electronically with the link that has been sent to your email or in the My Studyinfo
+    -service. You can find instructions on page 3 as well as from Studyinfo.fi: Higher education > Applying > Confirming
+    a study place in higher education.</p>
+<p>In addition to confirming the study place, you need to register as a student at the higher education institution by
+    the deadline. If you do not register by the deadline you will lose your right to study. If you confirm the study
+    place in the My Studyinfo -service, you can continue directly to the electronic registration service. Each higher
+    education institution has instructions on how to register and information on starting studies on their own website:
+    see the link "Instructions for new students" at the bottom of the page.</p>
+    
+    $sisalto
+    <h2>Instructions for new students</h2>
+    <p>#if($ohjeetUudelleOpiskelijalle)${ohjeetUudelleOpiskelijalle}#end</p>
+    <h2>Welcome to study!</h2>
+
+</div>
+</body>
+
+</html>

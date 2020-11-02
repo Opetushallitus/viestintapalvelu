@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fi" dir="ltr">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Meddelande om antagningsresultatet i gemensam ansökan till högskolorna</title>
+    <style>$tyylit</style>
+</head>
+
+<body>
+<header role="banner">
+    <dl>
+        #if($hakijapalveluidenOsoite)
+        <dt>
+            Avsändare
+        </dt>
+        <dd>
+            $hakijapalveluidenOsoite.organisaationimi <br/>
+            $hakijapalveluidenOsoite.addressline
+            #if($hakijapalveluidenOsoite.postalCode != '')
+            <br/>
+            $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city
+            #end
+        </dd>
+        <dd>
+        </dd>
+        #end
+        <dt>
+            Datum
+        </dt>
+        <dd>
+            $letterDate
+        </dd>
+        <dt>
+            Mottagare
+        </dt>
+        <dd>
+            $osoite
+        </dd>
+        <dt>
+            Födelsedatum
+        </dt>
+        <dd>
+            $syntymaaika
+        </dd>
+    </dl>
+</header>
+
+<main role="main">
+    <article>
+        <h1>$kirjeotsikko</h1>
+
+        <section>
+            <p>Bästa sökande,</p>
+
+            <p>Du ansökte om studieplats i gemensam ansökan till högskolor hösten 2019. Du har tyvärr inte antagits till de
+                utbildningar som du sökte till. På omstående sida av detta brev hittar du information om situationen för dina
+                ansökningsönskemål i antagningen av studerande. Om du är på reservplats för ett ansökningsmål, kan du ännu bli
+                antagen till eventuella lediga platser. De lediga platserna fylls enligt reservplatsordning. Du får ett
+                e-postmeddelande om du blir vald från reservplats. Antagningen från reservplats avslutas senast 17.12.2019. Du kan
+                även i Studieinfo.fi-tjänsten kontrollera på vilken reservplats du är.</p>
+
+            <p>Om ditt antagningsresultat för ett ansökningsmål är underkänt, kan du inte bli antagen från reservplats.</p>
+
+            <p>Vid antagningen av studerande iakttas varje högskolas antagningsgrunder. Du får mera information om
+                antagningsgrunderna och antagningsresultatet av högskolan. Om du behöver hjälp med att tolka antagningsresultatet
+                eller mera information om grunderna för underkännandet, kan du kontakta högskolans ansökningsservice.</p>
+
+        </section>
+
+        <section>
+            <h2>Ändringssökande</h2>
+            <p>Om du anser att det i antagningen av studerande eller vid tillämpningen av antagningsgrunderna har skett ett fel, kan
+                du skriftligen begära om rättelse inom 14 dygn efter att antagningsresultatet har publicerats, dvs. senast 13.12.2019
+                inom ramen för högskolans öppethållningstid. Bekanta dig alltid först med ansökningsmålets antagningsgrunder och
+                anvisningarna för begäran om rättelse. Ta därefter vid behov kontakt med den högskola som ordnar ansökningsmålet. Du
+                kan senast det datum som nämns ovan göra en skriftlig, individualiserad begäran om rättelse gällande beslutet om
+                antagningen av studerande. Du hittar mera information om hur du gör en rättelse och nödvändig kontaktinformation på
+                högskolans webbplats och i ansökningsmaterialet.</p>
+
+            <p>Rikta din begäran om rättelse till det organ som högskolan definierar för ansökningsmålet och skicka din begäran till
+                den adress som nämns i antagningsgrunderna senast det datum som nämns ovan.</p>
+
+            <p>Om du blev utan studieplats, kan du bekanta dig med följande alternativ:</p>
+
+        </section>
+
+        <section>
+            <h2>Tilläggsansökan</h2>
+            <p>En del av högskolorna ordnar egna tilläggsansökningar till studieplatser som inte fyllts i den gemensamma ansökan på
+                våren. Tilläggsansökan kan ordnas mellan 2.12.-13.12.2019. Kontrollera i Studieinfo.fi den exakta ansökningstiden för
+                varje ansökningsmål.</p>
+        </section>
+
+        <section>
+            <h2>Studier inom den öppna högskolan</h2>
+            <p>Inom den öppna yrkeshögskolan och det öppna universitetet kan du genomföra öppna studier enligt högskolornas
+                läroplaner. Om du i ett senare skede ansöker om studieplats som examensstuderande, kan studierna utgöra en del av
+                examen. Via de öppna studierna får du en uppfattning om hur det är att studera inom den bransch som du är
+                intresserad av och vad studierna kräver. Du får mera information om de öppna högskolestudierna på högskolornas egna
+                webbplatser och i Studieinfo.fi.</p>
+        </section>
+
+        <section>
+            <h2>Gemensam ansökan på hösten</h2>
+            <p>Följande gemensam ansökan infaller 8.1.-22.1.2020 och 18.3.-1.4.2020 i Studieinfo.fi. Du får mera information om utbildningar som ingår
+                i vårens gemensamma ansökan i Studieinfo.fi.</p>
+
+        </section>
+
+        <section>
+            <h2>$sivu_2_otsikko</h2>
+
+            <table>
+                <caption>Du ser här dina ansökningsmål i den ordning du satt dem i</caption>
+                <thead>
+                <tr>
+                    <th>Antagningsresultat</th>
+                    <th>Ansökningsmål</th>
+                    <th>Antagningssätt</th>
+                    <th>Dina poäng</th>
+                    <th>Lägsta godk.</th>
+                    <th>Reservpl.</th>
+                </tr>
+                </thead>
+
+                #foreach( $tulos in $tulokset )
+                #set($hyvaksytty = "#if($tulos.hyvaksytty=='true')hyvaksytty#{else}#end")
+                #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
+                #set($jonojenmaara = $tulos.sijoitukset.size())
+                <tbody>
+                #foreach( $sijoitus in $tulos.sijoitukset )
+                <tr class="$hyvaksytty $even">
+                    #if($foreach.count == 1)
+                    <td rowspan="$jonojenmaara">$tulos.valinnanTulos</td>
+                    <td rowspan="$jonojenmaara">$tulos.organisaationNimi, $tulos.hakukohteenNimi<br/>
+                        #if($tulos.hylkaysperuste)<span class="hylkayssyy">Avslagsgrund: $tulos.hylkaysperuste</span>#end
+                        #if($tulos.peruuntumisenSyy)<span
+                                class="peruuntumisensyy">Annuleringsgrund: $tulos.peruuntumisenSyy</span>#end
+                    </td>
+                    #end
+                    <td>$sijoitus.nimi<br/></td>
+                    <td>#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end<br/></td>
+                    <td>#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end<br/></td>
+                    <td>#if($sijoitus.varasija)${sijoitus.varasija}#{else} - #end<br/></td>
+                </tr>
+                #end
+                </tbody>
+                #end
+                <tfoot>
+                <tr>
+                    <td colspan="6"></td>
+                </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section>
+            <dl>
+                <dt>
+                    Antagningsresultatet
+                </dt>
+                <dd>Antagningsresultatet kan vara godkänd, villkorligt godkänd, på reservplats, underkänd eller annullerad.
+                    Antagningen är annullerad om du har godkänts till ett av dina högre ansökningsmål. Antagningen är annullerad också
+                    då samtliga nybörjarplatser inom ansökningsmålet har fyllts, och dina poäng inte räcker till för en studieplats
+                    eller reservplats. Högskolorna kan begränsa antalet reservplatser inom sina ansökningsmål. Vissa ansökningsmål
+                    använder sig inte alls av reservplatser. Om ditt antagningsresultat är underkänt, kan du inte godkännas till
+                    utbildningen, eftersom du inte uppfyller de minimikrav som ställs för att bli godkänd. I detta fall syns orsaken
+                    till avslaget under ansökningsmålets namn.
+                </dd>
+                <dt>
+                    Antagningssätt - Dina poäng/Lägsta godkända poängantal (Lägsta godk.)
+                </dt>
+                <dd>
+                    I denna kolumn ser du ditt
+                    poängantal specificerat enligt ansökningsmålets antagningssätt och det lägsta poängantalet som har blivit godkänt
+                    enligt antagningssättet i fråga. Om ansökningsmålet använder sig av en kvot för förstagångssökande kan det lägsta
+                    poängantalet för icke-förstagångssökande var högre än det lägsta poängantalet som syns i tabellen. Poängantalet kan
+                    bestå av flera olika delar. Läs mera i antagningsgrunderna för ansökningsmålet om de faktorer som poängsätts. Enbart
+                    poängantalet inverkar inte ensamt på antagningsresultatet. Till exempel ett underkänt resultat för en urvalsprovsdel
+                    eller ett underkänt språkprov kan hindra antagning oberoende av det totala antalet poäng. Du får ett poängantal
+                    endast ifall det har varit möjligt att räkna ut ditt poäng enligt detta antagningssätt. Kolumnen är tom, om
+                    poängräkning inte används för detta antagningssätt eller om det inte har varit möjligt att räkna poäng för dig.
+                </dd>
+                <dt>
+                    Din reservplats
+                </dt>
+                <dd>
+                    Du ser din eventuella reservplats i denna kolumn. Du kan vara på reservplats i flera olika
+                    köer för samma ansökningsmål. Högskolorna har angett antagningssätten i sina antagningsgrunder. Du hittar exaktare
+                    information om antagningssätten i antagningsgrunderna för ansökningsmålet.
+                </dd>
+                <dt>
+                    Villkorligt godkänd
+                </dt>
+                <dd>
+                    Villkorligt godkänd betyder att antagningsbeslutet är villkorligt och kan bekräftas först då du visat för
+                    universitetet att villkoret har uppfyllts. Yrkeshögskolorna använder även termen "Godkänd" för villkorligt
+                    godkännande
+                </dd>
+            </dl>
+            <p>Om du behöver hjälp att tolka antagningsresultatet eller om du vill ha mera exakt information om grunderna för
+                underkännande, kan du kontakta ansökningsservicen vid högskolan.</p>
+        </section>
+    </article>
+</main>
+
+</body>
+
+</html>

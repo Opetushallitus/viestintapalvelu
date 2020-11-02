@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <bookmarks>
+        <bookmark name="Hyväksymiskirje" href="varasijakirje" />
+    </bookmarks>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <style type="text/css">$tyylit</style>
+    <title>Hyväksymiskirje</title>
+</head>
+
+<body>
+<div class='header'>
+    <div class="row">
+        <div class="organisaatio">
+            #if($hakijapalveluidenOsoite)
+            <p>
+                Lähettäjä:<br/>
+                $hakijapalveluidenOsoite.organisaationimi,<br/>
+                $hakijapalveluidenOsoite.addressline #if($hakijapalveluidenOsoite.postalCode != ''),<br/>
+                $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city #end
+            </p>
+            #end
+        </div>
+        <div class="letterdate">
+            <div class="date">$letterDate</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class='osoitetarra'>
+            <div>$osoite</div>
+            <div>
+                <br/>Oppijanumero:<br/>$hakijaOid
+            </div>
+        </div>
+        <div class="syntymaaika">
+            <div class="date">$syntymaaika</div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div>
+    <h1 name="varasijakirje">$kirjeotsikko</h1>
+    <p><b>$koulu<br/>$koulutus</b></p>
+
+<p>Onneksi olkoon! Sinut on hyväksytty varasijalta syksyn 2019 korkeakoulujen yhteishaussa yllä mainittuun opiskelupaikkaan.</p>
+
+<p>Tässä kirjeessä on tietoa myös muiden hakukohteittesi tilanteesta. Opiskelijaksi hyväksymisen jälkeen mahdolliset
+    alemmat hakukohteesi ovat peruuntuneet automaattisesti. Jos olet varalla johonkin ylempään hakukohteeseesi, voit
+    vielä tulla siihen valituksi, jos paikkoja vapautuu. Lisätietoa kunkin hakukohteesi valintaperusteista saat
+    Opintopolku.fi -sivustolta sekä ko. korkeakoulusta.</p>
+
+<h2>Opiskelupaikan vastaanottaminen</h2>
+<p>Vahvistaaksesi yllä mainitun opiskelupaikan sinun täytyy ottaa se vastaan <b>$palautusTimestampFi</b> mennessä. Ellet ota
+    paikkaa vastaan määräaikana, menetät sen. Ota opiskelupaikka vastaan ensisijaisesti sähköisesti Oma Opintopolku
+    -palvelussa. Ohjeet löydät sivulta 3 sekä osoitteesta Opintopolku.fi: Koulutuksen valinta > Yhteishaku >
+    Haku korkeakouluihin > Paikan vastaanotto korkeakoulusta </p>
+<p>Opiskelupaikan vastaanottamisen lisäksi sinun täytyy ilmoittautua korkeakouluun määräaikaan mennessä. Ellet
+    ilmoittaudu määräaikana, menetät opiskeluoikeuden. Jos otat paikan vastaan Oma Opintopolku -palvelussa, voit jatkaa
+    suoraan sähköiseen ilmoittautumispalveluun. Korkeakoulukohtaiset ilmoittautumisohjeet ja tiedot opintojen
+    aloittamisesta saat korkeakoulun verkkosivuilta: katso linkki "Ohjeet uusille opiskelijoille" sivun alaosassa.</p>
+    
+    $sisalto
+    <h2>Ohjeet uusille opiskelijoille</h2>
+    <p>#if($ohjeetUudelleOpiskelijalle)${ohjeetUudelleOpiskelijalle}#end</p>
+    <h2>Tervetuloa opiskelemaan!</h2>
+
+</div>
+</body>
+
+</html>
