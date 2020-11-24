@@ -35,7 +35,7 @@ public class TemplateTestDataGenerator {
     public static void main(String[] args) throws IOException {
         //String templateKeys = System.getProperty("template");
         //String templateKeys = "kk_hyvaksymiskirje_syksy_2020";
-        String templateKeys = "kk_jalkiohjauskirje_syksy_2020";
+        String templateKeys = "kk_jalkiohjauskirje_syksy_2020,kk_hyvaksymiskirje_syksy_2020";
         if(templateKeys != null) {
             for(String templateKey : templateKeys.split(",")) {
                 for (String language : asList("FI", "SV", "EN")) {
