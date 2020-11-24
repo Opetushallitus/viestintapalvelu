@@ -54,7 +54,7 @@
         <section>
             <p>Dear applicant</p>
 
-            <p>You have applied for a study place in the autumn 2019 joint application to higher education.
+            <p>You have applied for a study place in the autumn 2020 joint application to higher education.
                 Unfortunately you have
                 not been accepted to the study programmes you applied to. On the second page of this letter you can find
                 information
@@ -64,14 +64,14 @@
                 places that
                 become available will be filled according to the reserve place order. You will be contacted by email, if
                 you are
-                accepted to a study place from the waiting list. Admissions from the waiting list end on 17th December
-                2019 at 3 pm at
+                accepted to a study place from the waiting list. Admissions from the waiting list end on 15th December
+                2020 at 3 pm at
                 the latest. You can also see your waiting list situation from the My Studyinfo -service. In order to log
                 in to the
                 service you will need Finnish online banking credentials, a mobile certificate or a smart ID card and
                 reader.</p>
 
-            <p>If the selection result for a study option is "failed" or "cancelled", you cannot be admitted from the
+            <p>If the selection result for a study option is "rejected" or "cancelled", you cannot be admitted from the
                 waiting
                 list.</p>
 
@@ -91,8 +91,7 @@
                 applied
                 correctly, you can make a written request for rectification within 14 days after the student selection
                 results have
-                been published, that is by 13th December 2019 at the latest before the closing time of the higher
-                education institution.
+                been published, that is before 11th December 2020 at 3 pm (EET).
                 Always check the admission criteria of the study programme and the instructions regarding rectifications
                 first. If
                 necessary, you can then contact the higher education institution in question. You can make a written,
@@ -112,11 +111,10 @@
 
         <section>
             <h2>Supplementary application round</h2>
-            <p>Some higher education institutions arrange their own supplementary application rounds, if all study
+            <p>Some higher education institutions arrange their own supplementary application periods, if all study
                 places are not
-                filled in the spring joint application. Possible supplementary application rounds take place between 2nd
-                December and
-                13th December 2019. Check the exact dates for each possible supplementary application round from
+                filled in the autumn joint application. Possible supplementary application periods take place between 30th November and
+                11th December 2020. Check the exact dates for each possible supplementary application period from
                 Studyinfo.fi.</p>
 
         </section>
@@ -136,8 +134,8 @@
         </section>
 
         <section>
-            <h2>Autumn joint application</h2>
-            <p>The next joint application to higher education starts on 8th January and ends 22nd January 2019 at
+            <h2>Spring joint application</h2>
+            <p>The next joint application to higher education starts on 7th January and ends 20th January 2021 at
                 Studyinfo.fi. You
                 can find more information about the study programmes included in the spring joint application from
                 Studyinfo.fi.</p>
@@ -146,50 +144,71 @@
 
         <section>
             <h2>$sivu_2_otsikko</h2>
-
-            <table>
-                <caption>Here you can see all your study options in the order stated on your application</caption>
-                <thead>
-                <tr>
-                    <th>Admission result</th>
-                    <th>Study option</th>
-                    <th>Selection method</th>
-                    <th>Your score</th>
-                    <th>The lowest accepted score</th>
-                    <th>Your reserve place status</th>
-                </tr>
-                </thead>
-
+            <p>Here you can see all your study options in the order stated on your application</p>
+            <ol class="tulokset">
                 #foreach( $tulos in $tulokset )
-                #set($hyvaksytty = "#if($tulos.hyvaksytty=='true')hyvaksytty#{else}#end")
-                #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
-                #set($jonojenmaara = $tulos.sijoitukset.size())
-                <tbody>
-                #foreach( $sijoitus in $tulos.sijoitukset )
-                <tr class="$hyvaksytty $even">
-                    #if($foreach.count == 1)
-                    <td rowspan="$jonojenmaara">$tulos.valinnanTulos</td>
-                    <td rowspan="$jonojenmaara">$tulos.organisaationNimi, $tulos.hakukohteenNimi<br/>
-                        #if($tulos.hylkaysperuste)<span
-                                class="hylkayssyy">Grounds for rejection: $tulos.hylkaysperuste</span>#end
-                        #if($tulos.peruuntumisenSyy)<span
-                                class="peruuntumisensyy">Grounds for cancellation: $tulos.peruuntumisenSyy</span>#end
-                    </td>
-                    #end
-                    <td>$sijoitus.nimi<br/></td>
-                    <td>#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end<br/></td>
-                    <td>#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end<br/></td>
-                    <td>#if($sijoitus.varasija)${sijoitus.varasija}#{else} - #end<br/></td>
-                </tr>
-                #end
-                </tbody>
-                #end
-                <tfoot>
-                <tr>
-                    <td colspan="6"></td>
-                </tr>
-                </tfoot>
-            </table>
+                <li class="hakukohde">
+                    <div class="hakukohde-tiedot">
+                        <div class="hakukohde-nimi#if($tulos.hyvaksytty=='true') bold#end">
+                            $tulos.hakukohteenNimi - $tulos.organisaationNimi
+                        </div>
+                        <div class="hakukohde-tulos">
+                            <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
+                            #if($tulos.hyvaksymisenEhto)<br /><span>$tulos.hyvaksymisenEhto</span>#end
+                        </div>
+                    </div>
+                    <table class="valintatapajonot-table">
+                        <thead>
+                            <tr>
+                                <th class="sarake sarake-kapea">Selection method</th>
+                                <th class="sarake sarake-kapea">Your score</th>
+                                <th class="sarake sarake-kapea">The lowest accepted score</th>
+                                <th class="sarake sarake-levea">Admission result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            #foreach( $sijoitus in $tulos.sijoitukset )
+                            <tr>
+                                <th scope="row" class="sarake sarake-kapea">$sijoitus.nimi</th>
+                                <td class="sarake sarake-kapea">#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                                <td class="sarake sarake-kapea">#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                                <td class="sarake sarake-levea">
+                                    <span#if($sijoitus.hyvaksytty=='true') class="bold"#end>$sijoitus.tila</span>
+                                    #if($sijoitus.tilanKuvaus)<br /><span>$sijoitus.tilanKuvaus</span>#end
+                                    #if($sijoitus.hyvaksymisenEhto)<br /><span>$sijoitus.hyvaksymisenEhto</span>#end
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                    <ol class="valintatapajonot-list" aria-hidden="true" tabindex="-1">
+                        #foreach( $sijoitus in $tulos.sijoitukset )
+                        <li class="valintatapajono">
+                            <table class="valintatapajono-table">
+                                <tr>
+                                    <th scope="row" class="sarake">Selection method</th>
+                                    <td class="sarake">$sijoitus.nimi</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Your score</th>
+                                    <td class="sarake">#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">The lowest accepted score</th>
+                                    <td class="sarake">#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Admission result</th>
+                                    <td class="sarake">
+                                        <span#if($sijoitus.hyvaksytty=='true') class="bold"#end>$sijoitus.tila</span>
+                                        #if($sijoitus.tilanKuvaus)<br /><span>$sijoitus.tilanKuvaus</span>#end
+                                        #if($sijoitus.hyvaksymisenEhto)<br /><span>$sijoitus.hyvaksymisenEhto</span>#end
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        #end
+                    </ol>
         </section>
 
         <section>
@@ -197,7 +216,7 @@
                 <dt>
                     The admission result
                 </dt>
-                <dd>The admission result can be accepted, accepted (conditional), on the waiting list, rejected or
+                <dd>The admission result can be accepted, accepted (conditional: a condition set by the higher education institution), on the waiting list, rejected or
                     cancelled. The
                     admission result will state "cancelled", if you have been accepted to a higher preference. The
                     admission result will
@@ -211,7 +230,7 @@
                     you have not met
                     the minimum of the admission requirements necessary to be admitted. In that case, you will see the
                     reason for why
-                    you have not been admitted under the name of the study programme.
+                    you have not been admitted under admission result in each selection method.
                 </dd>
                 <dt>
                     Selection method - Your score / The lowest accepted score
@@ -249,7 +268,7 @@
                     question.
                 </dd>
                 <dt>
-                    Accepted (conditional)
+                    Accepted (conditional: a condition set by the higher education institution)
                 </dt>
                 <dd>
                     This admission result means that the admission decision is conditional and will be
