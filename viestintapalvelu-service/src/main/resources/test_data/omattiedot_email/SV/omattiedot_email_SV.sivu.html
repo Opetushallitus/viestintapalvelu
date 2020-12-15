@@ -20,6 +20,11 @@
     <p>
         Du får ytterligare anvisningar om mottagande av studieplatsen i <a href="https://studieinfo.fi/wp/stod-for-studievalet/gemensam-ansokan/gemensam-ansokan-till-hogskolor/sa-har-tar-du-emot-en-studieplats-i-gemensam-ansokan-till-hogskolor/">Studieinfo.fi-tjänsten</a> eller från högskolan som du har blivit godkänd till.
     </p>
+        #if($deadline != '') 
+        <p>
+                Ta emot den beviljade studieplatsen före $deadline.
+        </p> 
+        #end
     <p>
         Ansökan: $haunNimi
     </p>
@@ -48,6 +53,11 @@
         Studieinfo.fi-tjänsten</a> eller från
         högskolan som du har sökt till.
     </p>
+        #if($deadline != '') 
+        <p>
+                Ta emot den beviljade studieplatsen före $deadline.
+        </p> 
+        #end
     <p>
         Ansökan: $haunNimi
     </p>
