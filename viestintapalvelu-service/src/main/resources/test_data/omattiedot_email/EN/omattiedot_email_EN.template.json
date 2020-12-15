@@ -28,7 +28,7 @@
         },
         {
             "name":"subject",
-            "defaultValue":"The study place can be confirmed in Studyinfo",
+            "defaultValue":"Offer of admission in Studyinfo",
             "mandatory":false,
             "timestamp":null,
             "id":0
