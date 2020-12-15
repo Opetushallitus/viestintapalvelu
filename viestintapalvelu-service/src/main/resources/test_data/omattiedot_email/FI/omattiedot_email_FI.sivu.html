@@ -21,6 +21,11 @@
     <p>
         Lisäohjeita opiskelupaikan vastaanottamisesta saat <a href="https://opintopolku.fi/wp/valintojen-tuki/yhteishaku/korkeakoulujen-yhteishaku/nain-otat-paikan-vastaan">Opintopolku-palvelusta</a> tai korkeakoulusta johon sinut on hyväksytty.
     </p>
+        #if($deadline != '') 
+        <p>
+                Ota vastaan tarjottu opiskelupaikka $deadline mennessä.
+        </p> 
+        #end
     <p>
         Haun nimi: $haunNimi
     </p>
@@ -46,6 +51,11 @@
             href="https://opintopolku.fi/wp/valintojen-tuki/yhteishaku/korkeakoulujen-yhteishaku/nain-otat-paikan-vastaan">
         Opintopolku-palvelusta</a> tai hakemastasi korkeakoulusta.
     </p>
+        #if($deadline != '') 
+        <p>
+                Ota vastaan tarjottu opiskelupaikka $deadline mennessä.
+        </p> 
+        #end
     <p>
         Haun nimi: $haunNimi
     </p>
