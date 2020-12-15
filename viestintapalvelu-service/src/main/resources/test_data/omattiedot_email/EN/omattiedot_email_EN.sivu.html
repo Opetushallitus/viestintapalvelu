@@ -15,27 +15,37 @@
         Dear $etunimi
     </p>
     <p>
-        Congratulations, you have been granted a study place. Please use the following link to accept the study place: <a href="$securelink">$securelink</a>. The link is personal.
-    </p>
-    <p>
-        You can get further information about accepting a study place in the <a href="https://studyinfo.fi/wp2/en/higher-education/how-to-apply-for-bachelors-and-masters/joint-application-to-higher-education/how-to-confirm-a-study-place-in-joint-application-to-higher-education/">Studyinfo.fi service</a> or from the higher education institution that you have been accepted to.
-    </p>
-        #if($deadline != '') 
-        <p>
-                Confirm the granted study place by $deadline.
-        </p> 
-        #end
-    <p>
-        Application: $haunNimi
-    </p>
-    <p>
-        Study programmes:
+        Congratulations, you have been offered admission in the following programme(s): 
     </p>
     #foreach( $hakukohde in $hakukohteet )
     <p>
         $hakukohde.nimi $hakukohde.tarjoaja
     </p>
     #end
+    <p>
+        In application: $haunNimi
+    </p>    
+    <p>    
+        Please use the following link to accept the offer of admission: <a href="$securelink">$securelink</a>. The link is personal, do not share it.
+    </p>
+    #if($deadline != '') 
+    <p>
+        Accept the offer of admission before the deadline: $deadline.
+    </p> 
+    #end
+    <p>
+        Please note that you may accept an offer of admission from only one study programme leading to a higher education degree in Finland in 
+        education that begins in the same academic term. When you accept an offer of admission, offers of admission to other study programmes 
+        will be cancelled automatically and you cannot be accepted to other programmes starting in the same academic term. The one place per term 
+        provision applies to both joint application and separate applications in higher education. Only exceptions to this provision are transfer 
+        student admissions and admissions to the Åland University of Applied Sciences and the Police University College of Finland. The provision 
+        only applies to studies at Finnish higher education institutions.
+    </p>    
+    <p>
+        You can get further information about accepting an offer of admission in the 
+        <a href="https://studyinfo.fi/wp2/en/higher-education/how-to-apply-for-bachelors-and-masters/joint-application-to-higher-education/how-to-confirm-a-study-place-in-joint-application-to-higher-education/">Studyinfo.fi service</a> 
+        or from the higher education institution that you have been accepted to.
+    </p>
     <p>
         Do not reply to this message - the message has been sent automatically.
     </p>
@@ -44,25 +54,7 @@
         Dear $etunimi
     </p>
     <p>
-        Congratulations, you have been granted a study place. You can
-        go to the <a href="https://studyinfo.fi/omatsivut">My
-        Studyinfo</a> service for further information and confirm the
-        study place. You can get further information about accepting
-        a study place in the <a
-            href="https://studyinfo.fi/wp2/en/higher-education/how-to-apply-for-bachelors-and-masters/joint-application-to-higher-education/how-to-confirm-a-study-place-in-joint-application-to-higher-education/">
-        Studyinfo.fi service</a> or from the higher education
-        institution that you have applied to.
-    </p> 
-        #if($deadline != '') 
-        <p>
-                Confirm the granted study place by $deadline.
-        </p> 
-        #end
-    <p>
-        Application: $haunNimi
-    </p>
-    <p>
-        Study programmes:
+        Congratulations, you have been offered admission in the following programme(s): 
     </p>
     #foreach( $hakukohde in $hakukohteet )
     <p>
@@ -70,8 +62,31 @@
     </p>
     #end
     <p>
-        Do not reply to this message - the message has been sent
-        automatically.
+        Application: $haunNimi
+    </p>
+    <p>
+        You can go to the <a href="https://studyinfo.fi/omatsivut">My Studyinfo</a> service for further information and accept the offer of admission.
+    </p>
+    #if($deadline != '') 
+    <p>
+        Confirm the offer of admission before the deadline: $deadline.
+    </p> 
+    #end
+    <p>
+        Please note that you may accept an offer of admission from only one study programme leading to a higher education degree in Finland in 
+        education that begins in the same academic term. When you accept an offer of admission, offers of admission to other study programmes 
+        will be cancelled automatically and you cannot be accepted to other programmes starting in the same academic term. The one place per 
+        term provision applies to both joint application and separate applications in higher education. Only exceptions to this provision are 
+        transfer student admissions and admissions to the Åland University of Applied Sciences and the Police University College of Finland. 
+        The provision only applies to studies at Finnish higher education institutions.
+    </p>
+    <p>
+        You can get further information about accepting an offer of admission in the 
+        <a href="https://studyinfo.fi/wp2/en/higher-education/how-to-apply-for-bachelors-and-masters/joint-application-to-higher-education/how-to-confirm-a-study-place-in-joint-application-to-higher-education/">Studyinfo.fi service</a> 
+        or from the higher education institution that you have applied to.
+    </p> 
+    <p>
+        Do not reply to this message - the message has been sent automatically.
     </p>
 #end
 </body>
