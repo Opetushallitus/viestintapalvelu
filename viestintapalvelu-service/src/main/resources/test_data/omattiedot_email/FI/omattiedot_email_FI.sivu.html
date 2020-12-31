@@ -10,67 +10,82 @@
     </title>
 </head>
 <body>
-#if($securelink)
-    <p>
-        Hei $etunimi
-    </p>
-    <p>
-        Sinulle on myönnetty opiskelupaikka, onneksi olkoon. Ota paikka vastaan seuraavan linkin kautta: <a href="$securelink">$securelink</a>.
-        Linkki on henkilökohtainen.
-    </p>
-    <p>
-        Lisäohjeita opiskelupaikan vastaanottamisesta saat <a href="https://opintopolku.fi/wp/valintojen-tuki/yhteishaku/korkeakoulujen-yhteishaku/nain-otat-paikan-vastaan">Opintopolku-palvelusta</a> tai korkeakoulusta johon sinut on hyväksytty.
-    </p>
+        #if($securelink)
+        <p>
+                Hei $etunimi
+        </p>
+        <p>
+                Onneksi olkoon! Sinulle on myönnetty opiskelupaikka: 
+        </p>
+        #foreach( $hakukohde in $hakukohteet )
+        <p>
+                $hakukohde.nimi $hakukohde.tarjoaja
+        </p>
+        #end    
+        <p>
+                Haun nimi: $haunNimi
+        </p>
+        <p>
+                Ota paikka vastaan seuraavan linkin kautta: <a href="$securelink">$securelink</a>. Linkki on henkilökohtainen - älä jaa sitä muille. 
+        </p>
         #if($deadline != '') 
         <p>
                 Ota vastaan tarjottu opiskelupaikka ennen $deadline.
         </p> 
         #end
-    <p>
-        Haun nimi: $haunNimi
-    </p>
-    <p>
-        Hakukohteet:
-    </p>
-    #foreach( $hakukohde in $hakukohteet )
-    <p>
-        $hakukohde.nimi $hakukohde.tarjoaja
-    </p>
-    #end
-    <p>Älä vastaa tähän viestiin - viesti on lähetetty automaattisesti.</p>
-#else
-    <p>
-        Hei $etunimi
-    </p>
-    <p>
-        Sinulle on myönnetty opiskelupaikka, onneksi olkoon.
-        Voit katsoa lisätietoja ja ottaa opiskelupaikan vastaan
-        <a href="https://opintopolku.fi/omatsivut">Oma
-            Opintopolku-palvelussa</a>. Lisäohjeita opiskelupaikan
-        vastaanottamisesta saat <a
-            href="https://opintopolku.fi/wp/valintojen-tuki/yhteishaku/korkeakoulujen-yhteishaku/nain-otat-paikan-vastaan">
-        Opintopolku-palvelusta</a> tai hakemastasi korkeakoulusta.
-    </p>
+        <p>
+                Voit ottaa vastaan samana lukukautena alkavasta koulutuksesta vain yhden korkeakoulututkintoon johtavan opiskelupaikan. 
+                Säännös koskee yhteishaussa, erillishauissa kuin myös yliopistojen jatkotutkintohauissa saatuja opiskelupaikkoja. 
+                Siirtohaussa saatu paikka korkeakoulussa ei kuulu säännöksen piiriin. Säännös ei koske Poliisiammattikorkeakoulua, 
+                Högskolan på Ålandia eikä ulkomaisia korkeakouluja.
+        </p>
+        <p>
+                Lisäohjeita opiskelupaikan vastaanottamisesta saat 
+                <a href="https://opintopolku.fi/wp/valintojen-tuki/yhteishaku/korkeakoulujen-yhteishaku/nain-otat-paikan-vastaan">Opintopolku-palvelusta</a> 
+                tai korkeakoulusta johon sinut on hyväksytty.
+        </p>
+        <p>
+                Älä vastaa tähän viestiin - viesti on lähetetty automaattisesti.
+        </p>
+        #else
+        <p>
+                Hei $etunimi
+        </p>
+        <p>
+                Onneksi olkoon! Sinulle on myönnetty opiskelupaikka:
+        </p>
+        #foreach( $hakukohde in $hakukohteet )
+        <p>
+                $hakukohde.nimi $hakukohde.tarjoaja
+        </p>
+        #end    
+        <p>
+                Haun nimi: $haunNimi
+        </p>
+        <p>
+                Ota opiskelupaikka vastaan <a href="https://opintopolku.fi/omatsivut">Oma Opintopolku-palvelussa</a>. 
+                Kirjautumista varten sinun tulee tunnistautua verkkopankkitunnuksella, mobiilivarmenteella tai sirullisella henkilökortilla.
+                Ulkomaalaisten tunnistustavat suomi.fi-tunnistuksessa eivät ole tällä hetkellä tuettuja.
+        </p>
         #if($deadline != '') 
         <p>
                 Ota vastaan tarjottu opiskelupaikka ennen $deadline.
         </p> 
         #end
-    <p>
-        Haun nimi: $haunNimi
-    </p>
-    <p>
-        Hakukohteet:
-    </p>
-    #foreach( $hakukohde in $hakukohteet )
-    <p>
-        $hakukohde.nimi $hakukohde.tarjoaja
-    </p>
-    #end
-    <p>
-        Älä vastaa tähän viestiin - viesti on
-        lähetetty automaattisesti.
-    </p>
-#end
+        <p>
+                Voit ottaa vastaan samana lukukautena alkavasta koulutuksesta vain yhden korkeakoulututkintoon johtavan opiskelupaikan. 
+                Säännös koskee yhteishaussa, erillishauissa kuin myös yliopistojen jatkotutkintohauissa saatuja opiskelupaikkoja. 
+                Siirtohaussa saatu paikka korkeakoulussa ei kuulu säännöksen piiriin. Säännös ei koske Poliisiammattikorkeakoulua, 
+                Högskolan på Ålandia eikä ulkomaisia korkeakouluja.
+        </p>
+        <p>
+                Lisäohjeita opiskelupaikan vastaanottamisesta saat 
+                <a href="https://opintopolku.fi/wp/valintojen-tuki/yhteishaku/korkeakoulujen-yhteishaku/nain-otat-paikan-vastaan">Opintopolku-palvelusta</a> 
+                tai korkeakoulusta johon sinut on hyväksytty.
+        </p>
+        <p>
+                Älä vastaa tähän viestiin - viesti on lähetetty automaattisesti.
+        </p>
+        #end
 </body>
 </html>
