@@ -17,6 +17,7 @@ package fi.vm.sade.ryhmasahkoposti.service.impl;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Splitter;
+import com.google.common.util.concurrent.RateLimiter;
 import fi.vm.sade.ryhmasahkoposti.api.dto.AttachmentContainer;
 import fi.vm.sade.ryhmasahkoposti.api.dto.EmailAttachment;
 import fi.vm.sade.ryhmasahkoposti.api.dto.EmailConstants;
@@ -47,6 +48,7 @@ public class EmailSender {
     private static final Logger LOGGER = LoggerFactory.getLogger(fi.vm.sade.ryhmasahkoposti.service.impl.EmailSender.class);
 
     private static final String FIVE_MINUTES = "300000";
+    private static final RateLimiter LIMITER = RateLimiter.create(70.0d); // 70 permits per second
 
     @Value("${ryhmasahkoposti.smtp.host}")
     private String smtpHost;
@@ -71,6 +73,7 @@ public class EmailSender {
             if (EmailConstants.TEST_MODE.equals("NO")) {
                 LOGGER.debug("Sending message: " + message.toString());
                 long start = System.currentTimeMillis();
+                LIMITER.acquire();
                 Transport.send(message);
                 long took = System.currentTimeMillis() -start;
                 LOGGER.debug("Message sent took: " + took);
