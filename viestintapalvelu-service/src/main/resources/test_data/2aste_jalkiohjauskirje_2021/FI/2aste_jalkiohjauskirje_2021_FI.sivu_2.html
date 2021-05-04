@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <style type="text/css">
+    $tyylit
+  </style>
+  <title>Taulukkoliite</title>
+</head>
+
+<body>
+<div class="liiteSisalto">
+  <p><div class="pull-left"><b>$addressLabel.firstName $addressLabel.lastName</b></div><div class="pull-right">$liiteotsikko</div></p>
+  <br/>
+  <p>Näet tässä hakukohteesi asettamassasi järjestyksessä</p>
+  <br/>
+  <table>
+    <thead>
+    <tr>
+      <th>Hakutoiveesi ja prioriteetti</th>
+      <th>Hyväksytyt / kaikki hakeneet</th>
+      <th>Omat pisteesi / Alin hyväksytty pistemäärä</th>
+      <th>Pääsy- ja soveltuvuuskokeen tulos</th>
+      <th>Valinnan tulos</th>
+    </tr>
+    </thead>
+    <tbody>
+    #foreach( $tulos in $tulokset )
+    #set($hyvaksytty = "#if($tulos.hyvaksytty=='true')hyvaksytty#{else}#end")
+    #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
+    #set($jonojenmaara = $tulos.sijoitukset.size() + 1)
+    <tr class="$hyvaksytty $even">
+      <td>$tulos.organisaationNimi, $tulos.hakukohteenNimi<br/></td>
+      <td>$tulos.hyvaksytyt</td>
+      <td>#if($tulos.omatPisteet)$tulos.omatPisteet#{else} - #end</td>
+      <td>#if($tulos.paasyJaSoveltuvuuskoe)$tulos.paasyJaSoveltuvuuskoe#{else} - #end</td>
+      <td>
+          #if($tulos.valinnanTulos)<span>$tulos.valinnanTulos</span>#end
+          #if($tulos.hylkaysperuste)<br /><span>$tulos.hylkaysperuste</span>#end
+      </td>
+    </tr>
+    #end
+    </tbody>
+    <tfoot>
+    <tr><td colspan="8"></td></tr>
+    </tfoot>
+  </table>
+  $sis2
+</div>
+
+<div class="footer">
+  <div class="heading"><b>ALUEHALLINTOVIRASTOJEN OSOITTEET:</b></div>
+  <div class="address">
+    <div>
+      <div>Etelä-Suomen aluehallintovirasto</div>
+      <div>PL 110</div>
+      <div>00521 Helsinki</div>
+    </div>
+    <div>
+      <div>Itä-Suomen aluehallintovirasto</div>
+      <div>PL 50</div>
+      <div>50101 Mikkeli</div>
+    </div>
+    <div>
+      <div>Lounais-Suomen aluehallintovirasto</div>
+      <div>PL 22</div>
+      <div>20801 Turku</div>
+    </div>
+    <div>
+      <div>Länsi- ja Sisä-Suomen aluehallintovirasto</div>
+      <div>PL 200</div>
+      <div>65101 Vaasa</div>
+    </div>
+    <div>
+      <div>Pohjois-Suomen aluehallintovirasto</div>
+      <div>PL 293</div>
+      <div>90101 Oulu</div>
+    </div>
+    <div>
+      <div>Lapin aluehallintovirasto</div>
+      <div>PL 8002</div>
+      <div>96101 Rovaniemi</div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
