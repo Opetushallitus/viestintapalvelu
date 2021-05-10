@@ -57,6 +57,7 @@ import fi.vm.sade.viestintapalvelu.testdata.DocumentProviderTestData;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -121,8 +122,8 @@ public class LetterReportServiceTest {
         assertNotNull(letterBatchReport);
         assertEquals(letterBatchReport.getApplicationPeriod(), letterBatch.getApplicationPeriod());
         assertEquals(letterBatchReport.getFetchTarget(), "fetchTarget");
-        assertTrue(letterBatchReport.getLetterBatchID().equals(new Long(1)));
-        assertTrue(letterBatchReport.getLetterReceivers().size() == 1);
+        assertEquals(letterBatchReport.getLetterBatchID(), new Long(1));
+        assertEquals(1, letterBatchReport.getLetterReceivers().size());
         assertTrue(letterBatchReport.getiPostis().size() > 0);
     }
     
@@ -150,7 +151,7 @@ public class LetterReportServiceTest {
         
         OrganisaatioRDTO organisaatio = DocumentProviderTestData.getOrganisaatioRDTO();
         when(mockedOrganizationComponent.getOrganization(any(String.class))).thenReturn(organisaatio);
-        when(mockedOrganizationComponent.getNameOfOrganisation(any(OrganisaatioRDTO.class))).thenReturn("oppilaitos");
+        lenient().when(mockedOrganizationComponent.getNameOfOrganisation(any(OrganisaatioRDTO.class))).thenReturn("oppilaitos");
 
         LetterReportQueryDTO query = new LetterReportQueryDTO();
         query.setOrganizationOids(Arrays.asList("1.2.246.562.10.00000000001"));

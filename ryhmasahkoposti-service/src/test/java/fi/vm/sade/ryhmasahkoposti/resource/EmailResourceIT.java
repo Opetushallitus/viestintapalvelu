@@ -27,6 +27,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMultipart;
 import javax.ws.rs.core.Response;
 
+import fi.vm.sade.ryhmasahkoposti.externalinterface.component.BounceComponent;
 import org.apache.cxf.helpers.IOUtils;
 import org.dom4j.DocumentException;
 import org.junit.Before;
@@ -41,6 +42,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
@@ -54,6 +56,7 @@ import fi.vm.sade.ryhmasahkoposti.externalinterface.component.AttachmentComponen
 import fi.vm.sade.ryhmasahkoposti.externalinterface.component.TemplateComponent;
 import fi.vm.sade.ryhmasahkoposti.testdata.RaportointipalveluTestData;
 import fi.vm.sade.ryhmasahkoposti.util.AnswerChain;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import static fi.vm.sade.ryhmasahkoposti.testdata.RaportointipalveluTestData.*;
 import static fi.vm.sade.ryhmasahkoposti.util.AnswerChain.atFirst;
@@ -70,6 +73,16 @@ import static org.mockito.Mockito.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = IntegrationTestConfig.class)
 @TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
+@TestPropertySource(properties = {
+        "ryhmasahkoposti.bounces.path=testValue",
+        "ryhmasahkoposti.smtp.use_tls=false",
+        "ryhmasahkoposti.smtp.authenticate=false",
+        "ryhmasahkoposti.smtp.username=testUsername",
+        "ryhmasahkoposti.smtp.password=testPassword",
+        "ryhmasahkoposti.smtp.return_path=testReturnPath",
+
+})
+
 public class EmailResourceIT {
     private static final Logger logger = LoggerFactory.getLogger(EmailResourceIT.class);
 

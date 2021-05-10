@@ -19,6 +19,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -83,7 +84,7 @@ public class ReportedAttachmentServiceTest {
 
         when(mockedFileItem.getName()).thenReturn("Koekutsu");
         when(mockedFileItem.getContentType()).thenReturn("application/pdf");
-        when(mockedFileItem.get()).thenReturn(sisalto);
+        lenient().when(mockedFileItem.get()).thenReturn(sisalto);
 
         List<AttachmentResponse> attachmentResponses = new ArrayList<AttachmentResponse>();
         attachmentResponses.add(RaportointipalveluTestData.getAttachmentResponse(reportedAttachment.getId(), mockedFileItem));

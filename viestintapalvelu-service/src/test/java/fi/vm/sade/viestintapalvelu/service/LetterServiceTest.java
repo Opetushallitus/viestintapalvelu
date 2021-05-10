@@ -23,6 +23,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import com.google.common.base.Optional;
@@ -287,7 +288,7 @@ public class LetterServiceTest {
 
         when(mockedLetterBatchDAO.read(eq(batch.getId()))).thenReturn(batch);
         CatchParametersAnswers<Void> catchParameter = catchAllParameters();
-        doAnswer(catchParameter).when(dokumenttipalveluRestClient)
+        lenient().doAnswer(catchParameter).when(dokumenttipalveluRestClient)
                 .tallenna(any(String.class), any(String.class), any(Long.class),
                         any(List.class), any(String.class), any(InputStream.class));
         letterService.updateBatchProcessingFinished(1l, LetterBatchProcess.IPOSTI);

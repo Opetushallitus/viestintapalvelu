@@ -34,12 +34,10 @@ import fi.vm.sade.viestintapalvelu.template.Template;
 import org.apache.commons.io.IOUtils;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.joda.time.DateTime;
-import org.opensaml.util.resource.ClasspathResource;
-import org.opensaml.util.resource.ResourceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -103,8 +101,8 @@ public class PreviewDataServiceImpl implements PreviewDataService {
 
     private <T> T linesFromResource(String resourceFile, Class<T> t) throws IOException {
         try {
-            return mapper.readValue(IOUtils.toString(new ClasspathResource(resourceFile).getInputStream()), t);
-        } catch (ResourceException e) {
+            return mapper.readValue(IOUtils.toString(new ClassPathResource(resourceFile).getInputStream()), t);
+        } catch (Exception e) {
             throw new IOException(e);
         }
     }

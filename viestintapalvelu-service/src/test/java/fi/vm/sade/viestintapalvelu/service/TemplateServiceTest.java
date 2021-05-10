@@ -70,6 +70,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 
 import static org.mockito.Mockito.doCallRealMethod;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -227,7 +228,7 @@ public class TemplateServiceTest {
         ))).thenReturn(defaultTemplate);
 
         // Without the default requirement, the last should be found:
-        when(mockedTemplateDAO.findTemplate(eq(
+        lenient().when(mockedTemplateDAO.findTemplate(eq(
                 new TemplateCriteriaImpl(name, lang, type)
                         .withoutDefaultRequired()
         ))).thenReturn(lastTemplate);

@@ -19,6 +19,7 @@ import fi.vm.sade.dto.HenkiloDto;
 import fi.vm.sade.dto.OrganisaatioHenkiloDto;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.mail.Address;
@@ -26,6 +27,13 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Transport;
 
+import fi.vm.sade.externalinterface.KayttooikeusRestClient;
+import fi.vm.sade.externalinterface.OppijanumeroRekisteriRestClient;
+import fi.vm.sade.ryhmasahkoposti.api.dto.EmailBounces;
+import fi.vm.sade.ryhmasahkoposti.externalinterface.component.BounceComponent;
+import mockit.Mock;
+import mockit.MockClass;
+import mockit.Mockit;
 import org.apache.http.HttpResponse;
 import org.dom4j.DocumentException;
 import org.springframework.context.annotation.Bean;
@@ -39,9 +47,6 @@ import fi.vm.sade.ryhmasahkoposti.api.dto.TemplateDTO;
 import fi.vm.sade.ryhmasahkoposti.externalinterface.api.*;
 import fi.vm.sade.ryhmasahkoposti.externalinterface.api.dto.OrganisaatioHierarchyResultsDto;
 import fi.vm.sade.ryhmasahkoposti.service.DailyTaskRunner;
-import mockit.Mock;
-import mockit.MockClass;
-import mockit.Mockit;
 
 /**
  * User: ratamaa
@@ -80,16 +85,56 @@ public class IntegrationTestConfig {
     }
 
     @Bean
+    KayttooikeusRestClient kayttooikeusMock() {
+        return new KayttooikeusRestClient("baseurl", "webCasUrl",
+                "casService", "username", "password") {
+            @Override
+            public List<OrganisaatioHenkiloDto> getOrganisaatioHenkilo(String henkiloOid) throws IOException {
+                return Collections.singletonList(new OrganisaatioHenkiloDto());
+            }
+        };
+    }
+
+    @Bean
+    OppijanumeroRekisteriRestClient onrMock() {
+        return new OppijanumeroRekisteriRestClient("baseurl", "casService", "webCasUrl",
+                "username", "password") {
+            @Override
+            public HenkiloDto getHenkilo(String henkiloOid) throws IOException {
+                HenkiloDto h = new HenkiloDto();
+                h.setOidHenkilo(henkiloOid);
+                return h;
+            }
+        };
+    }
+
+    @Bean
+    BounceResource bounceMock() {
+        return new BounceResource() {
+            @Override
+            public EmailBounces getBounces(String bouncesUrl) {
+                return new EmailBounces();
+            }
+        };
+    }
+
+    @Bean
+    BounceComponent bounceComponentMock() {
+        BounceComponent bc = new BounceComponent();
+        return bc;
+    }
+
+    @Bean
     MailerStatus mailerStatus() {
         // TODO: Find a way to do this or similar thing (overriding static method) with newer
         // JMockito wihtout it's runner or PwoerMockito without it's runner (seems not possible)
         // (using SpringJUnit4ClassRunner runner)
-        Mockit.setUpMock(TrasnportMock.class);
+        Mockit.setUpMock(TransportMock.class);
         return mailerStatus;
     }
 
     @MockClass(realClass = Transport.class)
-    public static class TrasnportMock{
+    public static class TransportMock {
         @Mock
         public static void send(Message msg) throws MessagingException {
             mailerStatus.addSentMessage(msg);
