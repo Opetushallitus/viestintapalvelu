@@ -37,9 +37,6 @@ public class ReportedRecipient extends BaseEntity {
     @Column(name = "vastaanottajan_oid_tyyppi", nullable = false)
     private String recipientOidType;
 
-    @Column(name = "henkilotunnus", nullable = false)
-    private String socialSecurityID;
-
     @Column(name = "vastaanottajan_sahkopostiosoite", nullable = false)
     private String recipientEmail;
 
@@ -102,14 +99,6 @@ public class ReportedRecipient extends BaseEntity {
 
     public void setRecipientOidType(String recipientOidType) {
         this.recipientOidType = recipientOidType;
-    }
-
-    public String getSocialSecurityID() {
-        return socialSecurityID;
-    }
-
-    public void setSocialSecurityID(String socialSecurityID) {
-        this.socialSecurityID = socialSecurityID;
     }
 
     public String getRecipientEmail() {

@@ -270,7 +270,6 @@ public class RaportointipalveluTestData {
         raportoitavaVastaanottaja.setReportedMessage(reportedMessage);
         raportoitavaVastaanottaja.setRecipientOid("1.2.246.562.24.34397748041");
         raportoitavaVastaanottaja.setRecipientOidType("oppilas");
-        raportoitavaVastaanottaja.setSocialSecurityID("");
         raportoitavaVastaanottaja.setRecipientEmail("testi.vastaanottaja@sposti.fi");
         raportoitavaVastaanottaja.setLanguageCode("FI");
         raportoitavaVastaanottaja.setSearchName("Testi Oppilas");
@@ -288,7 +287,6 @@ public class RaportointipalveluTestData {
 
         reportedRecipient.setRecipientOid("1.2.246.562.24.34397748041");
         reportedRecipient.setRecipientOidType("oppilas");
-        reportedRecipient.setSocialSecurityID("");
         reportedRecipient.setRecipientEmail("testi.vastaanottaja@sposti.fi");
         reportedRecipient.setLanguageCode("FI");
         reportedRecipient.setSearchName("Testi,Oppilas");
