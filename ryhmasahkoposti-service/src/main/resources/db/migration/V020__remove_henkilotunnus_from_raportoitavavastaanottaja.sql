@@ -1,0 +1,1 @@
+ALTER TABLE raportoitavavastaanottaja DROP COLUMN henkilotunnus;
