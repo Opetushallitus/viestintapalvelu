@@ -61,16 +61,4 @@ public class ReportedMessageQueryDTOConverterTest {
         assertNotNull(query.getReportedRecipientQueryDTO());
         assertEquals(searchArgument, query.getReportedRecipientQueryDTO().getRecipientOid());
     }
-
-    @Test
-    public void testSocialSecurityIdInSearchArgument() {
-        String oid = "1.2.246.562.10.00000000001";
-        String searchArgument = "100970-965W";
-
-        ReportedMessageQueryDTO query = reportedMessageQueryDTOConverter.convert(oid, searchArgument);
-
-        assertNotNull(query);
-        assertNotNull(query.getReportedRecipientQueryDTO());
-        assertEquals(searchArgument, query.getReportedRecipientQueryDTO().getRecipientSocialSecurityID());
-    }
 }
