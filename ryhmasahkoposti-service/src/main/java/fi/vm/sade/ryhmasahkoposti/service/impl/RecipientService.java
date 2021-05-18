@@ -98,7 +98,6 @@ public class RecipientService {
         try {
             HenkiloDto henkilo = personComponent.getPerson(recipient.getRecipientOid());
             recipient.setSearchName(henkilo.getSukunimi() + "," + henkilo.getEtunimet());
-            recipient.setSocialSecurityID(henkilo.getHetu());
             recipient.setDetailsRetrieved(true);
             updateRecipient(recipient);
         } catch (Exception e) {

@@ -37,7 +37,6 @@ public class ReportedRecipientConverter {
 
         reportedRecipient.setRecipientOid(emailRecipient.getOid());
         reportedRecipient.setRecipientOidType(emailRecipient.getOidType());
-        reportedRecipient.setSocialSecurityID("");
         reportedRecipient.setRecipientEmail(emailRecipient.getEmail());
         reportedRecipient.setLanguageCode(emailRecipient.getLanguageCode());
         reportedRecipient.setSearchName(Optional.fromNullable(emailRecipient.getName()).or(""));
