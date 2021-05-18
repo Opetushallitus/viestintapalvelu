@@ -223,8 +223,7 @@ public class ReportedMessageDAOImpl extends AbstractJpaDAOImpl<ReportedMessage, 
         ));
         String reportedRecipientsSubqueryWhereClause = joinWhereItemsWithAnd(Arrays.asList(
                 createWhereItemIfExists("r.vastaanottajan_oid = ", reportedRecipientQuery.getRecipientOid()),
-                createWhereItemIfExists("r.vastaanottajan_sahkopostiosoite = ", reportedRecipientQuery.getRecipientEmail()),
-                createWhereItemIfExists("r.henkilotunnus = ", reportedRecipientQuery.getRecipientSocialSecurityID())
+                createWhereItemIfExists("r.vastaanottajan_sahkopostiosoite = ", reportedRecipientQuery.getRecipientEmail())
         ));
 
         if (isThereSearchArgument) {

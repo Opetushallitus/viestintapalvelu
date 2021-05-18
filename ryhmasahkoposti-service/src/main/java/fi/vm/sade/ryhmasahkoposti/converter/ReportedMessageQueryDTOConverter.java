@@ -32,13 +32,6 @@ public class ReportedMessageQueryDTOConverter {
 
         reportedMessageQueryDTO.setOrganizationOid(organizationOid);
 
-        if (HetuUtils.isHetuValid(searchArgument)) {
-            reportedRecipientQueryDTO.setRecipientSocialSecurityID(searchArgument.trim());
-            reportedMessageQueryDTO.setReportedRecipientQueryDTO(reportedRecipientQueryDTO);
-
-            return reportedMessageQueryDTO;
-        }
-
         if (OidValidator.isOID(searchArgument)) {
             reportedRecipientQueryDTO.setRecipientOid(searchArgument.trim());
             reportedMessageQueryDTO.setReportedRecipientQueryDTO(reportedRecipientQueryDTO);
