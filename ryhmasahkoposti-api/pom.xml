@@ -51,7 +51,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-jsonSchema</artifactId>
-            <version>${jackson.version}</version>
+            <version>${jackson.jsonschema.version}</version>
         </dependency>
 
         <!-- Joda time support for Jackson -->
