@@ -128,13 +128,13 @@
     {
       "id": 2,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus ammatillisen koulutuksen ja lukiokoulutuksen yhteishaun tuloksista keväällä 2020",
+      "defaultValue": "Ilmoitus ammatillisen koulutuksen ja lukiokoulutuksen yhteishaun tuloksista keväällä 2021",
       "mandatory": false
     },
     {
       "id": 3,
       "name": "liiteotsikko",
-      "defaultValue": "Tilanteesi kevään 2020 yhteishaussa",
+      "defaultValue": "Tilanteesi kevään 2021 yhteishaussa",
       "mandatory": false
     },
     {
