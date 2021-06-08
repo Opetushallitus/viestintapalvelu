@@ -114,13 +114,13 @@
     {
       "id": 2,
       "name": "kirjeotsikko",
-      "defaultValue": "Meddelande om antagning till handledande utbildning efter grundskolan 2020",
+      "defaultValue": "Meddelande om antagning till handledande utbildning efter grundskolan 2021",
       "mandatory": false
     },
     {
       "id": 3,
       "name": "liiteotsikko",
-      "defaultValue": "Din situation i ansökan till handledande utbildningar efter grundskolan 2020",
+      "defaultValue": "Din situation i ansökan till handledande utbildningar efter grundskolan 2021",
       "mandatory": false
     },
     {
