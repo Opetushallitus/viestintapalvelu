@@ -120,13 +120,13 @@
     {
       "id": 3,
       "name": "liiteotsikko",
-      "defaultValue": "Tilanteesi kevään 2020 perusopetuksen jälkeisen valmistavan koulutuksen haussa",
+      "defaultValue": "Tilanteesi kevään 2021 perusopetuksen jälkeisen valmistavan koulutuksen haussa",
       "mandatory": false
     },
     {
       "id": 4,
       "name": "subject",
-      "defaultValue": "Ilmoitus kevään 2020 perusopetuksen jälkeisen valmistavan koulutuksen haun tuloksista",
+      "defaultValue": "Ilmoitus kevään 2021 perusopetuksen jälkeisen valmistavan koulutuksen haun tuloksista",
       "mandatory": false
     }
   ]
