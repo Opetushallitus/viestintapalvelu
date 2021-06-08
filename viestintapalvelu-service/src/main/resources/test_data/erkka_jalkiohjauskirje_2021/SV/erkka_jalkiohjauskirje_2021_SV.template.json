@@ -128,13 +128,13 @@
     {
       "id": 2,
       "name": "kirjeotsikko",
-      "defaultValue": "Meddelande om resultaten i ansökan till yrkesutbildning med krävande särskilt stöd våren 2020",
+      "defaultValue": "Meddelande om resultaten i ansökan till yrkesutbildning med krävande särskilt stöd våren 2021",
       "mandatory": false
     },
     {
       "id": 3,
       "name": "liiteotsikko",
-      "defaultValue": "Din situation i ansökan till yrkesutbildning med krävande särskilt stöd våren 2020",
+      "defaultValue": "Din situation i ansökan till yrkesutbildning med krävande särskilt stöd våren 2021",
       "mandatory": false
     },
     {
