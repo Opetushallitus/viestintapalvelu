@@ -128,13 +128,13 @@
     {
       "id": 2,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus vaativan erityisen tuen perusteella järjestettävän ammatillisen koulutuksen haun tuloksista keväällä 2020",
+      "defaultValue": "Ilmoitus vaativan erityisen tuen perusteella järjestettävän ammatillisen koulutuksen haun tuloksista keväällä 2021",
       "mandatory": false
     },
     {
       "id": 3,
       "name": "liiteotsikko",
-      "defaultValue": "Tilanteesi vaativan erityisen tuen perusteella järjestettävän ammatillisen koulutuksen kevään 2020 haussa",
+      "defaultValue": "Tilanteesi vaativan erityisen tuen perusteella järjestettävän ammatillisen koulutuksen kevään 2021 haussa",
       "mandatory": false
     },
     {
