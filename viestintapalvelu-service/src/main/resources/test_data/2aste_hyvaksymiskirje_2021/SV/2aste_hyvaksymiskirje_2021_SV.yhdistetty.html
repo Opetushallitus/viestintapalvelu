@@ -44,6 +44,76 @@
           </p>
         </section>
         
+        
+
+        <section>
+          <h2>$liiteotsikko</h2>
+
+          <table class="tulokset-table">
+            <caption>Du ser här dina ansökningsmål i den ordning du angett dem</caption>
+            <thead>
+              <tr>
+                <th class="sarake sarake-kapea">Dina ansökningsönskemål</th>
+                <th class="sarake sarake-kapea">Antagna / Alla sökande</th>
+                <th class="sarake sarake-kapea">Dina poäng / Lägsta godkända poängtal</th>
+                <th class="sarake sarake-kapea">Resultat i inträdes- eller lämplighetsprov</th>
+                <th class="sarake sarake-kapea">Antagningsresultat</th>
+              </tr>
+            </thead>
+            <tbody>
+              #foreach( $tulos in $tulokset )
+              #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
+              <tr class="$even">
+                  <th scope="row" class="sarake sarake-kapea#if($tulos.hyvaksytty=='true') bold#end">
+                      $tulos.organisaationNimi, $tulos.hakukohteenNimi
+                  </th>
+                <td class="sarake sarake-kapea">$tulos.hyvaksytyt</td>
+                <td class="sarake sarake-kapea">#if($tulos.omatPisteet)$tulos.omatPisteet #end</td>
+                <td class="sarake sarake-kapea">#if($tulos.paasyJaSoveltuvuuskoe)$tulos.paasyJaSoveltuvuuskoe #end</td>
+                <td class="sarake sarake-kapea">
+                    <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
+                    #if($tulos.hylkaysperuste)<br /><span>$tulos.hylkaysperuste</span>#end
+                </td>
+              </tr>
+              #end
+            </tbody>
+          </table>
+
+          <h3 class="tulokset-list-heading" aria-hidden="true">
+              Du ser här dina ansökningsönskemål i den ordning du angett dem 
+          </h3>
+          <ol class="tulokset-list" aria-hidden="true" tabindex="-1">
+              #foreach( $tulos in $tulokset )
+              <li class="tulokset-list-tulos">
+                  <div class="hakukohde-nimi#if($tulos.hyvaksytty=='true') bold#end">
+                      $tulos.organisaationNimi, $tulos.hakukohteenNimi
+                  </div>
+                  <table class="tulokset-list-table">
+                      <tr>
+                          <th scope="row" class="sarake">Antagna / Alla sökande</th>
+                          <td class="sarake">$tulos.hyvaksytyt</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="sarake">Dina poäng / Lägsta godkända poängtal</th>
+                          <td class="sarake">#if($tulos.omatPisteet)$tulos.omatPisteet#{else} - #end</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="sarake">Resultat i inträdes- eller lämplighetsprov</th>
+                          <td class="sarake">#if($tulos.paasyJaSoveltuvuuskoe)$tulos.paasyJaSoveltuvuuskoe#{else} - #end</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="sarake">Antagningsresultat</th>
+                          <td class="sarake">
+                              <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
+                              #if($tulos.hylkaysperuste)<br /><span>$tulos.hylkaysperuste</span>#end
+                          </td>
+                      </tr>
+                  </table>
+              </li>
+              #end
+          </ol>
+        </section>
+
         <section>
           <h2>Så här läser du tabellen</h2>
 
@@ -157,75 +227,7 @@
             </p>
           </section>
         </section>
-
-        <section>
-          <h2>$liiteotsikko</h2>
-
-          <table class="tulokset-table">
-            <caption>Du ser här dina ansökningsmål i den ordning du angett dem</caption>
-            <thead>
-              <tr>
-                <th class="sarake sarake-kapea">Dina ansökningsönskemål</th>
-                <th class="sarake sarake-kapea">Antagna / Alla sökande</th>
-                <th class="sarake sarake-kapea">Dina poäng / Lägsta godkända poängtal</th>
-                <th class="sarake sarake-kapea">Resultat i inträdes- eller lämplighetsprov</th>
-                <th class="sarake sarake-kapea">Antagningsresultat</th>
-              </tr>
-            </thead>
-            <tbody>
-              #foreach( $tulos in $tulokset )
-              #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
-              <tr class="$even">
-                  <th scope="row" class="sarake sarake-kapea#if($tulos.hyvaksytty=='true') bold#end">
-                      $tulos.organisaationNimi, $tulos.hakukohteenNimi
-                  </th>
-                <td class="sarake sarake-kapea">$tulos.hyvaksytyt</td>
-                <td class="sarake sarake-kapea">#if($tulos.omatPisteet)$tulos.omatPisteet #end</td>
-                <td class="sarake sarake-kapea">#if($tulos.paasyJaSoveltuvuuskoe)$tulos.paasyJaSoveltuvuuskoe #end</td>
-                <td class="sarake sarake-kapea">
-                    <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
-                    #if($tulos.hylkaysperuste)<br /><span>$tulos.hylkaysperuste</span>#end
-                </td>
-              </tr>
-              #end
-            </tbody>
-          </table>
-
-          <h3 class="tulokset-list-heading" aria-hidden="true">
-              Du ser här dina ansökningsönskemål i den ordning du angett dem 
-          </h3>
-          <ol class="tulokset-list" aria-hidden="true" tabindex="-1">
-              #foreach( $tulos in $tulokset )
-              <li class="tulokset-list-tulos">
-                  <div class="hakukohde-nimi#if($tulos.hyvaksytty=='true') bold#end">
-                      $tulos.organisaationNimi, $tulos.hakukohteenNimi
-                  </div>
-                  <table class="tulokset-list-table">
-                      <tr>
-                          <th scope="row" class="sarake">Antagna / Alla sökande</th>
-                          <td class="sarake">$tulos.hyvaksytyt</td>
-                      </tr>
-                      <tr>
-                          <th scope="row" class="sarake">Dina poäng / Lägsta godkända poängtal</th>
-                          <td class="sarake">#if($tulos.omatPisteet)$tulos.omatPisteet#{else} - #end</td>
-                      </tr>
-                      <tr>
-                          <th scope="row" class="sarake">Resultat i inträdes- eller lämplighetsprov</th>
-                          <td class="sarake">#if($tulos.paasyJaSoveltuvuuskoe)$tulos.paasyJaSoveltuvuuskoe#{else} - #end</td>
-                      </tr>
-                      <tr>
-                          <th scope="row" class="sarake">Antagningsresultat</th>
-                          <td class="sarake">
-                              <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
-                              #if($tulos.hylkaysperuste)<br /><span>$tulos.hylkaysperuste</span>#end
-                          </td>
-                      </tr>
-                  </table>
-              </li>
-              #end
-          </ol>
-        </section>
-
+        
         <section>
           <h2>Ansökningsskyldighet</h2>
           <p>
