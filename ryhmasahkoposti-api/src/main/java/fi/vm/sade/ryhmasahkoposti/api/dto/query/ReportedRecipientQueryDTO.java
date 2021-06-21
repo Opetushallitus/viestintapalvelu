@@ -17,7 +17,6 @@ package fi.vm.sade.ryhmasahkoposti.api.dto.query;
 
 public class ReportedRecipientQueryDTO {
     private String recipientOid;
-    private String recipientSocialSecurityID;
     private String recipientEmail;
     private String recipientName;
 
@@ -27,14 +26,6 @@ public class ReportedRecipientQueryDTO {
 
     public void setRecipientOid(String recipientOid) {
         this.recipientOid = recipientOid;
-    }
-
-    public String getRecipientSocialSecurityID() {
-        return recipientSocialSecurityID;
-    }
-
-    public void setRecipientSocialSecurityID(String recipientSocialSecurityID) {
-        this.recipientSocialSecurityID = recipientSocialSecurityID;
     }
 
     public String getRecipientEmail() {

@@ -31,4 +31,8 @@
         <filter-name>guiceFilter</filter-name>
         <url-pattern>/api/v1/*</url-pattern>
     </filter-mapping>
+
+    <session-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
 </web-app>
