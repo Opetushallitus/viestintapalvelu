@@ -96,7 +96,7 @@
         <!-- jdbc4 is for JDK1.6 and jdbc41 is for JDK1.7 -->
         <postgresql.version>9.4.1209</postgresql.version>
         <powermock.version>2.0.4</powermock.version>
-        <pdfbox.version>1.8.1</pdfbox.version>
+        <pdfbox.version>2.0.24</pdfbox.version>
         <querydsl.version>3.7.3</querydsl.version>
         <sade-generic.version>${generic.version}</sade-generic.version>
         <servlet.version>3.0.1</servlet.version>
