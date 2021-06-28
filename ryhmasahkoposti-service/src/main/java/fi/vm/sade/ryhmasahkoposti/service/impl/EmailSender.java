@@ -212,6 +212,8 @@ public class EmailSender {
     }
 
     private Session createSession() {
+        LOGGER.info("Creating session with smtpUseTLS: " + smtpUseTLS +
+                ", smtpAuthenticate: " + smtpAuthenticate);
         Properties mailProps = new Properties();
         mailProps.put("mail.smtp.host", smtpHost);
         mailProps.put("mail.smtp.port", smtpPort);
