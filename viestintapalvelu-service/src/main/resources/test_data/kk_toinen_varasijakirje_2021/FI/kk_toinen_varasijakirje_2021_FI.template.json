@@ -140,13 +140,13 @@
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen kevään 2020 toisessa yhteishaussa",
+      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen kevään 2021 toisessa yhteishaussa",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Tilanteesi korkeakoulujen kevään 2020 toisessa yhteishaussa",
+      "defaultValue": "Tilanteesi korkeakoulujen kevään 2021 toisessa yhteishaussa",
       "mandatory": false
     }
   ]
