@@ -219,7 +219,8 @@ public class EmailSender {
         mailProps.put("mail.smtp.timeout", FIVE_MINUTES);
         mailProps.put("mail.smtp.writetimeout", FIVE_MINUTES);
         mailProps.put("mail.smtp.auth", smtpAuthenticate);
-        mailProps.put("mail.starttls.enable", smtpUseTLS);
+        mailProps.put("mail.smtp.starttls.enable", smtpUseTLS);
+        mailProps.put("mail.smtp.ssl.protocols", "TLSv1.2");
         mailProps.put("mail.transport.protocol", "smtp");
 
         if (smtpAuthenticate) {
