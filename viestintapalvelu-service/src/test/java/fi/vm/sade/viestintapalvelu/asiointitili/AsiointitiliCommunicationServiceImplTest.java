@@ -20,6 +20,7 @@ import java.io.OutputStream;
 
 import javax.ws.rs.BadRequestException;
 
+import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import fi.vm.sade.viestintapalvelu.model.types.ContentTypes;
 import org.apache.commons.io.IOUtils;
 import org.apache.geronimo.mail.util.StringBufferOutputStream;
@@ -39,7 +40,6 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 
 import fi.suomi.asiointitili.*;
 import fi.vm.sade.viestintapalvelu.common.util.BeanValidator;
