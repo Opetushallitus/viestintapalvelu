@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <bookmarks>
+        <bookmark name="Opiskelupaikan vastaanottoilmoitus" href="opiskelupaikan-vastaanottoilmoitus" />
+        <bookmark name="Hakijapalveluiden osoite" href="hakijapalveluiden-osoite" />
+    </bookmarks>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <style type="text/css">$tyylit</style>
+    <title>Opiskelupaikan vastaanottoilmoitus</title>
+</head>
+
+<body>
+<div class="liiteSisalto" href="opiskelupaikan-vastaanottoilmoitus">
+    <p>
+      <div class="pull-left"><b>OPISKELUPAIKAN VASTAANOTTOILMOITUS</b></div>
+      <div class="pull-right">$addressLabel.firstName <b>$addressLabel.lastName</b></div>
+    </p>
+    <div class="clear"></div>
+    <p><b>$koulu</b><br/><b>$koulutus</b></p>
+    $vastaanotto_1
+    <p class="selection">$vastaanotto_vaihtoehto_1</p>
+    <p class="selection">$vastaanotto_vaihtoehto_2</p>
+    <p class="selection">$vastaanotto_vaihtoehto_3</p>
+    <p>Paikka ja päivämäärä: _________________________ ____.____.$vastaanotto_allekirjoitus_vuosi</p>
+    <p>Allekirjoitus: ______________________________</p>
+</div>
+
+<div class="footer" name="hakijapalveluiden-osoite">
+    #if($hakijapalveluidenOsoite)
+    <div class="pull-left">
+        $hakijapalveluidenOsoite.organisaationimi,<br/>
+        $hakijapalveluidenOsoite.addressline
+        #if($hakijapalveluidenOsoite.postalCode != '')
+          ,<br/>
+          $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city
+        #end
+    </div>
+    #end
+    <div class="pull-right">
+        <br/>
+        Hakemusnumero:<br/>
+        $hakemusOid
+    </div>
+</div>
+</body>
+
+</html>
