@@ -140,13 +140,13 @@
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen yhteishaussa syksyllä 2020",
+      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen yhteishaussa syksyllä 2021",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Tilanteesi syksyn 2020 korkeakoulujen yhteishaussa",
+      "defaultValue": "Tilanteesi syksyn 2021 korkeakoulujen yhteishaussa",
       "mandatory": false
     }
   ]
