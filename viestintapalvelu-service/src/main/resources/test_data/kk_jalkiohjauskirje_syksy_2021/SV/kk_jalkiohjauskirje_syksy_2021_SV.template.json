@@ -120,13 +120,13 @@
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Meddelande om antagningen av studerande i gemensam ansökan till högskolor hösten 2020",
+      "defaultValue": "Meddelande om antagningen av studerande i gemensam ansökan till högskolor hösten 2021",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Din situation i gemensam ansökan till högskolor hösten 2020",
+      "defaultValue": "Din situation i gemensam ansökan till högskolor hösten 2021",
       "mandatory": false
     }
   ]
