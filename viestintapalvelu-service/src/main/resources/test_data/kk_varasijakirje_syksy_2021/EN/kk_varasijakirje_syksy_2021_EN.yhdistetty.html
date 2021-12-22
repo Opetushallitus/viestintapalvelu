@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fi" dir="ltr">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Approval Letter</title>
+    <style>$tyylit</style>
+</head>
+
+<body>
+<header role="banner">
+    <dl>
+        #if($hakijapalveluidenOsoite)
+        <dt>
+            Sender
+        </dt>
+        <dd>
+            $hakijapalveluidenOsoite.organisaationimi <br/>
+            $hakijapalveluidenOsoite.addressline
+            #if($hakijapalveluidenOsoite.postalCode != '')
+            <br/>
+            $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city
+            #end
+        </dd>
+        <dd>
+        </dd>
+        #end
+        <dt>
+            Date
+        </dt>
+        <dd>
+            $letterDate
+        </dd>
+        <dt>
+            Recipient
+        </dt>
+        <dd>
+            $osoite
+        </dd>
+        <dt>
+            Date of birth
+        </dt>
+        <dd>
+            $syntymaaika
+        </dd>
+        <dt>
+            National learner ID
+        </dt>
+        <dd>
+            $hakijaOid
+        </dd>
+    </dl>
+</header>
+
+<main role="main">
+    <article>
+        <h1>$kirjeotsikko</h1>
+
+        <section>
+            <dl>
+                <dt>Educational institution</dt>
+                <dd>$koulu</dd>
+                <dt>Study option</dt>
+                <dd>$koulutus</dd>
+            </dl>
+
+            <p>Congratulations! You have been accepted to the study place mentioned above in the autumn 2019 joint application to
+                higher education.</p>
+
+            <p>This letter also includes information about the situation of your other study options. After you have been accepted
+                to the study place, your possible lower preferences have been cancelled automatically. If you have been placed on a
+                waiting list for any of your higher preference study options, you can still be accepted to one of them if a place
+                becomes available. You can find more information on the admission criteria of each study programme you have applied
+                to from Studyinfo.fi and the higher education institution in question.</p>
+        </section>
+
+        <section>
+            <h2>Confirming a study place</h2>
+
+            <p>You have to confirm the study place mentioned above by <span class="bold">9th December 2019 at 3 pm (EET)</span> or you will lose the study place. Confirm
+                the study place preferably electronically with the link that has been sent to your email or in the My Studyinfo
+                -service. <a href="#opiskelupaikan_vastaanottaminen_seka_ilmoittautuminen_opiskelemaan">You can find instructions on chapter "Confirming the study place"</a> as well as from Studyinfo.fi: Higher education > Applying > Confirming
+                a study place in higher education.</p>
+
+            <p>In addition to confirming the study place, you need to register as a student at the higher education institution by
+                the deadline. If you do not register by the deadline you will lose your right to study. If you confirm the study
+                place in the My Studyinfo -service, you can continue directly to the electronic registration service. Each higher
+                education institution has instructions on how to register and information on starting studies on their own website:
+                <a href="#ohjeet_uusille_opiskelijoille">see the link on chapter "Instructions for new students".</a></p>
+        </section>
+
+        <section>
+            <h2>Conditional acceptance</h2>
+
+            <p>According to the study programme&apos;s admission criteria, your admission result may be conditional. Conditional
+                acceptance is based on a degree with a certificate that cannot yet be obtained or on information you have provided
+                and which will be checked later (for example, in admission to universities of applied sciences, general upper
+                secondary school certificates or vocational upper secondary school certificates and higher education degree
+                certificates as well as possible employment certificates). A conditional acceptance will be cancelled, if the higher
+                education institution has not received copies of the required document(s) by the deadline. Please check the deadline
+                from the admission criteria. A conditional acceptance may also be cancelled, if it has been made based on
+                unconfirmed, predicted grades should the final grades be lower. If the information you have provided proves
+                incorrect, your study place may be cancelled.</p>
+        </section>
+
+        <section>
+            <h2>Appeals</h2>
+
+            <p>If you believe there has been a mistake in the student selection and the admission criteria have not been applied
+                correctly, you can make a written request for rectification within 14 days after the student selection results have
+                been published, that is by <span class="bold">13th December 2019</span> at the latest before the closing time of the higher education institution.
+                Always check the admission criteria of the study programme and the instructions regarding rectifications first. If
+                necessary, you can then contact the higher education institution in question. You can make a written, individualized
+                request for rectification by the deadline mentioned above. More detailed information about making a request for
+                rectification and contact information can be found on the website and in the application material of the higher
+                education institution in question. The higher education institution will not process a request for rectification if
+                it concerns a study option that you have placed lower on your application than the one you have been accepted
+                to.</p>
+
+            <p>The request for rectification must be addressed to a recipient defined by the higher education institution and must
+                be submitted to the address stated in the admission criteria by the deadline mentioned above.</p>
+
+            <p>Welcome to study!</p>
+        </section>
+
+        <section>
+            <h2>$sivu_2_otsikko</h2>
+
+            <table>
+                <caption>All your study options in the order stated on your application</caption>
+                <thead>
+                <tr>
+                    <th>Admission result</th>
+                    <th>Study option</th>
+                    <th>Selection method</th>
+                    <th>Your score</th>
+                    <th>The lowest accepted score</th>
+                    <th>Your reserve place status</th>
+                </tr>
+                </thead>
+
+                #foreach( $tulos in $tulokset )
+                #set($hyvaksytty = "#if($tulos.hyvaksytty=='true')hyvaksytty#{else}#end")
+                #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
+                #set($jonojenmaara = $tulos.sijoitukset.size())
+                <tbody>
+                #foreach( $sijoitus in $tulos.sijoitukset )
+                <tr class="$hyvaksytty $even">
+                    #if($foreach.count == 1)
+                    <td rowspan="$jonojenmaara">$tulos.valinnanTulos</td>
+                    <td rowspan="$jonojenmaara">$tulos.organisaationNimi, $tulos.hakukohteenNimi<br/>
+                        #if($tulos.hylkaysperuste)<span class="hylkayssyy">Grounds for rejection: $tulos.hylkaysperuste</span>#end
+                        #if($tulos.peruuntumisenSyy)<span
+                                class="peruuntumisensyy">Grounds for cancellation: $tulos.peruuntumisenSyy</span>#end
+                    </td>
+                    #end
+                    <td>$sijoitus.nimi<br/></td>
+                    <td>#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end<br/></td>
+                    <td>#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end<br/></td>
+                    <td>#if($sijoitus.varasija)${sijoitus.varasija}#{else} - #end<br/></td>
+                </tr>
+                #end
+                </tbody>
+                #end
+                <tfoot>
+                <tr>
+                    <td colspan="6"></td>
+                </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section>
+            <dl>
+                <dt>
+                    The admission result
+                </dt>
+                <dd>The admission result can be accepted, accepted (conditional), on the waiting list, rejected or cancelled. The
+                    admission result will state "cancelled", if you have been accepted to a higher preference. The admission result will
+                    also be cancelled if all the study places and reserve places for that study option have been filled and your score
+                    has not been sufficient for you to be admitted or placed on the waiting list. The higher education institutions can
+                    determine the number of reserve places for each study programme, and not all study programmes have reserve places.
+                    If your admission result states "rejected", you cannot be accepted to that study programme because you have not met
+                    the minimum of the admission requirements necessary to be admitted. In that case, you will see the reason for why
+                    you have not been admitted under the name of the study programme.
+                </dd>
+                <dt>
+                    Selection method - Your score / The lowest accepted score
+                </dt>
+                <dd>
+                    Here you can see your own score in each of the
+                    study options’ selection methods and the lowest score that an applicant has been accepted with by the selection
+                    method in question. If the study programme uses a quota for first-time applicants, the lowest score for
+                    non-first-time applicants may be higher than the lowest score shown in the table with the results. The score may
+                    consist of several different parts. You can find information on how points are given from the study programme’s
+                    admission criteria. The total score may not always be the only deciding factor for student selections. For example,
+                    a failed language test or one failed section of the entrance examination may prevent the selection despite the total
+                    score. You can see the score only if it is possible to count the points for you according to this selection method.
+                    The column is empty if there are no points given in the selection method or if it is not possible to count your
+                    points.
+                </dd>
+                <dt>
+                    Your reserve place status
+                </dt>
+                <dd>
+                    Here you can see your reserve place status if you have been placed on a waiting
+                    list. It is possible that you have been placed on a waiting list in several queues in the same study programme. The
+                    selection methods are applied according to the higher education institution’s admission criteria. You can find more
+                    detailed information on the selection methods from the admission criteria of the study programme in question.
+                </dd>
+                <dt>
+                    Accepted (conditional)
+                </dt>
+                <dd>
+                    This admission result means that the admission decision is conditional and will be
+                    confirmed only after you have proven to the higher education institution that the condition has been met.
+                    Universities of applied sciences also use the term "Accepted" for conditional acceptance.
+                </dd>
+            </dl>
+            <p>If you need help with interpreting the selection results or if you need more detailed information about the basis for
+                rejection, you can contact the admission services of the higher education institution in question.</p>
+        </section>
+    </article>
+
+    <article>
+        <h1 id="opiskelupaikan_vastaanottaminen_seka_ilmoittautuminen_opiskelemaan">Confirming the study place and registration for studies</h1>
+
+        <section>
+            <blockquote>Remember to confirm the study place and register as a student by the date given or you will lose the study
+                place. (Universities Act 38 § and 43 § / Polytechnics Act 28c § 32 §). Confirm the study place preferably
+                electronically with the link that has been sent to your email or in the My Studyinfo -service. After you have
+                confirmed the study place, you can register as a student in the higher education institution either electronically
+                (the link to the registration will open after you have confirmed the study place in the My Studyinfo -service) or in
+                the way indicated by the higher education institution.
+            </blockquote>
+        </section>
+
+        <section>
+            <h2>Confirming the study place</h2>
+            <p>You must confirm the study place by <span class="bold">9th December 2019 at 3 pm (EET)</span>. You can only confirm the study place once and you
+                cannot change the confirmation you have made afterwards. You can only confirm one higher education study place
+                starting in the same academic term (1st January to 31th July 2020). The one place per term provision applies to both
+                joint application and separate applications in higher education (transfer student applications are not included in
+                the provision).</p>
+            <p>You can confirm the study place electronically with the link that has been sent to your email. If you have Finnish
+                online banking credentials, a mobile certificate or a smart ID card and a reader, you can confirm the place by
+                logging in to the My Studyinfo -service from the link on top of the Studyinfo.fi front page. The My Studyinfo
+                -service has instructions on how to confirm the study place electronically.</p>
+            <p>If you cannot confirm the study place electronically, confirm the study place by using the form on the next page. <a href="#opiskelupaikan_vastaanottoilmoitus">See section "notification of confirmation of a study place"</a>.
+                Make sure the form arrives to the address stated on the bottom of the page by <span class="bold">9th December 2019 at 3 pm (EET)</span>. If the
+                form arrives to the higher education institution late, you will lose the study place.</p>
+
+            <p>When you confirm the study place, you will not be considered a first-time applicant in future applications.
+                More information: Studyinfo.fi > Higher education > Applying > Quota for first-time applicants. After you have
+                confirmed the study place, you must also register as an attending or a non-attending student for the spring term 2020
+                by the date given by the higher education institution or you will lose your right to study.</p>
+        </section>
+
+        <section>
+            <h2>Registering as a student</h2>
+            <p>You can register as a student in the higher education institution either electronically through the national
+                registration service when you confirm the study place or in another way indicated by the higher education
+                institution.</p>
+            <p>If you confirm the study place but remain on the waiting list for a study place higher on your preference list, you
+                can only register as an attending or a non-attending student after your study place has been confirmed by the higher
+                education institution. More detailed instructions on how to register can be found from the registration service and
+                the higher education institution you have applied to (<a href="#ohjeet_uusille_opiskelijoille">see the link on chapter "Instructions for new students"</a>).</p>
+            <p>NB! If you are required to pay tuition fees, you cannot register for the academic year before you have completed
+                your payment. You can check this from the higher education institution.</p>
+            <p>You can register as non-attending for the first academic year only for statutory reasons, that is military or
+                civilian service, maternity leave, paternity leave or parental leave or due to illness or disability. Not completing
+                the registration will lead to forfeiting the right to study (Universities Act § 43 / Polytechnics Act § 32).</p>
+        </section>
+
+        <section>
+            <h2 id="ohjeet_uusille_opiskelijoille">Instructions for new students</h2>
+            <p>#if($ohjeetUudelleOpiskelijalle)${ohjeetUudelleOpiskelijalle}#end</p>
+        </section>
+    </article>
+
+    <article>
+        <h1 id="opiskelupaikan_vastaanottoilmoitus">Notification of confirmation of a study place</h1>
+
+        <section>
+            <dl>
+                <dt>Student</dt>
+                <dd>$addressLabel.firstName <span class="bold">$addressLabel.lastName</span></dd>
+                <dt>Application number</dt>
+                <dd>$hakemusOid</dd>
+                <dt>Educational institution</dt>
+                <dd>$koulu</dd>
+                <dt>Study option</dt>
+                <dd>$koulutus</dd>
+            </dl>
+        </section>
+
+        <section>
+            $vastaanotto_1
+        </section>
+
+        <section>
+            <ul class="opiskelupaikan-vastaanottoilmoitus-kaavake">
+                <li class="opiskelupaikan-vastaanottoilmoitus-kaavake__vaihtoehto">
+                    $vastaanotto_vaihtoehto_1
+                </li>
+                <li class="opiskelupaikan-vastaanottoilmoitus-kaavake__vaihtoehto">
+                    $vastaanotto_vaihtoehto_2
+                </li>
+                <li class="opiskelupaikan-vastaanottoilmoitus-kaavake__vaihtoehto">
+                    $vastaanotto_vaihtoehto_3
+                </li>
+            </ul>
+
+            <p>Place and date: _________________________ ____.____.$vastaanotto_allekirjoitus_vuosi</p>
+            <p>Signature: ______________________________</p>
+
+            <dl>
+                #if($hakijapalveluidenOsoite)
+                <dt>
+                    Recipient:
+                </dt>
+                <dd>
+                    $hakijapalveluidenOsoite.organisaationimi
+                </dd>
+                <dd>
+                    $hakijapalveluidenOsoite.addressline
+                </dd>
+                <dd>
+                    #if($hakijapalveluidenOsoite.postalCode != '')
+                    $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city
+                    #end
+                </dd>
+                #end
+            </dl>
+        </section>
+    </article>
+
+</main>
+
+</body>
+
+</html>
