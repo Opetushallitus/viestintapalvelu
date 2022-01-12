@@ -5,7 +5,7 @@
     "replacements": [
         {
             "name": "subject",
-            "defaultValue": "Anhållan avslogs automatiskt",
+            "defaultValue": "Anhållan om användarrättighet avslogs automatiskt",
             "mandatory": false
         }
     ],
