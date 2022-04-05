@@ -5,7 +5,7 @@
     "replacements": [
         {
             "name": "subject",
-            "defaultValue": "Virkailijan opintopolku: kutsu palvelun käyttäjäksi",
+            "defaultValue": "Virkailijan Opintopolku: kutsu palvelun käyttäjäksi",
             "mandatory": false
         },
         {
