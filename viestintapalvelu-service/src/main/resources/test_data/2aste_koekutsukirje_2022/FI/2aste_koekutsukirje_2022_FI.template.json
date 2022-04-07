@@ -1,0 +1,56 @@
+{
+  "name": "koekutsukirje",
+  "language": "FI",
+  "description": null,
+  "structure": {
+    "name": "kk_koekutsukirje_rakenne",
+    "language": "FI",
+    "description": null,
+    "contentStructures": [
+      {
+        "type": "letter",
+        "styleName": "kk_koekutsukirje_tyyli",
+        "style": "{{styles.css}}",
+        "contents": [
+          {
+            "role": "body",
+            "name": "koekutsukirje_sivu_1",
+            "contentType": "html",
+            "content": "{{sivu_1.html}}"
+          }
+        ]
+      }
+    ],
+    "replacements": [
+      {
+        "key": "sisalto",
+        "name": "sisalto",
+        "description": "Kirjeen ensimmäisen sivun sisältö",
+        "contentType": "html",
+        "numberOfRows": 20
+      },
+      {
+        "key": "otsikko",
+        "name": "otsikko",
+        "description": "Kirjeen otsikko",
+        "contentType": "html",
+        "numberOfRows": 1
+      }
+    ]
+  },
+  "replacements": [
+    {
+      "id": 0,
+      "name": "sisalto",
+      "defaultValue": "{{sisalto_1.html}}",
+      "timestamp": null,
+      "mandatory": false
+    },
+    {
+      "id": 2,
+      "name": "otsikko",
+      "defaultValue": "KOEKUTSU",
+      "mandatory": false
+    }
+  ]
+}
