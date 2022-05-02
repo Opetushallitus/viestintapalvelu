@@ -37,7 +37,8 @@ public class TemplateTestDataGenerator {
         //String templateKeys = "omattiedot_email";
         //String templateKeys = "omattiedot_email_2aste";
         //String templateKeys = "2aste_koekutsukirje_2022";
-        String templateKeys = "2aste_hyvaksymiskirje_2022,2aste_hyvaksymiskirje_huoltajille_2022";
+        //String templateKeys = "2aste_hyvaksymiskirje_2022,2aste_hyvaksymiskirje_huoltajille_2022";
+        String templateKeys = "2aste_jalkiohjauskirje_2022,2aste_jalkiohjauskirje_huoltajille_2022";
 
         if(templateKeys != null) {
             for(String templateKey : templateKeys.split(",")) {
