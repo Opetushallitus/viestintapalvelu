@@ -126,4 +126,4 @@ jobs:
         run: |
           git clone https://github.com/Opetushallitus/ci-tools.git
           source ci-tools/common/setup-tools.sh
-          mvn deploy -B -pl fi.vm.sade.viestintapalvelu,viestintapalvelu-api,ryhmasahkoposti-api -DskipTests --settings ci-tools/common/maven-settings.xml
+          mvn deploy -B -pl fi.vm.sade.viestintapalvelu:viestintapalvelu,viestintapalvelu-api,ryhmasahkoposti-api -DskipTests --settings ci-tools/common/maven-settings.xml
