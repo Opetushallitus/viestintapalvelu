@@ -12,55 +12,51 @@
 <body>
 #if($securelink)
     <p>
-        Hei $etunimi
+        Dear $etunimi
     </p>
     <p>
-        Sinulle on myönnetty opiskelupaikka, onneksi olkoon. Ota paikka vastaan seuraavan linkin kautta: <a href="$securelink">$securelink</a>.
-        Linkki on henkilökohtainen.
+        Congratulations! You have been offered admission to a study programme. Please use the following link to accept the offer of admission: <a href="$securelink">$securelink</a>.
+        The link is personal - do not share it.
     </p>
     <p>
-        Lisäohjeita opiskelupaikan vastaanottamisesta saat <a href="https://opintopolku.fi/wp/ammatillinen-koulutus/nain-haet-kevaan-yhteishaussa-ammatilliseen/">Opintopolku-palvelusta</a> tai oppilaitoksesta johon sinut on hyväksytty.
+        You can get further information about accepting an offer of admission in the 
+        <a href="https://opintopolku.fi/konfo/en/sivu/rolling-admission-to-upper-secondary-and-vocational-education#how-do-i-accept-an-offer-of-admission">Studyinfo.fi service</a> 
+        or from the educational institution that you have been accepted to.
     </p>
     <p>
-        Haun nimi: $haunNimi
+        Application: $haunNimi
     </p>
     <p>
-        Hakukohteet:
+        Study programme(s):
     </p>
     #foreach( $hakukohde in $hakukohteet )
     <p>
         $hakukohde.nimi $hakukohde.tarjoaja
     </p>
     #end
-    <p>Älä vastaa tähän viestiin - viesti on lähetetty automaattisesti.</p>
+    <p>Do not reply to this message - the message has been sent automatically.</p>
 #else
     <p>
-        Hei $etunimi
+        Dear $etunimi
     </p>
     <p>
-        Sinulle on myönnetty opiskelupaikka, onneksi olkoon.
-        Voit katsoa lisätietoja ja ottaa opiskelupaikan vastaan
-        <a href="https://opintopolku.fi/omatsivut/login">Oma
-            Opintopolku-palvelussa</a>. Lisäohjeita opiskelupaikan
-        vastaanottamisesta saat <a
-            href="https://opintopolku.fi/wp/valintojen-tuki/yhteishaku/korkeakoulujen-yhteishaku/nain-otat-paikan-vastaan">
-        Opintopolku-palvelusta</a> tai hakemastasi korkeakoulusta.
+        Congratulations! You have been offered admission to a study programme.
+        You can go to the <a href="https://studyinfo.fi/omatsivut">My Studyinfo</a> service for further information and accept the offer of admission. You can get further information about accepting an offer of admission in the 
+        <a href="https://opintopolku.fi/konfo/en/sivu/rolling-admission-to-upper-secondary-and-vocational-education#how-do-i-accept-an-offer-of-admission">Studyinfo.fi service</a> 
+        or from the educational institution that you have been accepted to.
     </p>
     <p>
-        Haun nimi: $haunNimi
+        Application: $haunNimi
     </p>
     <p>
-        Hakukohteet:
+        Study programme(s):
     </p>
     #foreach( $hakukohde in $hakukohteet )
     <p>
         $hakukohde.nimi $hakukohde.tarjoaja
     </p>
     #end
-    <p>
-        Älä vastaa tähän viestiin - viesti on
-        lähetetty automaattisesti.
-    </p>
+    <p>Do not reply to this message - the message has been sent automatically.</p>
 #end
 </body>
 </html>
