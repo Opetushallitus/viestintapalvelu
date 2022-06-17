@@ -1,6 +1,6 @@
 {
     "name":"omattiedot_email_2aste",
-    "language":"FI",
+    "language":"EN",
     "type":"email",
     "storingOid":null,
     "organizationOid":null,
@@ -37,7 +37,7 @@
     "templateVersio":null,
     "structure":{
         "name":"omattiedot_email_2aste",
-        "language":"FI",
+        "language":"EN",
         "description":"Opiskelupaikka vastaanotettavissa Opintopolussa sähköposti",
         "contentStructures":[
             {
