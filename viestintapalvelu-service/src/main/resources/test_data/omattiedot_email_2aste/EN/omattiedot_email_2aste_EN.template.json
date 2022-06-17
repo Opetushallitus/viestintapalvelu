@@ -28,7 +28,7 @@
         },
         {
             "name":"subject",
-            "defaultValue":"Opiskelupaikka vastaanotettavissa Opintopolussa",
+            "defaultValue":"Offer of admission in Studyinfo",
             "mandatory":false,
             "timestamp":null,
             "id":0
@@ -38,7 +38,7 @@
     "structure":{
         "name":"omattiedot_email_2aste",
         "language":"EN",
-        "description":"Opiskelupaikka vastaanotettavissa Opintopolussa sähköposti",
+        "description":"Offer of admission in Studyinfo",
         "contentStructures":[
             {
                 "type":"email",
