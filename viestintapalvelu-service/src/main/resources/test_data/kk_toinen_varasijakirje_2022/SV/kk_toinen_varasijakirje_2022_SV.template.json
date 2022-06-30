@@ -140,13 +140,13 @@
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Meddelande om antagning av studerande i högskolornas andra gemensamma ansökan våren 2021",
+      "defaultValue": "Meddelande om antagning av studerande i högskolornas andra gemensamma ansökan våren 2022",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Din situation i högskolornas andra gemensamma ansökan våren 2021",
+      "defaultValue": "Din situation i högskolornas andra gemensamma ansökan våren 2022",
       "mandatory": false
     }
   ]
