@@ -83,53 +83,61 @@
                 voit
                 vielä tulla siihen valituksi, jos paikkoja vapautuu. Lisätietoa kunkin hakukohteesi valintaperusteista
                 saat
-                Opintopolku.fi -sivustolta sekä ko. korkeakoulusta.</p>
+                <a href="https://opintopolku.fi">Opintopolku.fi -sivustolta</a> sekä ko. korkeakoulusta.</p>
         </section>
 
         <section>
             <h2>Opiskelupaikan vastaanottaminen</h2>
 
-            <p>Jos et ole ottanut opiskelupaikkaa vielä vastaan sinun tulee tehdä se ennen 15.7.2022 kello 15.00.
-                Ellet ota
-                paikkaa vastaan määräaikana, menetät sen. Ota opiskelupaikka vastaan ensisijaisesti sähköisesti Oma
-                Opintopolku
-                -palvelussa. <a href="#opiskelupaikan_vastaanottaminen_seka_ilmoittautuminen_opiskelemaan">Ohjeet löydät
-                    kappaleesta
-                    "Opiskelupaikan vastaanottaminen sekä ilmoittautuminen opiskelemaan"</a>
-                sekä osoitteesta Opintopolku.fi: Koulutuksen valinta > Yhteishaku >
-                Haku korkeakouluihin > Paikan vastaanotto korkeakoulusta </p>
+            <p>Jos et ole ottanut opiskelupaikkaa vielä vastaan, sinun tulee tehdä se 15.7.2022 kello 15.00 mennessä. 
+                Ellet ota paikkaa vastaan määräaikana, menetät sen (Yliopistolaki 38 §, 43§ /Ammattikorkeakoululaki 28 c §, 32§). 
+                Voit ottaa opiskelupaikan vastaan vain kerran, etkä voi muuttaa vastaustasi jälkikäteen. 
+                
+            <p>Voit vastaanottaa vain yhden korkeakoulupaikan samana lukukautena alkavasta koulutuksesta (1.8.-31.12.2022). 
+                Yhden korkeakoulupaikan sääntö koskee sekä korkeakoulujen yhteis- että erillishakuja (pois lukien siirtohaut). </p>
 
-            <p>Opiskelupaikan vastaanottamisen lisäksi sinun täytyy ilmoittautua korke
-                akouluun määräaikaan mennessä. Ellet
-                ilmoittaudu määräaikana, menetät opiskeluoikeuden. Jos otat paikan vastaan Oma Opintopolku -palvelussa,
-                voit
-                jatkaa
-                suoraan sähköiseen ilmoittautumispalveluun. Korkeakoulukohtaiset ilmoittautumisohjeet ja tiedot
-                opintojen
-                aloittamisesta saat korkeakoulun verkkosivuilta:
-                <a href="#ohjeet_uusille_opiskelijoille">katso linkki kappaleessa "Ohjeet uusille opiskelijoille"</a>.
-            </p>
+            <p>Ota opiskelupaikka vastaan ensisijaisesti sähköisesti Oma Opintopolku -palvelussa. Voidaksesi kirjautua sisään ja tunnistautua vahvasti tarvitset verkkopankkitunnukset,
+                 mobiilivarmenteen tai sirullisen henkilökortin ja sen lukijalaitteen. Ohjeita opiskelupaikan sähköiseen vastaanottoon löydät Oma Opintopolku-palvelusta sekä osoitteesta 
+                 <a href="https://opintopolku.fi/konfo/fi/sivu/paikan-vastaanotto-ja-ilmoittautuminen-korkeakouluun">Opintopolku.fi</a>.</p>
+
+            <p>Jos et voi ottaa opiskelupaikkaa vastaan sähköisesti, ota yhteyttä korkeakouluun, mistä haluat ottaa opiskelupaikan vastaan. Tieto opiskelupaikan vastaanottamisesta tulee olla kirjallisesti korkeakoululla tiedossa 15.7.2022 kello 15.00 mennessä.
+                 Jos vastaanottoilmoitus saapuu korkeakouluun myöhässä, menetät opiskelupaikan.</p>
+
+            <p>Kun otat opiskelupaikan vastaan, et ole tulevissa hauissa ensikertalainen.</p>
         </section>
+        
+        <section>
+            <h2>Korkeakouluun ilmoittautuminen</h2>
+            <p> Opiskelupaikan vastaanotettuasi sinun täytyy lisäksi ilmoittautua hakukohteesi korkeakoulun asettamassa määräajassa läsnä tai poissa olevaksi opiskelijaksi 
+                lukuvuodeksi 2022-2023 tai menetät opiskeluoikeutesi. Otettuasi paikan vastaan voit ilmoittautua korkeakouluun joko sähköisesti 
+                (linkki ilmoittautumiseen avautuu, kun olet ottanut paikan vastaan Oma Opintopolku -palvelun kautta), tai muulla korkeakoulusi ilmoittamalla tavalla.</p>
+            <p>Jos otat opiskelupaikan vastaan mutta jäät odottamaan hakukohdejärjestyksessä ylemmällä sijalla olevaa opiskelupaikkaa, voit 
+                ilmoittautua läsnä tai poissa olevaksi opiskelijaksi vasta, kun opiskelupaikkasi on vahvistunut. </p>
+            <p>Voit ilmoittautua ensimmäisenä opiskeluvuonna poissa olevaksi vain lakisääteisestä syystä. 
+                Hyväksyttyjä poissaolon syitä ovat ase- tai siviilipalvelus, vapaat opinnoista lapsen hoitamiseksi syntymän tai 
+                adoption yhteydessä tai opiskelijan oma sairaus tai vamma. Ilmoittautumisen tekemättä jättäminen johtaa opiskeluoikeuden
+                 menettämiseen. (Yliopistolaki 43 §/Ammattikorkeakoululaki 32 §).</p>
+        </section>
+        
+        #if($ohjeetUudelleOpiskelijalle)
+        <section>
+            <h2 id="ohjeet_uusille_opiskelijoille">Ohjeet uudelle opiskelijalle</h2>
+            <p><a href="$ohjeetUudelleOpiskelijalle">$ohjeetUudelleOpiskelijalle</a></p>
+        </section>
+        #end
 
         <section>
             <h2>Valintapäätöksen ehdollisuus</h2>
 
-            <p>Sinua koskeva valintapäätös voi hakukohteen valintaperusteiden mukaan olla ehdollinen. Ehdollisia ovat
-                valinnat,
-                jotka on tehty sellaisen tutkinnon perusteella, josta ei vielä ole ollut saatavissa lopullista
-                tutkintotodistusta
-                tai jotka on tehty antamiesi, myöhemmin tarkistettavien tietojen perusteella (kuten epäviralliset kopiot,
-                ammattikorkeakoulujen
-                valinnoissa lukion päättötodistukset, ammatillisen perustutkinnon päättötodistukset ja
-                korkeakoulututkinnon
-                todistukset sekä mahdolliset työtodistukset). Ehdollinen valintapäätös raukeaa, jos et toimita kopiota
-                todistuksesta
-                korkeakouluusi määräaikana. Tarkista määräaika valintaperusteista. Ehdollinen valintapäätös voi raueta
-                myös,
-                jos
-                se
-                on tehty vahvistamattomien ennakkoarvosanojen perusteella ja arvosanat laskevat. Jos ilmoittamasi tiedot
-                osoittautuvat tarkistuksessa virheellisiksi, opiskelijavalintasi voidaan purkaa.</p>
+            <p>Sinua koskeva valintapäätös voi hakukohteen valintaperusteiden mukaan olla ehdollinen. 
+                Ehdollisia ovat valinnat, jotka on tehty sellaisen tutkinnon perusteella, josta ei vielä ole ollut 
+                saatavissa lopullista tutkintotodistusta tai jotka on tehty antamiesi, myöhemmin tarkistettavien 
+                tietojen perusteella (kuten epäviralliset kopiot, ammattikorkeakoulujen valinnoissa lukion 
+                päättötodistukset, ammatillisen perustutkinnon päättötodistukset ja korkeakoulututkinnon todistukset 
+                sekä mahdolliset työtodistukset). Ehdollinen valintapäätös raukeaa, jos et toimita asiakirjoja korkeakouluusi 
+                määräaikana. Tarkista määräaika valintaperusteista. Ehdollinen valintapäätös voi raueta myös, jos se on tehty
+                 vahvistamattomien ennakkoarvosanojen perusteella ja arvosanat laskevat. Jos ilmoittamasi tiedot osoittautuvat 
+                 tarkistuksessa virheellisiksi, opiskelijavalintasi voidaan purkaa.</p>
         </section>
 
         <section>
@@ -139,7 +147,7 @@
                 siihen
                 kirjallisesti oikaisua 14 vuorokauden kuluessa opiskelijavalinnan tuloksen julkistamisesta eli
                 ennen
-                23.7.2022 kello 15.00. Tutustu ensin kyseisen hakukohteen valintaperusteisiin sekä
+                22.7.2022 kello 15.00. Tutustu ensin kyseisen hakukohteen valintaperusteisiin sekä
                 oikaisumenettelyä koskevaan ohjeistukseen. Ota tämän jälkeen tarvittaessa yhteyttä siihen korkeakouluun,
                 jonka
                 hakukohdetta tyytymättömyytesi koskee. Sinun on mahdollista tehdä edellä mainittuna määräaikana
@@ -248,10 +256,11 @@
                     varasijat
                     ole
                     välttämättä lainkaan käytössä. Jos valintatietonasi on hylätty, et voi tulla hyväksytyksi kyseiseen hakukohteeseen, 
-                    koska et täytä hyväksymisen edellytyksenä olevia vähimmäisvaatimuksia tällä kertaa. Näet tällöin valintatapakohtaisen hylkäyksen syysi.
+                    koska et täytä hyväksymisen edellytyksenä olevia vähimmäisvaatimuksia tällä kertaa. Näet tällöin
+                    valintatapakohtaisen hylkäyksen syysi.
                 </dd>
                 <dt>
-                    Valintatapa - Pisteesi / Alin hyväksytty pistemäärä (Alin hyv.)
+                    Valintatapa - Pisteesi / Alin hyväksytty pistemäärä
                 </dt>
                 <dd>
                     Näet tässä oman pistemääräsi
@@ -273,9 +282,7 @@
                     estää valinnan kokonaispistemäärästä riippumatta. Näet pistemäärän vain, jos sinulle on voitu laskea
                     pisteet
                     kyseisen valintatavan mukaisesti. Jos valintatavassa ei lasketa pisteitä tai sinulle ei voida niitä
-                    laskea,
-                    niin
-                    sarake on tyhjä.
+                    laskea, sarake on tyhjä.
                 </dd>
                 <dt>
                     Varasijasi
@@ -301,87 +308,8 @@
             <p>Jos tarvitset apua valinnan tuloksen tulkitsemisessa tai tarkempaa tietoa hylkäysperusteistasi, ota
                 yhteyttä
                 ko.
-                hakukohteen korkeakoulun hakijapalveluihin.</p>
+                hakukohteen korkeakoulun hakijapalveluihin. Hakijapalveluiden yhteystiedot löydät <a href="https://opintopolku.fi/konfo/fi/sivu/korkeakoulujen-hakijapalvelut">Opintopolku.fi-sivustolta.</a></p>
         </section>
-    </article>
-
-    <article>
-        <h1 id="opiskelupaikan_vastaanottaminen_seka_ilmoittautuminen_opiskelemaan">Opiskelupaikan vastaanottaminen sekä ilmoittautuminen opiskelemaan</h1>
-
-        <section>
-            <blockquote>Muista sekä ottaa opiskelupaikka vastaan että ilmoittautua korkeakouluun määräaikana. Jos et
-                toimi
-                määräaikaan mennessä, menetät opiskelupaikkasi (Yliopistolaki 38 §, 43§ /Ammattikorkeakoululaki 28 c §,
-                32§).
-                Ota
-                opiskelupaikka vastaan ensisijaisesti sähköisesti Oma Opintopolku -palvelussa. Otettuasi paikan vastaan
-                voit
-                ilmoittautua korkeakouluun joko sähköisesti (linkki ilmoittautumiseen avautuu, kun olet ottanut paikan
-                vastaan
-                Oma
-                Opintopolku -palvelun kautta), tai muulla korkeakoulusi ilmoittamalla tavalla.
-            </blockquote>
-        </section>
-
-        <section>
-            <h2>Opiskelupaikan vastaanottaminen</h2>
-            <p>Vahvistaaksesi opiskelupaikan sinun täytyy ottaa se vastaan ennen 15.7.2022 kello 15.00. Voit
-                tehdä
-                opiskelupaikkaa koskevan vastaanottoilmoituksen vain kerran, etkä voi muuttaa tekemääsi ilmoitusta
-                jälkikäteen.
-                Voit
-                vastaanottaa vain yhden korkeakoulupaikan samana lukukautena alkavasta koulutuksesta (1.8.-31.12.2022).
-                Yhden
-                korkeakoulupaikan sääntö koskee sekä korkeakoulujen yhteis- että erillishakuja (pois lukien siirtohaut).
-            </p>
-            <p>Voit vastaanottaa opiskelupaikan sähköisesti kirjautumalla Oma Opintopolku -palveluun opintopolku.fi
-                -etusivun
-                yläreunassa olevasta linkistä. Voidaksesi kirjautua sisään vahvasti tunnistautuneena tarvitset
-                verkkopankkitunnukset, mobiilivarmenteen tai sirullisen henkilökortin ja sen lukijalaitteen. Oma
-                Opintopolku
-                -palvelussa on ohjeet opiskelupaikan sähköiseen vastaanottoon.</p>
-            <p>Jos et voi ottaa opiskelupaikkaa vastaan sähköisesti, ota yhteyttä korkeakouluun, mistä haluat ottaa 
-                opiskelupaikan vastaan. Tieto opiskelupaikan vastaanottamisesta tulee olla kirjallisesti korkeakoululla 
-                tiedossa ennen 22.7.2022 kello 15.00. Jos vastaanottoilmoitus saapuu korkeakouluun myöhässä, menetät opiskelupaikan.</p>
-            <p>Kun otat opiskelupaikan vastaan, et ole tulevissa hauissa ensikertalainen. Lisätietoa osoitteesta
-                <a href="https://opintopolku.fi/konfo/fi/sivu/valmistaudu-korkeakoulujen-yhteishakuun#ensikertalaiskiinti">Opintopolku.fi</a>
-                Opiskelupaikan
-                vastaanotettuasi sinun täytyy lisäksi ilmoittautua hakukohteesi korkeakoulun asettamassa määräajassa
-                läsnä
-                tai
-                poissa olevaksi opiskelijaksi lukuvuodeksi 2022-2023 tai menetät opiskeluoikeutesi.</p>
-        </section>
-
-        <section>
-            <h2>Korkeakouluun ilmoittautuminen</h2>
-            <p>Voit ilmoittautua korkeakouluun joko sähköisesti valtakunnallisessa ilmoittautumispalvelussa
-                opiskelupaikan
-                vastaanoton
-                yhteydessä tai muulla korkeakoulusi ilmoittamalla tavalla.</p>
-            <p>Jos otat opiskelupaikan vastaan mutta jäät odottamaan hakukohdejärjestyksessä ylemmällä sijalla olevaa
-                opiskelupaikkaa, voit
-                ilmoittautua läsnä tai poissa olevaksi opiskelijaksi vasta, kun opiskelupaikkasi on vahvistunut.
-                Tarkempia
-                ohjeita
-                saat ilmoittautumispalvelusta sekä hakukohteesi korkeakoulusta
-                (<a href="#ohjeet_uusille_opiskelijoille">katso linkki kappaleessa "Ohjeet uusille opiskelijoille"</a>).
-            </p>
-            <p>Huom! Jos olet lukuvuosimaksuvelvollinen ja haet vieraskieliseen koulutukseen, ilmoittautumisen
-                edellytyksenä
-                voi
-                olla lukuvuosimaksun maksaminen. Voit tarkistaa tämän korkeakoulusta.</p>
-            <p>Voit ilmoittautua ensimmäisenä opiskeluvuonna poissa olevaksi vain lakisääteisestä syystä. Hyväksyttyjä poissaolon syitä ovat 
-                ase- tai siviilipalvelus, vapaat opinnoista lapsen hoitamiseksi syntymän tai adoption yhteydessä tai opiskelijan oma sairaus tai vamma. 
-                Ilmoittautumisen tekemättä jättäminen johtaa opiskeluoikeuden menettämiseen. (Yliopistolaki 43
-                §/Ammattikorkeakoululaki 32 §).</p>
-        </section>
-
-        #if($ohjeetUudelleOpiskelijalle)
-        <section>
-            <h2 id="ohjeet_uusille_opiskelijoille">Ohjeet uudelle opiskelijalle</h2>
-            <p><a href="$ohjeetUudelleOpiskelijalle">$ohjeetUudelleOpiskelijalle</a></p>
-        </section>
-        #end
     </article>
 
 </main>
