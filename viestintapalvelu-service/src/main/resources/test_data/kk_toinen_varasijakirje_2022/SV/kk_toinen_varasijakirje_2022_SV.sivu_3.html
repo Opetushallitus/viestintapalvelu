@@ -15,8 +15,11 @@
 <body>
 <div class="liiteSisalto" name="opiskelupaikan-vastaanottaminen">
     $sis3
+    #if($ohjeetUudelleOpiskelijalle)
     <h2>Anvisningar för nya studerande</h2>
-    <p>#if($ohjeetUudelleOpiskelijalle)${ohjeetUudelleOpiskelijalle}#end</p>
+    <p>${ohjeetUudelleOpiskelijalle}</p>
+    #end
+    <h2>Välkommen!</h2>
 </div>
 </body>
 
