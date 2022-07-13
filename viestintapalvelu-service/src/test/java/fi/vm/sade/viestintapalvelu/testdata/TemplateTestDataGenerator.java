@@ -30,8 +30,6 @@ import static java.util.Arrays.*;
  */
 public class TemplateTestDataGenerator {
 
-
-
     public static void main(String[] args) throws IOException {
         //String templateKeys = System.getProperty("template");
         //String templateKeys = "omattiedot_email";
