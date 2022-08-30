@@ -21,7 +21,8 @@ import java.util.List;
 public class ReportedMessageDTO extends EmailMessageDTO {
     private static final List<String> regexps = Arrays.asList(
             "(https?://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]/(token|emailregister)/)[A-Za-z0-9]+",
-            "(https?://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]/hakemus\\?modify=)[^\"\\s]+"
+            "(https?://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]/hakemus\\?modify=)[^\"\\s]+",
+            "(https?://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]/maksut/\\?secret=)[^\"\\s]+"
     );
     private static final String substitute = "$1[RETRACTED]";
 
