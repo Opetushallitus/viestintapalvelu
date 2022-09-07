@@ -35,4 +35,17 @@ public class ReportedMessageDTOTest {
         assertThat(reportedMessageDTO.getBody(), containsString("Url https://testiopintopolku.fi/hakemus?modify=[RETRACTED] and stuff after URL\n"));
         assertThat(reportedMessageDTO.getBody(), containsString("Link <a href=\"https://testiopintopolku.fi/hakemus?modify=[RETRACTED]\" target=\"_blank\"> and stuff after link\n"));
     }
+
+    @Test
+    public void testGetBodyReturnsRetractedMaksutToken() {
+        ReportedMessageDTO reportedMessageDTO = new ReportedMessageDTO();
+        String token = "a02f12b22a21ce3";
+        String body = "Header\n" +
+                "Url https://opintopolku.fi/maksut/?secret=" + token + " and stuff after URL\n" +
+                "Footer";
+        assertTrue(body.contains(token));
+        reportedMessageDTO.setBody(body);
+        assertThat(reportedMessageDTO.getBody(), not(containsString(token)));
+        assertThat(reportedMessageDTO.getBody(), containsString("Url https://opintopolku.fi/maksut/?secret=[RETRACTED] and stuff after URL"));
+    }
 }
