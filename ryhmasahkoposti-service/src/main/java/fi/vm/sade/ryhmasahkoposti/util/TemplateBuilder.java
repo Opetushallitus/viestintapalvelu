@@ -174,6 +174,12 @@ public class TemplateBuilder {
                 dataContext.put(ReplacementDTO.NAME_EMAIL_BODY, InputCleaner.cleanHtmlFragment(message.getBody()));
             }
             // Replace Email's subject with otsikko parameter if there is one (always replaced)
+
+            LOGGER.info("testi context------------------");
+            LOGGER.info(dataContext.toString());
+            LOGGER.info("testi replacements------------------");
+            LOGGER.info(message.getMessageReplacements().toString());
+            LOGGER.info("testi------------------");
             ReplacementDTO subject = Iterables.find(template.getReplacements(), new Predicate<ReplacementDTO>() {
                 @Override
                 public boolean apply(ReplacementDTO replacement) {
