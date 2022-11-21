@@ -325,6 +325,9 @@ public class LetterEmailServiceImpl implements LetterEmailService {
             throw new IllegalArgumentException("Vastaanottajat puuttuu");
         }
         EmailRecipient recipient = new EmailRecipient();
+        logger.info("letter: ");
+        logger.info(letter.toString());
+        logger.info("letter: end ");
         recipient.setEmail(letter.getEmailAddress());
         recipient.setLanguageCode(letter.getWantedLanguage());
         if (letter.getLetterReceiverAddress() != null

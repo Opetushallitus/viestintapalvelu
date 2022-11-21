@@ -183,6 +183,8 @@ public class TemplateBuilder {
             ReplacementDTO subject = Iterables.find(template.getReplacements(), new Predicate<ReplacementDTO>() {
                 @Override
                 public boolean apply(ReplacementDTO replacement) {
+                    LOGGER.info("testi replacements------------------");
+                    LOGGER.info(replacement.toString());
                     return ReplacementDTO.NAME_EMAIL_SUBJECT.equals(replacement.getName());
                 }
             }, null);
@@ -280,6 +282,9 @@ public class TemplateBuilder {
         }
         if (message.getRecipient().getRecipientReplacements() != null) {
             for (ReportedRecipientReplacementDTO r : message.getRecipient().getRecipientReplacements()){
+                LOGGER.info("******");
+                LOGGER.info(message.getRecipient().toString());
+                LOGGER.info("******");
                 replacements.put(r.getName(), r.getValue());
             }
         }
