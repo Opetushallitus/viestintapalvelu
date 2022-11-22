@@ -183,6 +183,17 @@ public class TemplateBuilder {
             if (subject != null) {
                 message.setSubject(subject.getDefaultValue());
             }
+
+            if (message.getSubject().contains("$hakemusOid")) {
+                String messageSubject = message.getSubject();
+                for (ReportedRecipientReplacementDTO r : message.getRecipient().getRecipientReplacements()) {
+                    if (r.getName().equals("hakemusOid")) {
+                        String messageSubjectWithOid = messageSubject.replace("$hakemusOid", r.getValue().toString());
+                        message.setSubject(messageSubjectWithOid);
+                    }
+                }
+            }
+
             // reply-to-personal overrides possible reply-to, default to email's replyTo
             if (dataContext.get(ReplacementDTO.NAME_EMAIL_REPLY_TO_PERSONAL) != null) {
                 message.setReplyTo(dataContext.get(ReplacementDTO.NAME_EMAIL_REPLY_TO_PERSONAL).toString());

@@ -127,7 +127,7 @@
     {
       "id": 4,
       "name": "subject",
-      "defaultValue": "Meddelande om resultaten i gemensam ansökan till yrkesutbildning och gymnasieutbildning",
+      "defaultValue": "Meddelande om resultaten i gemensam ansökan till yrkesutbildning och gymnasieutbildning - $hakemusOid",
       "mandatory": false
     },
     {
