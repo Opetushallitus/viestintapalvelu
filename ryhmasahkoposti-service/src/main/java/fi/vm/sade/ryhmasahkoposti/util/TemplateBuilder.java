@@ -184,13 +184,11 @@ public class TemplateBuilder {
                 message.setSubject(subject.getDefaultValue());
             }
 
-            if (message.getSubject().contains("$hakemusOid")) {
+            if (message.getSubject().contains("$")) {
                 String messageSubject = message.getSubject();
                 for (ReportedRecipientReplacementDTO r : message.getRecipient().getRecipientReplacements()) {
-                    if (r.getName().equals("hakemusOid")) {
-                        String messageSubjectWithOid = messageSubject.replace("$hakemusOid", r.getValue().toString());
+                        String messageSubjectWithOid = messageSubject.replace("$" + r.getName(), r.getValue().toString());
                         message.setSubject(messageSubjectWithOid);
-                    }
                 }
             }
 
