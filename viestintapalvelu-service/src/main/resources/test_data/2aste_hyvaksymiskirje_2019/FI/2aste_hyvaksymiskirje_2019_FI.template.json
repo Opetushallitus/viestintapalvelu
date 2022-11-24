@@ -127,7 +127,7 @@
     {
       "id": 4,
       "name": "subject",
-      "defaultValue": "Ilmoitus ammatillisen koulutuksen ja lukiokoulutuksen yhteishaun tuloksista - $hakemusOid",
+      "defaultValue": "Ilmoitus ammatillisen koulutuksen ja lukiokoulutuksen yhteishaun tuloksista",
       "mandatory": false
     },
     {
