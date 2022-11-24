@@ -184,18 +184,18 @@ public class TemplateBuilder {
                 message.setSubject(subject.getDefaultValue());
             }
 
-            LOGGER.info("checking subject: " + message.getSubject());
-            if (message.getSubject().contains("$")) {
-                LOGGER.info("Inside if: ");
-                String messageSubject = message.getSubject();
-                LOGGER.info("messageSubject: " + messageSubject);
-                for (ReportedRecipientReplacementDTO r : message.getRecipient().getRecipientReplacements()) {
-                    LOGGER.info("found replacement: " + r.toString());
-                    String messageSubjectWithOid = messageSubject.replace("$" + r.getName(), r.getValue().toString());
-                    message.setSubject(messageSubjectWithOid);
-                    LOGGER.info("New subject: " + message.getSubject());
-                }
-            }
+//            LOGGER.info("checking subject: " + message.getSubject());
+//            if (message.getSubject().contains("$")) {
+//                LOGGER.info("Inside if: ");
+//                String messageSubject = message.getSubject();
+//                LOGGER.info("messageSubject: " + messageSubject);
+//                for (ReportedRecipientReplacementDTO r : message.getRecipient().getRecipientReplacements()) {
+//                    LOGGER.info("found replacement: " + r.toString());
+//                    String messageSubjectWithOid = messageSubject.replace("$" + r.getName(), r.getValue().toString());
+//                    message.setSubject(messageSubjectWithOid);
+//                    LOGGER.info("New subject: " + message.getSubject());
+//                }
+//            }
             // reply-to-personal overrides possible reply-to, default to email's replyTo
             if (dataContext.get(ReplacementDTO.NAME_EMAIL_REPLY_TO_PERSONAL) != null) {
                 message.setReplyTo(dataContext.get(ReplacementDTO.NAME_EMAIL_REPLY_TO_PERSONAL).toString());
