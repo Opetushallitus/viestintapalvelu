@@ -134,7 +134,7 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen syksyn 2022  yhteishaussa, hakemusnumero $hakemusOid",
+      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen syksyn 2022  yhteishaussa, hakemus $hakemusOid",
       "mandatory": false
     },
     {

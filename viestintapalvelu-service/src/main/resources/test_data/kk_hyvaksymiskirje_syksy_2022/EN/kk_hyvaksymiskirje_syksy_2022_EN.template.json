@@ -134,7 +134,7 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Notification of the admission results in the autumn 2022 joint application, application number $hakemusOid",
+      "defaultValue": "Notification of the admission results in the autumn 2022 joint application, application $hakemusOid",
       "mandatory": false
     },
     {
