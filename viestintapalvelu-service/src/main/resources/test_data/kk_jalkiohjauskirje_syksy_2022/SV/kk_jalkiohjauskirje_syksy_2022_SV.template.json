@@ -114,7 +114,7 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Meddelande om antagningsresultatet i högskolornas gemensamma ansökan hösten 2022, ansökning $hakemusOid",
+      "defaultValue": "Meddelande om antagningsresultatet i högskolornas gemensamma ansökan hösten 2022, ansökningsnummer $hakemusOid",
       "mandatory": false
     },
     {
