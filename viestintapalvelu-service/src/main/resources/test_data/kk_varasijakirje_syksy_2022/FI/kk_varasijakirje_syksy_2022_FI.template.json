@@ -134,19 +134,19 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen yhteishaussa",
+      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen syksyn 2022 yhteishaussa, hakemusnumero $hakemusOid",
       "mandatory": false
     },
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen kevään 2022 toisessa yhteishaussa",
+      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen syksyn 2022 yhteishaussa",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Tilanteesi korkeakoulujen kevään 2022 toisessa yhteishaussa",
+      "defaultValue": "Tilanteesi korkeakoulujen syksyn 2022 yhteishaussa",
       "mandatory": false
     }
   ]
