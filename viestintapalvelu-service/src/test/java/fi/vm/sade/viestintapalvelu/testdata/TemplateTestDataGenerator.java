@@ -42,7 +42,7 @@ public class TemplateTestDataGenerator {
         //String templateKeys = "kk_ensimmainen_hyvaksymiskirje_2022,kk_ensimmainen_jalkiohjauskirje_2022,kk_ensimmainen_varasijakirje_2022";
         //String templateKeys = "kk_ensimmainen_hyvaksymiskirje_2022,kk_ensimmainen_jalkiohjauskirje_2022,kk_ensimmainen_varasijakirje_2022";
         //String templateKeys = "2aste_hyvaksymiskirje_2022,2aste_jalkiohjauskirje_2022,2aste_hyvaksymiskirje_huoltajille_2022,2aste_jalkiohjauskirje_huoltajille_2022";
-        String templateKeys = "kk_hyvaksymiskirje_syksy_2022,kk_jalkiohjauskirje_syksy_2022";
+        String templateKeys = "kk_varasijakirje_syksy_2022";
 
         if(templateKeys != null) {
             for(String templateKey : templateKeys.split(",")) {
