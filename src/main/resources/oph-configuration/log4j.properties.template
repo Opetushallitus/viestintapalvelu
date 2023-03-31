@@ -1,6 +1,6 @@
 # Loggers
-log4j.logger.fi.vm.sade.viestintapalvelu={{env_loglevel}}, viestintapalvelu
-log4j.logger.fi.vm.sade.ryhmasahkoposti={{env_loglevel}}, ryhmasahkoposti
+log4j.logger.fi.vm.sade.viestintapalvelu=DEBUG, viestintapalvelu
+log4j.logger.fi.vm.sade.ryhmasahkoposti=DEBUG, ryhmasahkoposti
 log4j.logger.fi.vm.sade.viestintapalvelu.auditlog.AuditLogger=INFO, viestintapalveluaudit
 log4j.logger.fi.vm.sade.ryhmasahkoposti.auditlog.AuditLogger=INFO, ryhmasahkopostiaudit
 {# raw-endraw -välillä template engine ei tee mitään! #}
@@ -11,7 +11,7 @@ log4j.appender.STDOUT.Threshold=ERROR
 log4j.appender.STDOUT.layout=org.apache.log4j.PatternLayout
 log4j.appender.STDOUT.layout.ConversionPattern=%d{yyyy-MM-dd'T'HH:mm:ss.SSSX} %-5p {%X{user}} [%t] %-5p %c: %m%n
 # File output for viestintapalvelu
-log4j.appender.viestintapalvelu.Threshold=INFO
+log4j.appender.viestintapalvelu.Threshold=DEBUG
 log4j.appender.viestintapalvelu.File=${user.home}/tomcat/logs/oph-viestintapalvelu.log
 log4j.appender.viestintapalvelu=org.apache.log4j.RollingFileAppender
 log4j.appender.viestintapalvelu.Append=true
@@ -20,7 +20,7 @@ log4j.appender.viestintapalvelu.layout.ConversionPattern=%d{yyyy-MM-dd'T'HH:mm:s
 log4j.appender.viestintapalvelu.MaxFileSize=10MB
 log4j.appender.viestintapalvelu.MaxBackupIndex=20
 # File output for ryhmasahkoposti
-log4j.appender.ryhmasahkoposti.Threshold=INFO
+log4j.appender.ryhmasahkoposti.Threshold=DEBUG
 log4j.appender.ryhmasahkoposti.File=${user.home}/tomcat/logs/oph-ryhmasahkoposti.log
 log4j.appender.ryhmasahkoposti=org.apache.log4j.RollingFileAppender
 log4j.appender.ryhmasahkoposti.Append=true
