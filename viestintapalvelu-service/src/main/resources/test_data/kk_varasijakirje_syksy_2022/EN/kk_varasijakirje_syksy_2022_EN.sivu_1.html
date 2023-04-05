@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <style type="text/css">$tyylit</style>
+    <title>Approval Letter</title>
+</head>
+
+<body>
+<div class='header'>
+    <div class="row">
+        <div class="organisaatio">
+            #if($hakijapalveluidenOsoite)
+            <p>
+                Sender:<br/>
+                $hakijapalveluidenOsoite.organisaationimi,<br/>
+                $hakijapalveluidenOsoite.addressline #if($hakijapalveluidenOsoite.postalCode != ''),<br/>
+                $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city #end
+            </p>
+            #end
+        </div>
+        <div class="letterdate">
+            <div class="date">$letterDate</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class='osoitetarra'>
+            <div>$osoite</div>
+            <div>
+                <br/>National learner ID:<br/>$hakijaOid
+            </div>
+            <div>
+                <br/>Application number:<br/>$hakemusOid
+            </div>
+        </div>
+        <div class="syntymaaika">
+            <div class="date">$syntymaaika</div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div>
+    <h1>$kirjeotsikko</h1>
+    <p><b>Study Programme(s)</b></p>
+    #foreach( $tulos in $tulokset )
+    #if($tulos.hyvaksytty=='true')
+    <p><b>$tulos.hakukohteenNimi - $tulos.organisaationNimi</b></p>
+    #end
+    #end
+
+    <p>Congratulations! You have been accepted to the study programme(s) mentioned above in the autumn 2022 joint application.</p>
+
+    <p>This letter also includes information about the situation of your other study options. After you have been accepted
+        to the study place, your possible lower preferences have been cancelled automatically. If you have been placed on a
+        waiting list for any of your higher preference study options, you can still be accepted to one of them if a place
+        becomes available. You can find more information on the admission criteria of each study programme you have applied
+        to from Studyinfo.fi and the higher education institution in question.</p>
+
+    <h2>Accepting an offer of admission</h2>
+
+    <p>You must accept the offer of admission mentioned above by <b>$palautusTimestampEn</b> (UTC+2/EET) or you will lose the study place. Accept the offer of admission  preferably electronically with the link that has been sent to your email or in the My Studyinfo
+        -service. You can find instructions on accepting the offer of admission on <a href="https://opintopolku.fi/konfo/en/sivu/how-to-accept-an-offer-of-admission-in-joint-application-to-higher-education">Studyinfo.fi</a></p>
+
+    <p>In addition to accepting the offer of admission, you need to register as a student at the higher education institution by
+        the deadline. If you do not register by the deadline you will lose your right to study. If you accept the offer of admission
+        in the My Studyinfo -service, you can continue directly to the electronic registration service. Each higher
+        education institution has instructions on how to register and information on starting studies on their own website:
+        <a href="#ohjeet_uusille_opiskelijoille">see the link on chapter "Instructions for new students".</a></p>
+
+    <h2>Conditional acceptance</h2>
+    <p>According to the study programme's admission criteria, your admission result may be conditional. Conditional
+        acceptance is based on a degree with a certificate that cannot yet be obtained or on information you have provided
+        and which will be checked later (for example, in admission to universities of applied sciences, general upper
+        secondary school certificates or vocational upper secondary school certificates and higher education degree
+        certificates as well as possible employment certificates). A conditional acceptance will be cancelled, if the higher
+        education institution has not received copies of the required document(s) by the deadline. Please check the deadline
+        from the admission criteria. A conditional acceptance may also be cancelled, if it has been made based on
+        unconfirmed, predicted grades should the final grades be lower. If the information you have provided proves
+        incorrect, your study place may be cancelled.</p>
+
+    <h2>Appeals</h2>
+    <p>If you believe there has been a mistake in the student selection and the admission criteria have not been applied
+        correctly, you can make a written request for rectification within 14 days after the student selection results have
+        been published.
+        Always check the admission criteria of the study programme and the instructions regarding rectifications first. If
+        necessary, you can then contact the higher education institution in question. You can make a written, individualized
+        request for rectification by the deadline mentioned above. More detailed information about making a request for
+        rectification and contact information can be found on the website and in the application material of the higher
+        education institution in question. The higher education institution will not process a request for rectification if
+        it concerns a study option that you have placed lower on your application than the one you have been accepted
+        to.</p>
+    <p>The request for rectification must be addressed to a recipient defined by the higher education institution and must
+        be submitted to the address stated in the admission criteria by the deadline mentioned above.</p>
+
+    <h2>Instructions for new students</h2>
+    <p>#if($ohjeetUudelleOpiskelijalle)${ohjeetUudelleOpiskelijalle}#end</p>
+    <h2>Welcome to study!</h2>
+
+</div>
+</body>
+
+</html>
