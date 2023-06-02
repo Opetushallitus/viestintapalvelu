@@ -115,7 +115,12 @@
                  menettämiseen. (Yliopistolaki 43 §/Ammattikorkeakoululaki 32 §).</p>
         </section>
         
-      
+        #if($ohjeetUudelleOpiskelijalle)
+        <section>
+            <h2 id="ohjeet_uusille_opiskelijoille">Ohjeet uudelle opiskelijalle</h2>
+            <p><a href="$ohjeetUudelleOpiskelijalle">$ohjeetUudelleOpiskelijalle</a></p>
+        </section>
+        #end
 
         <section>
             <h2>Valintapäätöksen ehdollisuus</h2>
@@ -155,12 +160,7 @@
         </section>
 
 
-        #if($ohjeetUudelleOpiskelijalle)
-        <section>
-            <h2 id="ohjeet_uusille_opiskelijoille">Ohjeet uudelle opiskelijalle</h2>
-            <p><a href="$ohjeetUudelleOpiskelijalle">$ohjeetUudelleOpiskelijalle</a></p>
-        </section>
-        #end
+        
 
 
         <section>

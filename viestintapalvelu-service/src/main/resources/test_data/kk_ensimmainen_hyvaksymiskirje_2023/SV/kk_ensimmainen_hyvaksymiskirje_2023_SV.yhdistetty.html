@@ -119,7 +119,12 @@
                 går du miste om din studierätt (Universitetslag 43 § /Yrkeshögskolelag 32 §).</p>
         </section>
 
-   
+        #if($ohjeetUudelleOpiskelijalle)
+        <section>
+            <h2 id="ohjeet_uusille_opiskelijoille">Anvisningar för nya studerande</h2>
+            <p><a href="$ohjeetUudelleOpiskelijalle">$ohjeetUudelleOpiskelijalle</a></p>
+        </section>
+        #end
 
         <section>
             <h2>Antagningsbeslutets villkorlighet</h2>
@@ -150,12 +155,7 @@
 
             
         </section>
-        #if($ohjeetUudelleOpiskelijalle)
-        <section>
-            <h2 id="ohjeet_uusille_opiskelijoille">Anvisningar för nya studerande</h2>
-            <p><a href="$ohjeetUudelleOpiskelijalle">$ohjeetUudelleOpiskelijalle</a></p>
-        </section>
-        #end
+        
         <section>
             <h2>$sivu_2_otsikko</h2>
                                     <p>Du ser här dina ansökningsmål i den ordning du satt dem i</p>

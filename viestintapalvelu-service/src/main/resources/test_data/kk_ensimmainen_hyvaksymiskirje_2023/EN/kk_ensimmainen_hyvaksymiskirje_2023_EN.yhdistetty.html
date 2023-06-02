@@ -120,6 +120,13 @@
                 the registration will lead to forfeiting the right to study. (Universities Act § 43 / Polytechnics Act § 32)</p>
         </section>
 
+        #if($ohjeetUudelleOpiskelijalle)
+        <section>
+            <h2 id="ohjeet_uusille_opiskelijoille">Instructions for new students</h2>
+            <p><a href="$ohjeetUudelleOpiskelijalle">$ohjeetUudelleOpiskelijalle</a></p>
+        </section>
+        #end
+
         <section>
             <h2>Applying for a residence permit</h2>
             <p>Non-EU/EEA students need a student residence permit. You can begin the student residence permit application online at 
@@ -168,12 +175,7 @@
 
         </section>
 
-        #if($ohjeetUudelleOpiskelijalle)
-        <section>
-            <h2 id="ohjeet_uusille_opiskelijoille">Instructions for new students</h2>
-            <p><a href="$ohjeetUudelleOpiskelijalle">$ohjeetUudelleOpiskelijalle</a></p>
-        </section>
-        #end
+        
 
         <section>
             <h2>$sivu_2_otsikko</h2>
