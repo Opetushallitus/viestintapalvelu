@@ -128,13 +128,13 @@
     {
       "id": 2,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus ammatillisen koulutuksen ja lukiokoulutuksen yhteishaun tuloksista keväällä 2022",
+      "defaultValue": "Ilmoitus ammatillisen koulutuksen ja lukiokoulutuksen yhteishaun tuloksista keväällä 2023",
       "mandatory": false
     },
     {
       "id": 3,
       "name": "liiteotsikko",
-      "defaultValue": "Tilanteesi kevään 2022 yhteishaussa",
+      "defaultValue": "Tilanteesi kevään 2023 yhteishaussa",
       "mandatory": false
     },
     {
