@@ -128,7 +128,7 @@
     {
       "id": 2,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus ammatillisen koulutuksen ja lukiokoulutuksen yhteishaun tuloksista keväällä 2023",
+      "defaultValue": "Ilmoitus perusopetuksen jälkeisen koulutuksen yhteishaun tuloksista keväällä 2023",
       "mandatory": false
     },
     {
@@ -140,7 +140,7 @@
     {
       "id": 4,
       "name": "subject",
-      "defaultValue": "Ilmoitus ammatillisen koulutuksen ja lukiokoulutuksen yhteishaun tuloksista",
+      "defaultValue": "Ilmoitus perusopetuksen jälkeisen koulutuksen yhteishaun tuloksista",
       "mandatory": false
     },
     {

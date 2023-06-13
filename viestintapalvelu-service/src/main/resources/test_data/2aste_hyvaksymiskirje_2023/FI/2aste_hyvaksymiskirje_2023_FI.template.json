@@ -140,7 +140,7 @@
     {
       "id": 4,
       "name": "subject",
-      "defaultValue": "Ilmoitus ammatillisen koulutuksen ja lukiokoulutuksen yhteishaun tuloksista",
+      "defaultValue": "Ilmoitus perusopetuksen jälkeisen koulutuksen yhteishaun tuloksista",
       "mandatory": false
     },
     {
