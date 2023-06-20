@@ -134,19 +134,19 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Meddelande om antagningsresultatet i högskolornas andra gemensamma ansökan våren 2022",
+      "defaultValue": "Meddelande om antagningsresultatet i högskolornas andra gemensamma ansökan våren 2023",
       "mandatory": false
     },
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Meddelande om antagningsresultatet i högskolornas andra gemensamma ansökan våren 2022",
+      "defaultValue": "Meddelande om antagningsresultatet i högskolornas andra gemensamma ansökan våren 2023",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Din situation i högskolornas andra gemensamma ansökan våren 2022",
+      "defaultValue": "Din situation i högskolornas andra gemensamma ansökan våren 2023",
       "mandatory": false
     }
   ]
