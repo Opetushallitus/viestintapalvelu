@@ -140,13 +140,13 @@
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Notification of the student selection results in joint application to degree programmes in Finnish/Swedish spring 2022",
+      "defaultValue": "Notification of the student selection results in joint application to degree programmes in Finnish/Swedish spring 2021",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Your current situation in joint application to degree programmes in Finnish/Swedish spring 2022",
+      "defaultValue": "Your current situation in joint application to degree programmes in Finnish/Swedish spring 2021",
       "mandatory": false
     }
   ]

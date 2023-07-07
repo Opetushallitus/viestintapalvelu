@@ -12,11 +12,8 @@
 <body>
 <div class="liiteSisalto">
     $sis3
-    #if($ohjeetUudelleOpiskelijalle)
     <h2>Instructions for new students</h2>
-    <p>${ohjeetUudelleOpiskelijalle}</p>
-    #end
-    <h2>Welcome to study!</h2>
+    <p>#if($ohjeetUudelleOpiskelijalle)${ohjeetUudelleOpiskelijalle}#end</p>
 </div>
 </body>
 
