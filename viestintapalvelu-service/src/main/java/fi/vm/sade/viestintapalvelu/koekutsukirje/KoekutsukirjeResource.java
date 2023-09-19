@@ -30,11 +30,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
+import fi.vm.sade.valinta.dokumenttipalvelu.Dokumenttipalvelu;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -43,7 +43,6 @@ import org.springframework.stereotype.Component;
 import com.lowagie.text.DocumentException;
 import com.wordnik.swagger.annotations.*;
 
-import fi.vm.sade.valinta.dokumenttipalvelu.resource.DokumenttiResource;
 import fi.vm.sade.viestintapalvelu.AsynchronousResource;
 import fi.vm.sade.viestintapalvelu.Urls;
 import fi.vm.sade.viestintapalvelu.download.Download;
@@ -66,8 +65,8 @@ public class KoekutsukirjeResource extends AsynchronousResource {
     private DownloadCache downloadCache;
     @Autowired
     private KoekutsukirjeBuilder koekutsukirjeBuilder;
-    @Qualifier
-    private DokumenttiResource dokumenttiResource;
+    @Autowired
+    private Dokumenttipalvelu dokumenttipalvelu;
     @Resource(name = "otherAsyncResourceJobsExecutorService")
     private ExecutorService executor;
 
@@ -156,8 +155,8 @@ public class KoekutsukirjeResource extends AsynchronousResource {
                 SecurityContextHolder.getContext().setAuthentication(auth);
                 try {
                     byte[] pdf = koekutsukirjeBuilder.printPDF(input);
-                    dokumenttiResource.tallenna(null, filenamePrefixWithUsernameAndTimestamp("koekutsukirje.pdf"), now().plusDays(2).toDate().getTime(),
-                            Arrays.asList("viestintapalvelu", "koekutsukirje", "pdf"), "application/pdf;charset=utf-8", new ByteArrayInputStream(pdf));
+                    dokumenttipalvelu.save(null, filenamePrefixWithUsernameAndTimestamp("koekutsukirje.pdf"), now().plusDays(2).toDate(),
+                            Arrays.asList("viestintapalvelu", "koekutsukirje", documentId), "application/pdf", new ByteArrayInputStream(pdf));
                 } catch (Exception e) {
                     e.printStackTrace();
                     LOG.error("Koekutsukirje PDF async failed: {}", e.getMessage());

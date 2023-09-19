@@ -29,7 +29,7 @@ import com.google.common.base.Optional;
 import com.google.common.base.Supplier;
 
 import fi.vm.sade.externalinterface.common.ObjectMapperProvider;
-import fi.vm.sade.valinta.dokumenttipalvelu.resource.DokumenttiResource;
+import fi.vm.sade.valinta.dokumenttipalvelu.Dokumenttipalvelu;
 import fi.vm.sade.viestintapalvelu.dao.IPostiDAO;
 import fi.vm.sade.viestintapalvelu.dao.LetterBatchDAO;
 import fi.vm.sade.viestintapalvelu.dao.LetterReceiverLetterDAO;
@@ -111,7 +111,7 @@ public class LetterServiceTest {
     @Mock
     private IPostiDAO iPostiDAO;
     @Mock
-    private DokumenttiResource dokumenttipalveluRestClient;
+    private Dokumenttipalvelu dokumenttipalvelu;
     @Mock
     private LetterPublisher letterPublisher;
 
@@ -122,7 +122,7 @@ public class LetterServiceTest {
             mockedLetterReceiversDao, new ObjectMapperProvider(), iPostiDAO, new LetterBatchStatusLegalityChecker(),
             new DocumentBuilder(), new DummyDokumenttiIdProvder(), letterPublisher);
         this.letterService.setLetterBuilder(letterBuilder);
-        this.letterService.setDokumenttipalveluRestClient(dokumenttipalveluRestClient);
+        this.letterService.setDokumenttipalvelu(dokumenttipalvelu);
     }
 
     @Test
@@ -240,8 +240,8 @@ public class LetterServiceTest {
 
         when(mockedLetterBatchDAO.read(any(Long.class))).thenReturn(batch);
         CatchParametersAnswers<Void> catchParameter = catchAllParameters();
-        doAnswer(catchParameter).when(dokumenttipalveluRestClient)
-                .tallenna(any(String.class), any(String.class), any(Long.class),
+        doAnswer(catchParameter).when(dokumenttipalvelu)
+                .save(any(String.class), any(String.class), any(Date.class),
                         any(List.class), any(String.class), any(InputStream.class));
         letterService.updateBatchProcessingFinished(1l, LetterBatchProcess.LETTER);
 
@@ -287,8 +287,8 @@ public class LetterServiceTest {
 
         when(mockedLetterBatchDAO.read(eq(batch.getId()))).thenReturn(batch);
         CatchParametersAnswers<Void> catchParameter = catchAllParameters();
-        doAnswer(catchParameter).when(dokumenttipalveluRestClient)
-                .tallenna(any(String.class), any(String.class), any(Long.class),
+        doAnswer(catchParameter).when(dokumenttipalvelu)
+                .save(any(String.class), any(String.class), any(Date.class),
                         any(List.class), any(String.class), any(InputStream.class));
         letterService.updateBatchProcessingFinished(1l, LetterBatchProcess.IPOSTI);
 

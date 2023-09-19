@@ -24,14 +24,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.google.gson.GsonBuilder;
-import fi.vm.sade.viestintapalvelu.model.types.ContentStructureType;
+import fi.vm.sade.valinta.dokumenttipalvelu.Dokumenttipalvelu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wordnik.swagger.annotations.ApiParam;
 
-import fi.vm.sade.valinta.dokumenttipalvelu.resource.DokumenttiResource;
 import fi.vm.sade.viestintapalvelu.AsynchronousResource;
 import fi.vm.sade.viestintapalvelu.common.util.FilenameHelper;
 import fi.vm.sade.viestintapalvelu.dao.dto.LetterBatchStatusDto;
@@ -45,8 +44,8 @@ public abstract class AbstractLetterResource extends AsynchronousResource {
     @Autowired
     protected LetterBuilder letterBuilder;
 
-    @Resource
-    protected DokumenttiResource dokumenttipalveluRestClient;
+    @Autowired
+    protected Dokumenttipalvelu dokumenttipalvelu;
 
     @Resource(name = "otherAsyncResourceJobsExecutorService")
     protected ExecutorService executor;

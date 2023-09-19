@@ -133,7 +133,6 @@ viestintapalvelu.dev.session-required=true
 
 oppijanumerorekisteri-service.base=https://${host.virkailija}/oppijanumerorekisteri-service
 kayttooikeus-service.base=https://${host.virkailija}/kayttooikeus-service
-dokumenttipalvelu-service.rest.url=https://${host.virkailija}/dokumenttipalvelu-service/resources
 organisaatio-service.rest.url=https://${host.virkailija}/organisaatio-service/rest
 ryhmasahkoposti-service.email.rest.url=https://${host.virkailija}/ryhmasahkoposti-service/email
 tarjonta-service.rest.url=https://${host.virkailija}/tarjonta-service/rest/v1
@@ -160,3 +159,6 @@ viestintapalvelu-service.postgresql.maxlifetimemillis=60000
 viestintapalvelu.downloadfiles.s3.region={{viestintapalvelu_downloadfiles_s3_region}}
 viestintapalvelu.downloadfiles.s3.bucket={{viestintapalvelu_downloadfiles_s3_bucket}}
 spring.profiles.active={{viestintapalvelu_spring_profiles_active}}
+
+aws.region={{aws_region}}
+aws.bucket.name={{dokumenttipalvelu_aws_bucket_name}}
