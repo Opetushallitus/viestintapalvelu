@@ -118,12 +118,17 @@ public class AddressLabelResource extends AsynchronousResource {
 
     @POST
     @Consumes("application/json")
-    @Produces("application/octet-stream")
+    @Produces({"application/octet-stream", "text/plain"})
     @Path("/sync/pdf")
     @ApiOperation(value = ApiPDFSync, notes = ApiPDFSync)
     @ApiResponses(@ApiResponse(code = 400, message = PDFResponse400))
-    public InputStream syncPdf(@ApiParam(value = "Osoitetiedot", required = true) final AddressLabelBatch input) throws DocumentException, IOException {
-        return new ByteArrayInputStream(labelBuilder.printPDF(input));
+    public Response syncPdf(@ApiParam(value = "Osoitetiedot", required = true) final AddressLabelBatch input) throws DocumentException, IOException {
+        try {
+            return Response.ok(new ByteArrayInputStream(labelBuilder.printPDF(input))).build();
+        } catch (final Exception e) {
+            LOG.error("AddressLabel PDF creation failed: {}", e.getMessage(), e);
+            return createFailureResponse(null);
+        }
     }
 
     // Async routes
