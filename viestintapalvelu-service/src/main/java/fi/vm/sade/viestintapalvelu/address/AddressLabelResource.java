@@ -143,7 +143,7 @@ public class AddressLabelResource extends AsynchronousResource {
                 try {
                     byte[] pdf = labelBuilder.printPDF(input);
                     dokumenttipalvelu.save(null, filenamePrefixWithUsernameAndTimestamp("addresslabels.pdf"), now().plusDays(2).toDate(),
-                            Arrays.asList("viestintapalvelu", "addresslabels", documentId), "application/pdf", new ByteArrayInputStream(pdf));
+                            Arrays.asList("viestintapalvelu", "addresslabels"), "application/pdf", new ByteArrayInputStream(pdf));
                 } catch (Exception e) {
                     e.printStackTrace();
                     LOG.error("AddressLabel PDF failed: {}", e.getMessage());
@@ -168,7 +168,7 @@ public class AddressLabelResource extends AsynchronousResource {
                 try {
                     byte[] csv = labelBuilder.printCSV(input);
                     dokumenttipalvelu.save(null, filenamePrefixWithUsernameAndTimestamp("addresslabels.xls"), now().plusDays(2).toDate(),
-                            Arrays.asList("viestintapalvelu", "addresslabels", documentId), "application/vnd.ms-excel", new ByteArrayInputStream(csv));
+                            Arrays.asList("viestintapalvelu", "addresslabels"), "application/vnd.ms-excel", new ByteArrayInputStream(csv));
                 } catch (Exception e) {
                     e.printStackTrace();
                     LOG.error("AddressLabel PDF failed: {}", e.getMessage());

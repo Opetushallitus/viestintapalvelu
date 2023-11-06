@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
@@ -189,7 +190,7 @@ public class PDFPrinterResource extends AsynchronousResource {
                                     documentId,
                                     filenamePrefixWithUsernameAndTimestamp(documentName),
                                     now().plusDays(2).toDate(),
-                                    Arrays.asList("viestintapalvelu", documentId),
+                                    Collections.singletonList("viestintapalvelu"),
                                     "application/pdf;charset=utf-8",
                                     new ByteArrayInputStream(pdf));
                 } catch (Exception e) {

@@ -156,7 +156,7 @@ public class KoekutsukirjeResource extends AsynchronousResource {
                 try {
                     byte[] pdf = koekutsukirjeBuilder.printPDF(input);
                     dokumenttipalvelu.save(null, filenamePrefixWithUsernameAndTimestamp("koekutsukirje.pdf"), now().plusDays(2).toDate(),
-                            Arrays.asList("viestintapalvelu", "koekutsukirje", documentId), "application/pdf", new ByteArrayInputStream(pdf));
+                            Arrays.asList("viestintapalvelu", "koekutsukirje"), "application/pdf", new ByteArrayInputStream(pdf));
                 } catch (Exception e) {
                     e.printStackTrace();
                     LOG.error("Koekutsukirje PDF async failed: {}", e.getMessage());

@@ -274,7 +274,7 @@ public class LetterResource extends AbstractLetterResource {
             }
             final LetterBatch letterBatch = letterService.findById(letterBatchId);
             final String documentId = "mergedLetterBatch" + letterBatchId;
-            final List<String> tags = Stream.of("viestintapalvelu", letterBatch.getFetchTarget(), documentId)
+            final List<String> tags = Stream.of("viestintapalvelu", letterBatch.getFetchTarget())
                     .filter(Objects::nonNull).collect(Collectors.toList());
             final Collection<ObjectMetadata> documents = dokumenttipalvelu.find(tags);
             ObjectEntity objectEntity;

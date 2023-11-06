@@ -662,7 +662,7 @@ public class LetterServiceImpl implements LetterService {
         String documentId = dokumenttiIdProvider.generateDocumentIdForLetterBatchId(batch.getId(), LetterService.DOKUMENTTI_ID_PREFIX_PDF);
         String fileName = Optional.fromNullable(batch.getTemplateName()).or("mergedletters") + "_" + Optional.fromNullable(batch.getLanguage()).or("FI")
                 + ".pdf";
-        List<String> tags = Stream.of("viestintapalvelu", batch.getFetchTarget(), documentId)
+        List<String> tags = Stream.of("viestintapalvelu", batch.getFetchTarget())
                 .filter(Objects::nonNull).collect(Collectors.toList());
         byte[] bytes = getLetterContentsByLetterBatchID(batch.getId());
         logger.info("Stroring PDF with documentId={}", documentId);
