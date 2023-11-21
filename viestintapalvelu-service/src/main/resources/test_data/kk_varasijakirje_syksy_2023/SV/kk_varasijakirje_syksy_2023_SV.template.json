@@ -120,13 +120,13 @@
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Meddelande om antagning av studerande i högskolornas andra gemensamma ansökan våren 2023",
+      "defaultValue": "Meddelande om antagning av studerande i högskolornas gemensamma ansökan hösten 2023",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Din situation i högskolornas andra gemensamma ansökan våren 2023",
+      "defaultValue": "Din situation i högskolornas gemensamma ansökan hösten 2023",
       "mandatory": false
     }
   ]

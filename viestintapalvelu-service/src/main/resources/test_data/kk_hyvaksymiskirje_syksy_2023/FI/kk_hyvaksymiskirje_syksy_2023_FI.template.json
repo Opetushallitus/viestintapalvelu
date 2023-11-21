@@ -134,19 +134,19 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen kevään 2023 toisessa yhteishaussa",
+      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen syksyn 2023 yhteishaussa",
       "mandatory": false
     },
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen kevään 2023 toisessa yhteishaussa",
+      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen syksyn 2023 yhteishaussa",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Tilanteesi korkeakoulujen kevään 2023 toisessa yhteishaussa",
+      "defaultValue": "Tilanteesi korkeakoulujen syksyn 2023 yhteishaussa",
       "mandatory": false
     }
   ]
