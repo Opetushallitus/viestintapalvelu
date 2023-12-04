@@ -19,7 +19,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Optional;
 import fi.vm.sade.externalinterface.common.ObjectMapperProvider;
-import fi.vm.sade.valinta.dokumenttipalvelu.resource.DokumenttiResource;
+import fi.vm.sade.valinta.dokumenttipalvelu.Dokumenttipalvelu;
 import fi.vm.sade.viestintapalvelu.LetterZipUtil;
 import fi.vm.sade.viestintapalvelu.common.util.CollectionHelper;
 import fi.vm.sade.viestintapalvelu.dao.IPostiDAO;
@@ -81,7 +81,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -132,8 +131,8 @@ public class LetterServiceImpl implements LetterService {
     private DokumenttiIdProvider dokumenttiIdProvider;
     private final LetterPublisher letterPublisher;
 
-    @Resource
-    private DokumenttiResource dokumenttipalveluRestClient;
+    @Autowired
+    private Dokumenttipalvelu dokumenttipalvelu;
     @Autowired
     private ApplicationContext applicationContext;
 
@@ -663,10 +662,11 @@ public class LetterServiceImpl implements LetterService {
         String documentId = dokumenttiIdProvider.generateDocumentIdForLetterBatchId(batch.getId(), LetterService.DOKUMENTTI_ID_PREFIX_PDF);
         String fileName = Optional.fromNullable(batch.getTemplateName()).or("mergedletters") + "_" + Optional.fromNullable(batch.getLanguage()).or("FI")
                 + ".pdf";
-        List<String> tags = Arrays.asList("viestintapalvelu", fileName, "pdf", documentId);
+        List<String> tags = Stream.of("viestintapalvelu", batch.getFetchTarget())
+                .filter(Objects::nonNull).collect(Collectors.toList());
         byte[] bytes = getLetterContentsByLetterBatchID(batch.getId());
         logger.info("Stroring PDF with documentId={}", documentId);
-        dokumenttipalveluRestClient.tallenna(documentId, fileName, now().plusDays(STORE_DOKUMENTTIS_DAYS).toDate().getTime(), tags,
+        dokumenttipalvelu.save(documentId, fileName, now().plusDays(STORE_DOKUMENTTIS_DAYS).toDate(), tags,
                 ContentTypes.CONTENT_TYPE_PDF, new ByteArrayInputStream(bytes));
         logger.info("Done saving pdf document to Dokumenttipalvelu for LetterBatch={}", batch.getId());
         }
@@ -827,8 +827,8 @@ public class LetterServiceImpl implements LetterService {
         this.letterBatchStatusLegalityChecker = letterBatchStatusLegalityChecker;
     }
 
-    public void setDokumenttipalveluRestClient(DokumenttiResource dokumenttipalveluRestClient) {
-        this.dokumenttipalveluRestClient = dokumenttipalveluRestClient;
+    public void setDokumenttipalvelu(Dokumenttipalvelu dokumenttipalvelu) {
+        this.dokumenttipalvelu = dokumenttipalvelu;
     }
 
     public void setDokumenttiIdProvider(DokumenttiIdProvider dokumenttiIdProvider) {

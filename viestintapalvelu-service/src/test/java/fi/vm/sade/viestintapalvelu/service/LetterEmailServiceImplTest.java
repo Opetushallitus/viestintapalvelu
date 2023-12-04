@@ -40,7 +40,6 @@ import com.google.common.base.Optional;
 import fi.vm.sade.ryhmasahkoposti.api.dto.EmailData;
 import fi.vm.sade.ryhmasahkoposti.api.dto.EmailRecipient;
 import fi.vm.sade.ryhmasahkoposti.api.dto.ReportedRecipientReplacementDTO;
-import fi.vm.sade.valinta.dokumenttipalvelu.resource.DokumenttiResource;
 import fi.vm.sade.viestintapalvelu.dao.LetterBatchDAO;
 import fi.vm.sade.viestintapalvelu.dao.criteria.TemplateCriteriaImpl;
 import fi.vm.sade.externalinterface.common.ObjectMapperProvider;
@@ -90,8 +89,6 @@ public class LetterEmailServiceImplTest {
     private LetterServiceImpl letterService;
     @Mock
     private LetterBuilder letterBuilder;
-    @Mock
-    private DokumenttiResource dokumenttiResource;
     @InjectMocks
     private LetterEmailServiceImpl letterEmailService;
 

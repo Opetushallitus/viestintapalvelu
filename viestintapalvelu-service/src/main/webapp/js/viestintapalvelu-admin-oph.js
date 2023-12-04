@@ -22,5 +22,5 @@ window.urls.addProperties ( {
     "viestintapalvelu.letterLanguageOptions": "/viestintapalvelu/api/v1/letter/languageOptions/$1",
     "viestintapalvelu.letterEmailLetterBatch": "/viestintapalvelu/api/v1/letter/emailLetterBatch/$1",
     "viestintapalvelu.letterPreviewLetterBatchEmail": "/viestintapalvelu/api/v1/letter/previewLetterBatchEmail/$1",
-    "dokumenttipalvelu-service.lataa": "/dokumenttipalvelu-service/resources/dokumentit/lataa/$1"
+    "dokumenttipalvelu.lataa": "/viestintapalvelu/api/v1/lataa/$1"
 })

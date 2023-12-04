@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
@@ -29,6 +30,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import fi.vm.sade.valinta.dokumenttipalvelu.Dokumenttipalvelu;
 import fi.vm.sade.viestintapalvelu.model.types.ContentTypes;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -48,7 +50,6 @@ import com.lowagie.text.DocumentException;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiParam;
 
-import fi.vm.sade.valinta.dokumenttipalvelu.resource.DokumenttiResource;
 import fi.vm.sade.viestintapalvelu.AsynchronousResource;
 import fi.vm.sade.viestintapalvelu.Urls;
 import fi.vm.sade.viestintapalvelu.document.DocumentBuilder;
@@ -71,7 +72,7 @@ public class PDFPrinterResource extends AsynchronousResource {
     private final Logger LOG = LoggerFactory.getLogger(LetterResource.class);
 
     @Autowired(required = false)
-    private DokumenttiResource dokumenttiResource;
+    private Dokumenttipalvelu dokumenttipalvelu;
     @Autowired
     private DownloadCache downloadCache;
     @Autowired
@@ -184,13 +185,12 @@ public class PDFPrinterResource extends AsynchronousResource {
                     byte[] pdf = buildDocument(input);
                     String documentName = input.getDocumentName() == null ? "document.pdf"
                             : input.getDocumentName() + ".pdf";
-                    dokumenttiResource
-                            .tallenna(
-                                    null,
+                    dokumenttipalvelu
+                            .save(
+                                    documentId,
                                     filenamePrefixWithUsernameAndTimestamp(documentName),
-                                    now().plusDays(2).toDate().getTime(),
-                                    Arrays.asList("viestintapalvelu",
-                                            documentName, "pdf"),
+                                    now().plusDays(2).toDate(),
+                                    Collections.singletonList("viestintapalvelu"),
                                     "application/pdf;charset=utf-8",
                                     new ByteArrayInputStream(pdf));
                 } catch (Exception e) {

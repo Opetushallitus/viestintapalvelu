@@ -56,7 +56,7 @@ angular.module('app').factory('Printer', ['$http', '$window', '$q', function ($h
 
       function doDownload(id) {
         return function () {
-          $window.location.href = window.url("dokumenttipalvelu-service.lataa", id.batchId);
+          $window.location.href = window.url("dokumenttipalvelu.lataa", id.batchId);
         }
       }
 

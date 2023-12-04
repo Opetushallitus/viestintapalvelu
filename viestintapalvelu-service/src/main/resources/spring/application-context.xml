@@ -126,15 +126,10 @@
             <constructor-arg index="0"  name="callerId" value="1.2.246.562.10.00000000001.viestintapalvelu.viestintapalvelu-service"/>
         </bean>
 
-        <jaxrs-client:client id="dokumenttipalveluRestClient" serviceClass="fi.vm.sade.valinta.dokumenttipalvelu.resource.DokumenttiResource"
-                             address="${dokumenttipalvelu-service.rest.url}" inheritHeaders="true">
-            <jaxrs-client:outInterceptors>
-                <ref bean="ophRequestHeaders"/>
-            </jaxrs-client:outInterceptors>
-            <jaxrs-client:providers>
-                <ref bean="customJsonProvider"/>
-            </jaxrs-client:providers>
-        </jaxrs-client:client>
+        <bean id="dokumenttipalvelu" class="fi.vm.sade.valinta.dokumenttipalvelu.Dokumenttipalvelu">
+            <constructor-arg index="0" value="${aws.region}" />
+            <constructor-arg index="1" value="${aws.bucket.name}" />
+        </bean>
 
         <jaxrs-client:client id="organisaatioResourceClient" serviceClass="fi.vm.sade.viestintapalvelu.externalinterface.api.OrganisaatioResource" address="${organisaatio-service.rest.url}" inheritHeaders="true">
             <jaxrs-client:outInterceptors>

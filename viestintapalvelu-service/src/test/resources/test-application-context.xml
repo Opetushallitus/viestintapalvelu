@@ -50,7 +50,7 @@
     <util:map id="optionsCacheConfig" key-type="java.lang.String" value-type="java.lang.Long">
     </util:map>
 
-    <mockito:mock id="dokumenttipalvelu" class="fi.vm.sade.valinta.dokumenttipalvelu.resource.DokumenttiResource" />
+    <mockito:mock id="dokumenttipalvelu" class="fi.vm.sade.valinta.dokumenttipalvelu.Dokumenttipalvelu" />
     <mockito:mock id="kayttooikeusRestClient" class="fi.vm.sade.externalinterface.KayttooikeusRestClient" />
     <mockito:mock id="oppijanumeroRekisteriRestClient" class="fi.vm.sade.externalinterface.OppijanumeroRekisteriRestClient"/>
     <mockito:mock id="organisaatioResourceClient" class="fi.vm.sade.viestintapalvelu.externalinterface.api.OrganisaatioResource"/>

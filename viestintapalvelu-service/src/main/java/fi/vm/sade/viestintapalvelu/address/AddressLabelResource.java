@@ -31,11 +31,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
+import fi.vm.sade.valinta.dokumenttipalvelu.Dokumenttipalvelu;
 import fi.vm.sade.viestintapalvelu.download.cache.DocumentId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -44,7 +44,6 @@ import org.springframework.stereotype.Service;
 import com.lowagie.text.DocumentException;
 import com.wordnik.swagger.annotations.*;
 
-import fi.vm.sade.valinta.dokumenttipalvelu.resource.DokumenttiResource;
 import fi.vm.sade.viestintapalvelu.AsynchronousResource;
 import fi.vm.sade.viestintapalvelu.Urls;
 import fi.vm.sade.viestintapalvelu.download.Download;
@@ -64,8 +63,8 @@ public class AddressLabelResource extends AsynchronousResource {
     private DownloadCache downloadCache;
     @Autowired
     private AddressLabelBuilder labelBuilder;
-    @Qualifier
-    private DokumenttiResource dokumenttiResource;
+    @Autowired
+    private Dokumenttipalvelu dokumenttipalvelu;
     @Resource(name = "otherAsyncResourceJobsExecutorService")
     private ExecutorService executor;
 
@@ -119,12 +118,17 @@ public class AddressLabelResource extends AsynchronousResource {
 
     @POST
     @Consumes("application/json")
-    @Produces("application/octet-stream")
+    @Produces({"application/octet-stream", "text/plain"})
     @Path("/sync/pdf")
     @ApiOperation(value = ApiPDFSync, notes = ApiPDFSync)
     @ApiResponses(@ApiResponse(code = 400, message = PDFResponse400))
-    public InputStream syncPdf(@ApiParam(value = "Osoitetiedot", required = true) final AddressLabelBatch input) throws DocumentException, IOException {
-        return new ByteArrayInputStream(labelBuilder.printPDF(input));
+    public Response syncPdf(@ApiParam(value = "Osoitetiedot", required = true) final AddressLabelBatch input) throws DocumentException, IOException {
+        try {
+            return Response.ok(new ByteArrayInputStream(labelBuilder.printPDF(input))).build();
+        } catch (final Exception e) {
+            LOG.error("AddressLabel PDF creation failed: {}", e.getMessage(), e);
+            return createFailureResponse(null);
+        }
     }
 
     // Async routes
@@ -143,8 +147,8 @@ public class AddressLabelResource extends AsynchronousResource {
                 SecurityContextHolder.getContext().setAuthentication(auth);
                 try {
                     byte[] pdf = labelBuilder.printPDF(input);
-                    dokumenttiResource.tallenna(null, filenamePrefixWithUsernameAndTimestamp("addresslabels.pdf"), now().plusDays(2).toDate().getTime(),
-                            Arrays.asList("viestintapalvelu", "addresslabels", "pdf"), "application/pdf;charset=utf-8", new ByteArrayInputStream(pdf));
+                    dokumenttipalvelu.save(null, filenamePrefixWithUsernameAndTimestamp("addresslabels.pdf"), now().plusDays(2).toDate(),
+                            Arrays.asList("viestintapalvelu", "addresslabels"), "application/pdf", new ByteArrayInputStream(pdf));
                 } catch (Exception e) {
                     e.printStackTrace();
                     LOG.error("AddressLabel PDF failed: {}", e.getMessage());
@@ -168,8 +172,8 @@ public class AddressLabelResource extends AsynchronousResource {
                 SecurityContextHolder.getContext().setAuthentication(auth);
                 try {
                     byte[] csv = labelBuilder.printCSV(input);
-                    dokumenttiResource.tallenna(null, filenamePrefixWithUsernameAndTimestamp("addresslabels.xls"), now().plusDays(2).toDate().getTime(),
-                            Arrays.asList("viestintapalvelu", "addresslabels", "xls"), "application/vnd.ms-excel", new ByteArrayInputStream(csv));
+                    dokumenttipalvelu.save(null, filenamePrefixWithUsernameAndTimestamp("addresslabels.xls"), now().plusDays(2).toDate(),
+                            Arrays.asList("viestintapalvelu", "addresslabels"), "application/vnd.ms-excel", new ByteArrayInputStream(csv));
                 } catch (Exception e) {
                     e.printStackTrace();
                     LOG.error("AddressLabel PDF failed: {}", e.getMessage());
