@@ -134,19 +134,19 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Notification of the student selection results in joint application to higher education spring 2023",
+      "defaultValue": "Notification of the student selection results in joint application to higher education spring 2024",
       "mandatory": false
     },
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Notification of the student selection results in joint application to higher education spring 2023",
+      "defaultValue": "Notification of the student selection results in joint application to higher education spring 2024",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Your current situation in joint application to higher education spring 2023",
+      "defaultValue": "Your current situation in joint application to higher education spring 2024",
       "mandatory": false
     }
   ]
