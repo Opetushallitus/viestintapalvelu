@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="sv" dir="ltr">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <style type="text/css">$tyylit</style>
+    <title>Efterhandledningsbrev</title>
+  </head>
+
+  <body>
+    <header role="banner">
+      <dl>
+        <dt>Datum</dt><dd>$letterDate</dd>
+        <dt>Mottagare</dt><dd>$osoite</dd>
+        <dt>Studerandenummer</dt><dd>$hakijaOid</dd>
+      </dl>
+    </header>
+
+    <main role="main">
+      <article>
+        <h1>$kirjeotsikko</h1>
+
+        <section>
+          <h2>
+            Bästa sökande,
+          </h2>
+
+          <p>
+            Du deltog i gemensam ansökan till utbildning efter den grundläggande utbildningen våren 2023. Tillsvidare har du tyvärr inte blivit antagen till någon av de utbildningar som du sökte till. Du kan dock ännu bli antagen från en eventuell reservplats. I slutet av detta brev ser du ditt resultat för de utbildningar du sökte till. Vid antagningen av studerande följs undervisnings- och kulturministeriets förordning om antagning av studerande. Du hittar mer information om antagningsgrunderna och faktorer som ger poäng i Studieinfo, under rubriken Antagningsgrunder i gemensam ansökan.
+          </p>
+        </section>
+
+        <section>
+          <h2>Om du inte fick en studieplats</h2>
+
+          <p>
+            Läroanstalterna kan ordna kontinuerlig ansökan bland annat för att fylla lediga platser i den egentliga ansökan. Du hittar information om andra utbildningsalternativ och ansökningsanvisningar i Studieinfo eller via läroanstalternas webbplatser. Folkhögskolornas långa linjer inklusive utbildning inom fritt bildningsarbete som riktas till läropliktiga hittas i Studieinfo eller på adressen <a href="https://www.folkhogskolor.fi">folkhogskolor.fi</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2>Ansökningsskyldighet</h2>
+
+          <p>
+            En läropliktig ska före slutet av den sista årskursen inom den grundläggande utbildningen söka till utbildning på andra stadiet, till utbildning i övergångsskedet eller till annan utbildning som omfattas av läroplikten. Om den läropliktige inte får en studieplats i den gemensamma ansökan, fortsätter skyldigheten att söka till utbildning tills den läropliktige får en studieplats.
+          </p>
+          <h2>Handledning och stöd</h2>
+          <p>
+            Om en elev som avslutar den grundläggande utbildningen är utan studieplats, ger elev- och studiehandledarna vid grundskolorna stöd och handledning i att hitta en lämplig studieplats under sommaren. Om en läropliktig fortfarande efter sommaren inte har en studieplats överförs handlednings- och tillsynsansvaret till den läropliktiges boendekommun.
+          </p>
+
+          <p>
+            På TE-tjänster får du hjälp och stöd i frågor om utbildnings- och yrkesval, tfn
+            <a href="tel:0295020702">0295&nbsp;020&nbsp;702</a>, mån-fre kl.
+            9.00–16.15, <a href="mailto:utbildningsradgivning@te-byran.fi">utbildningsradgivning@te-byran.fi</a>
+          </p>
+
+          <p>
+            På adressen <a href="http://www.te-tjanster.fi">te-tjanster.fi</a>
+            hittar du uppgifter om samtliga tjänster som TE-byrån erbjuder.
+          </p>
+        </section>
+
+        <section>
+          <h2>$liiteotsikko</h2>
+
+          <table class="tulokset-table">
+            <caption>Du ser här dina ansökningsmål i den ordning du satt dem i</caption>
+            <thead>
+              <tr>
+                <th class="sarake sarake-kapea">Dina ansökningsmål</th>
+                <th class="sarake sarake-kapea">Antagna / Alla sökande</th>
+                <th class="sarake sarake-kapea">Dina poäng / Lägsta godkända poängtal</th>
+                <th class="sarake sarake-kapea">Resultat från inträdes- eller lämplighetsprov</th>
+                <th class="sarake sarake-kapea">Antagningsresultat</th>
+              </tr>
+            </thead>
+            <tbody>
+              #foreach( $tulos in $tulokset )
+              #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
+              <tr class="$even">
+                  <th scope="row" class="sarake sarake-kapea#if($tulos.hyvaksytty=='true') bold#end">
+                      $tulos.organisaationNimi, $tulos.hakukohteenNimi
+                  </th>
+                <td class="sarake sarake-kapea">$tulos.hyvaksytyt</td>
+                <td class="sarake sarake-kapea">#if($tulos.omatPisteet)$tulos.omatPisteet #end</td>
+                <td class="sarake sarake-kapea">#if($tulos.paasyJaSoveltuvuuskoe)$tulos.paasyJaSoveltuvuuskoe #end</td>
+                <td class="sarake sarake-kapea">
+                    <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
+                    #if($tulos.hylkaysperuste)<br /><span>$tulos.hylkaysperuste</span>#end
+                </td>
+              </tr>
+              #end
+            </tbody>
+          </table>
+
+          <h3 class="tulokset-list-heading" aria-hidden="true">
+              Du ser här dina ansökningsönskemål i den ordning du angett dem
+          </h3>
+          <ol class="tulokset-list" aria-hidden="true" tabindex="-1">
+              #foreach( $tulos in $tulokset )
+              <li class="tulokset-list-tulos">
+                  <div class="hakukohde-nimi#if($tulos.hyvaksytty=='true') bold#end">
+                      $tulos.organisaationNimi, $tulos.hakukohteenNimi
+                  </div>
+                  <table class="tulokset-list-table">
+                      <tr>
+                          <th scope="row" class="sarake">Antagna / Alla sökande</th>
+                          <td class="sarake">$tulos.hyvaksytyt</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="sarake">Dina poäng / Lägsta godkända poängtal</th>
+                          <td class="sarake">#if($tulos.omatPisteet)$tulos.omatPisteet#{else} - #end</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="sarake">Resultat från inträdes- eller lämplighetsprov</th>
+                          <td class="sarake">#if($tulos.paasyJaSoveltuvuuskoe)$tulos.paasyJaSoveltuvuuskoe#{else} - #end</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="sarake">Antagningsresultat</th>
+                          <td class="sarake">
+                              <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
+                              #if($tulos.hylkaysperuste)<br /><span>$tulos.hylkaysperuste</span>#end
+                          </td>
+                      </tr>
+                  </table>
+              </li>
+              #end
+          </ol>
+        </section>
+
+        <section>
+          <h2>Så här läser du tabellen</h2>
+
+          <h3>Dina ansökningsönskemål</h3>
+
+          <p>
+            Dina ansökningsönskemål i den ordning du har angett dem i ansökan.
+            
+          </p>
+
+          <h3>Antagna / Alla sökande</h3>
+
+          <p>
+            Antagna till utbildningen i relation till det totala antalet
+            sökande.
+          </p>
+
+          <h3>Dina poäng / Lägsta godkända poängtal</h3>
+
+          <p>
+            Det totala poängantalet ges för flera olika delar. Uppgifter om antagningsgrunderna samt poängsättningen hittar du i Studieinfo, under rubriken Antagningsgrunder i gemensam ansökan. Lägsta godkända poäng är det lägsta antalet poängantal, enligt vilken studerande har antagits till utbildningen. Om du har sökt till utbildning med ett utländskt betyg, utan avgångsbetyg eller om du har studerat matematik och modersmål enligt individualiserad lärokurs har du inte fått några poäng.
+          </p>
+          <p>
+            Om du har sökt till yrkesutbildning med krävande särskilt stöd, Hux-utbildning eller folkhögskoleåret för läropliktiga, har du inte fått några poäng.
+          </p>
+
+          <h3>Resultat från inträdes- eller lämplighetsprov</h3>
+
+          <p>
+            Här kan du se ditt poängantal om du deltog i ett inträdes- och lämplighetsprov. Om du har sökt med ett utländskt betyg, utan avgångsbetyg eller om du har studerat matematik och modersmålet enligt individualiserad lärokurs, har du sökt via antagning enligt prövning och inte fått några poäng. Tilläggsinformation om resultatet får du direkt av den läroanstalt där du genomförde provet.
+          </p>
+
+          <h3>Antagningsresultat</h3>
+
+          <p>
+            Antagningsresultatet kan vara godkänd, godkänd enligt prövning, på reservplats, underkänd eller annullerad. Annullerad betyder att du har blivit antagen till ett högre ansökningsmål.
+          </p>
+
+          <p>
+            Ditt ordningsnummer om du är på reservplats. Du kan inte vara på reservplats till en utbildning om din antagningsuppgift är underkänd eller annullerad.
+          </p>
+        </section>
+
+        <section>
+          <h2>Mer information om antagningsresultatet</h2>
+
+          <section>
+            <h3>Samma antal poäng till yrkesutbildning</h3>
+
+            <p>
+              Sökande till yrkesutbildning rangordnas enligt följande grunder:
+            </p>
+
+            <ol>
+              <li>
+                prioritering av ansökningsmål
+              </li>
+              <li>
+                poängantalet för eventuellt inträdes- eller lämplighetsprov
+              </li>
+              <li>
+                allmän skolframgång
+              </li>
+              <li>
+                betonade vitsord 
+              </li>
+            </ol>
+
+            <p>
+              Efter detta sker antagningen av studerande med samma poängantal
+              i slumpmässig ordning.
+            </p>
+          </section>
+
+          <section>
+            <h3>Samma antal poäng till gymnasieutbildning</h3>
+
+            <p>
+              Gymnasierna antar de studerande i den ordning som anges av
+              medeltalet. Om flera
+              sökande har samma medeltal rangordnas de enligt följande
+              grunder:
+            </p>
+
+            <ol>
+              <li>
+                prioritering av ansökningsmål
+              </li>
+              <li>
+                medeltalet av läsämnen samt gymnastik, slöjd,
+                huslig ekonomi, musik ochbildkonst
+              </li>
+            </ol>
+
+            <p>
+              Efter detta sker antagningen av studerande med samma poängantal
+              i slumpmässig ordning.
+            </p>
+          </section>
+
+          <section>
+            <h3>Antagning enligt prövning</h3>
+
+            <p>
+              Utbildningsanordnaren kan då det finns särskilda skäl anta studerande oberoende av poäng. Om du söker enligt prövning med inlärningssvårigheter, sociala skäl eller otillräckliga språkkunskaper deltar du även i den normala antagningen som baserar sig på poäng. Om du avlagt din grundutbildning utomlands, inte har fullgjort läroplikten (inget avgångsbetyg) eller eller om du har studerat matematik och modersmål enligt individualiserad lärokurs, kan du endast bli antagen enligt prövning. Då är antagningsresultatet antingen godkänd enligt prövning eller underkänd.
+            </p>
+          </section>
+
+          <section>
+            <h3>Kontakt</h3>
+            <p>
+              Tilläggsinformation får du på
+              adressen <a href="https://studieinfo.fi">studieinfo.fi</a>. Om
+              du behöver hjälp med att tolka brevet eller om antagningen
+              orsakar frågor som inte klarnat via direkt kontakt till
+              läroanstalten, kan du kontakta Studieinfos ansökningstjänst
+              (<a href="mailto:info@studieinfo.fi">info@studieinfo.fi</a>
+              eller tfn <a href="tel:0295331010">029&nbsp;533&nbsp;1010<a/>).
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Rätt att söka ändring</h2>
+
+          <p>
+            Du kan söka ändring till antagningsresultatet genom rättelseyrkan hos regionförvaltningsverket. Innan du ansöker om ändring bör du be om ett överklagbart beslut av den läroanstalt som fattat beslutet om antagningen. Du kan be om beslutet muntligt eller skriftligt. Du bör be om beslutet inom 30 dagar från och med det att du har fått detta meddelande för kännedom. Ändring i ett beslut söks genom rättelseyrkan inom 14 dagar efter att du fått antagningsbeslutet hos det regionförvaltningsverk inom vars område läroanstalten finns. Rättelseyrkan som gäller antagning till svenskspråkig utbildning riktas dock till Regionförvaltningsverket i Västra och Inre Finland. Regionförvaltningsverkens adresser hittar du i slutet av brevet. Kontakta Studieinfos ansökningstjänst vid Utbildningsstyrelsen om läroanstalten av någon orsak inte beviljar beslutet.
+          </p>
+
+          <h2>Regionförvaltningsverkens adresser</h2>
+
+          <ul class="avi-osoitteet">
+             <li>
+              Regionförvaltningsverket i Västra och Inre Finland<br />
+              PB 5<br />
+              13035 AVI
+            </li>
+            
+            <li>
+              Regionförvaltningsverket i Södra Finland<br />
+              PB 1<br />
+              13035 AVI
+            </li>
+
+            <li>
+              Regionförvaltningsverket i Östra Finland<br />
+              PB 2<br />
+              13035 AVI
+            </li>
+
+            <li>
+              Regionförvaltningsverket i Sydvästra Finland<br />
+              PB 4<br />
+              13035 AVI
+            </li>
+
+            <li>
+              Regionförvaltningsverket i Norra Finland<br />
+              PB 6<br />
+              13035 AVI
+            </li>
+
+            <li>
+              Regionförvaltningsverket i Lappland<br />
+              PB 3<br />
+              13035 AVI
+            </li>
+          </ul>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
