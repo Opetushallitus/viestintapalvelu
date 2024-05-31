@@ -104,7 +104,7 @@
       {
         "key": "email_content2",
         "name": "Sähköpostiviestinn sisältö (loppu)",
-        "description": "Sähköpostiviestinn sisältö",
+        "description": "Sähköpostiviestin sisältö",
         "contentType": "html",
         "numberOfRows": 20
       }
@@ -127,7 +127,7 @@
     {
       "id": 2,
       "name": "liiteotsikko",
-      "defaultValue": "Tilanteesi kevään 2023 yhteishaussa",
+      "defaultValue": "Tilanteesi kevään 2024 yhteishaussa",
       "mandatory": false
     },
     {
