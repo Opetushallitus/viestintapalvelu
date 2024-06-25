@@ -1,0 +1,190 @@
+html {
+  color: #2C3A40;
+  font-family: OpenSans, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60em;
+}
+
+@media (max-width: 599px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+dt, dd {
+  margin-bottom: 0.2em;
+}
+
+dt {
+  font-weight: 600;
+}
+
+blockquote {
+  background-color: #ebebeb;
+  margin: 0;
+  padding: 0.5em 1em;
+}
+
+.hakukohteet {
+  list-style: inside none;
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+}
+
+.tulokset {
+  list-style: inside none;
+  padding: 0;
+  margin: 0;
+}
+
+.hakukohde {
+  background-color: #ebebeb;
+  margin-bottom: 0.5em;
+  padding: 2em;
+}
+
+.hakukohde-tiedot {
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.hakukohde-nimi {
+  width: 60%;
+  padding-right: 1em;
+}
+
+.hakukohde-tulos {
+  width: 40%;
+  padding-left: 1em;
+}
+
+.valintatapajonot-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.valintatapajono-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sarake {
+  width: 50%;
+  padding: 0.5em 1em;
+  border-bottom: 0.1em solid #2C3A40;
+  text-align: left;
+  vertical-align: top;
+  font-weight: 400;
+}
+
+.sarake-kapea {
+  width: 20%;
+}
+
+.sarake-levea {
+  width: 40%;
+}
+
+.sarake:first-child {
+  padding-left: 0;
+}
+
+.sarake:last-child {
+  padding-right: 0;
+}
+
+.valintatapajonot-list {
+  list-style: inside none;
+  padding: 0;
+  margin: 0;
+}
+
+.valintatapajono {
+  border-top: 0.15em solid #2C3A40;
+  margin-bottom: 2em;
+}
+
+.valintatapajono:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 599px) {
+  .hakukohde {
+    padding: 1em;
+  }
+
+  .hakukohde-tiedot {
+    flex-direction: column;
+  }
+
+  .hakukohde-nimi {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 2em;
+  }
+
+  .hakukohde-tulos {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .valintatapajonot-table {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+}
+
+@media (min-width: 600px) {
+  .valintatapajonot-list {
+    display: none;
+  }
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
+}
+
+@media only print {
+  html {
+    font-size: 14px;
+  }
+
+  article:not(:last-of-type) {
+    page-break-after: always;
+  }
+}
+
+.opiskelupaikan-vastaanottoilmoitus-kaavake {
+  list-style-type: none
+}
+
+.opiskelupaikan-vastaanottoilmoitus-kaavake__vaihtoehto::before {
+  content: "\2610";
+}
