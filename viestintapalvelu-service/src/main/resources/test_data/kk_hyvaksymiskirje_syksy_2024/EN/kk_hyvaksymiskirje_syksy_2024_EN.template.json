@@ -134,19 +134,19 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Notification of the admission results in joint application to degree programmes in Finnish/Swedish spring 2024",
+      "defaultValue": "Notification of the admission results in autumn 2024 joint application",
       "mandatory": false
     },
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Notification of the admission results in joint application to degree programmes in Finnish/Swedish spring 2024",
+      "defaultValue": "Notification of the admission results in autumn 2024 joint application",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Your current situation in joint application to degree programmes in Finnish/Swedish spring 2024",
+      "defaultValue": "Your current situation in autumn 2024 joint application",
       "mandatory": false
     }
   ]
