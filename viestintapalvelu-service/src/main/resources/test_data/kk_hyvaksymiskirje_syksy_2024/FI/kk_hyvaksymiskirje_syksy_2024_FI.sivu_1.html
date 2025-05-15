@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <bookmarks>
+        <bookmark name="Hyväksymiskirje" href="hyvaksymiskirje" />
+    </bookmarks>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <style type="text/css">$tyylit</style>
+    <title>Hyväksymiskirje</title>
+</head>
+
+<body>
+<div class='header'>
+    <div class="row">
+        <div class="organisaatio">
+            #if($hakijapalveluidenOsoite)
+            <p>
+                Lähettäjä:<br/>
+                $hakijapalveluidenOsoite.organisaationimi,<br/>
+                $hakijapalveluidenOsoite.addressline #if($hakijapalveluidenOsoite.postalCode != ''),<br/>
+                $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city #end
+            </p>
+            #end
+        </div>
+        <div class="letterdate">
+            <div class="date">$letterDate</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class='osoitetarra'>
+            <div>$osoite</div>
+            <div>
+                <br/>Oppijanumero:<br/>$hakijaOid
+            </div>
+            <div>
+                <br/>Hakemusnumero:<br/>$hakemusOid
+            </div>
+        </div>
+        <div class="syntymaaika">
+            <div class="date">$syntymaaika</div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div>
+    <h1 name="hyvaksymiskirje">$kirjeotsikko</h1>
+    <p><b>Hakukohteet</b></p>
+    #foreach( $tulos in $tulokset )
+    #if($tulos.hyvaksytty=='true')
+    <p><b>$tulos.hakukohteenNimi - $tulos.organisaationNimi</b></p>
+    #end
+    #end
+
+<p>Onneksi olkoon! Sinut on hyväksytty varasijalta korkeakoulujen syksyn 2024 yhteishaussa yllä mainittuun opiskelupaikkaan.</p>
+
+<p>Tässä kirjeessä on tietoa myös muiden hakukohteittesi tilanteesta. Opiskelijaksi hyväksymisen jälkeen mahdolliset
+    alemmat hakukohteesi ovat peruuntuneet automaattisesti. Jos olet varalla johonkin ylempään hakukohteeseesi, voit
+    vielä tulla siihen valituksi, jos paikkoja vapautuu. Lisätietoa kunkin hakukohteesi valintaperusteista saat
+    Opintopolku.fi -sivustolta sekä ko. korkeakoulusta.</p>
+
+<h2>Opiskelupaikan vastaanottaminen</h2>
+<p>Jos et ole ottanut opiskelupaikkaa vielä vastaan sinun tulee tehdä se ennen <b>$palautusTimestampFi</b>.
+    Ellet ota paikkaa vastaan määräaikana, menetät sen (Yliopistolaki 38 §, 43§ /Ammattikorkeakoululaki 28 c §, 32§).
+    Ilmoita otatko opiskelupaikan vastaan ensisijaisesti Oma Opintopolku -palvelussa.
+    Mikäli et aio ottaa tarjottua opiskelupaikkaa vastaan, ilmoitathan siitä, jotta paikkaa voidaan tarjota jonossa seuraavalle.</p>
+<p>Opiskelupaikan vastaanottamisen lisäksi sinun täytyy ilmoittautua korkeakouluun määräaikaan mennessä. Ellet
+    ilmoittaudu määräaikana, menetät opiskeluoikeuden. Jos otat paikan vastaan Oma Opintopolku -palvelussa, voit jatkaa
+    suoraan sähköiseen ilmoittautumispalveluun. Korkeakoulukohtaiset ilmoittautumisohjeet ja tiedot opintojen
+    aloittamisesta saat korkeakoulun verkkosivuilta: katso linkki "Ohjeet uusille opiskelijoille" sivun alaosassa.</p>
+
+    $sisalto
+    <h2>Ohjeet uusille opiskelijoille</h2>
+    <p>#if($ohjeetUudelleOpiskelijalle)${ohjeetUudelleOpiskelijalle}#end</p>
+    <h2>Tervetuloa opiskelemaan!</h2>
+
+</div>
+</body>
+
+</html>
