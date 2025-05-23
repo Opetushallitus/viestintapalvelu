@@ -114,19 +114,19 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Meddelande om antagning av studerande i högskolornas första gemensamma ansökan våren 2024",
+      "defaultValue": "Meddelande om antagning av studerande i högskolornas första gemensamma ansökan våren 2025",
       "mandatory": false
     },
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Meddelande om antagning av studerande i högskolornas första gemensamma ansökan våren 2024",
+      "defaultValue": "Meddelande om antagning av studerande i högskolornas första gemensamma ansökan våren 2025",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Din situation i högskolornas första gemensamma ansökan våren 2024",
+      "defaultValue": "Din situation i högskolornas första gemensamma ansökan våren 2025",
       "mandatory": false
     }
   ]
