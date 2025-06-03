@@ -1083,19 +1083,6 @@
         </repository>
     </repositories>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>smartics</id>
-            <url>https://www.smartics.eu/nexus/content/groups/public-group</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
     <!-- Some of these profiles are apparently needed by bamboo -->
     <!-- Copied from build-parent, TODO: clean unneeded profiles -->
     <profiles>
