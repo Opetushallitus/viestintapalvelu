@@ -128,13 +128,13 @@
     {
       "id": 2,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus perusopetuksen jälkeisen koulutuksen yhteishaun tuloksista keväällä 2023",
+      "defaultValue": "Ilmoitus perusopetuksen jälkeisen koulutuksen yhteishaun tuloksista keväällä 2025",
       "mandatory": false
     },
     {
       "id": 3,
       "name": "liiteotsikko",
-      "defaultValue": "Tilanteesi kevään 2023 yhteishaussa",
+      "defaultValue": "Tilanteesi kevään 2025 yhteishaussa",
       "mandatory": false
     },
     {
