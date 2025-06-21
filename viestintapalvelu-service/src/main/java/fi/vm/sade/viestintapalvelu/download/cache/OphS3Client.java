@@ -141,13 +141,12 @@ class OphS3Client {
     }
 
     Download getObject(DocumentId documentId) {
-        AsyncResponseTransformer handler = AsyncResponseTransformer.toBytes();
         try(S3AsyncClient client = getClient()) {
-            AsyncResponseTransformer<GetObjectResponse, ResponseBytes> castHandler = (AsyncResponseTransformer<GetObjectResponse, ResponseBytes>) handler;
-            CompletableFuture<ResponseBytes> fullObject = getObjectContents(client, documentId, castHandler);
+            CompletableFuture<ResponseBytes<GetObjectResponse>> responseBytes = getObjectContents(client, documentId);
             Header header = headObject(client, documentId).join();
-            ResponseBytes responseBytes = fullObject.join();
-            return new Download(header.getContentType(), header.getFilename(), responseBytes.asByteArray());
+            return new Download(header.getContentType(), header.getFilename(), responseBytes.join().asByteArray());
+        } catch (Exception e) {
+            throw new RuntimeException(String.format("Error getting document %s from S3", documentId.getDocumentId()), e);
         }
     }
 
@@ -189,10 +188,9 @@ class OphS3Client {
     }
 
 
-    private CompletableFuture<ResponseBytes> getObjectContents(S3AsyncClient client, DocumentId id, AsyncResponseTransformer<GetObjectResponse, ResponseBytes> asyncResponseHandler) {
+    private CompletableFuture<ResponseBytes<GetObjectResponse>> getObjectContents(S3AsyncClient client, DocumentId id) {
         GetObjectRequest getObjectRequest = GetObjectRequest.builder().bucket(bucket).key(id.getDocumentId()).build();
-        return client.getObject(getObjectRequest, asyncResponseHandler);
-
+        return client.getObject(getObjectRequest, AsyncResponseTransformer.toBytes());
     }
 
     public static class AddObjectResponse<T> {
