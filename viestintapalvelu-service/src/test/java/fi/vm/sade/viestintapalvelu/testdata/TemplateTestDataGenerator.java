@@ -34,15 +34,6 @@ public class TemplateTestDataGenerator {
 
     public static void main(String[] args) throws IOException {
         //String templateKeys = System.getProperty("template");
-        //String templateKeys = "kayttooikeus_kutsu";
-        //String templateKeys = "omattiedot_email_2aste";
-        //String templateKeys = "2aste_koekutsukirje_2022";
-        //String templateKeys = "2aste_hyvaksymiskirje_2023,2aste_jalkiohjauskirje_2023,2aste_hyvaksymiskirje_huoltajille_2023,2aste_jalkiohjauskirje_huoltajille_2023";
-        //String templateKeys = "kk_toinen_hyvaksymiskirje_2023,kk_toinen_jalkiohjauskirje_2023";
-        //String templateKeys = "kk_jalkiohjauskirje_syksy_2023,kk_hyvaksymiskirje_syksy_2023,kk_varasijakirje_syksy_2023";
-        //String templateKeys = "2aste_hyvaksymiskirje_2024,2aste_jalkiohjauskirje_2024";
-        //String templateKeys = "kk_ensimmainen_hyvaksymiskirje_2024,kk_ensimmainen_jalkiohjauskirje_2024";
-        //String templateKeys = "kk_toinen_hyvaksymiskirje_2024,kk_toinen_jalkiohjauskirje_2024";
         //String templateKeys = "kk_jalkiohjauskirje_syksy_2024,kk_hyvaksymiskirje_syksy_2024";
         //String templateKeys = "kk_ensimmainen_hyvaksymiskirje_2025,kk_ensimmainen_jalkiohjauskirje_2025";
         //String templateKeys = "2aste_hyvaksymiskirje_2025,2aste_jalkiohjauskirje_2025";
