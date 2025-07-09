@@ -19,7 +19,11 @@ import fi.vm.sade.viestintapalvelu.template.Template;
 import org.springframework.util.StringUtils;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.*;
 
@@ -49,27 +53,25 @@ public class TemplateTestDataGenerator {
     }
 
     private static void generateTemplate(String templateKey, String language) throws IOException {
-        final String path = String.format("test_data/%s/%s/", templateKey, language);
+        final String path = String.format("%s/kirjepohjat/%s/%s/", System.getProperty("user.dir"), templateKey, language);
         final String templatePrefix = String.format("%s_%s", templateKey, language);
         final String templateFile = String.format("%s.template.json", templatePrefix);
         final String outputFile = String.format("%s.json", templatePrefix);
-        final ClassPathResource resource = new ClassPathResource(String.format("%s%s", path, templateFile));
+        final File resource = new File(String.format("%s/%s", path, templateFile));
         if (!resource.exists()) {
             System.out.println("Skipping non-existing language " + language);
             return;
         }
-        final String template = IOUtils.toString(resource.getInputStream());
+        final String template = IOUtils.toString(Files.newInputStream(resource.toPath()));
 
         List<String> files = filesInPath(path);
+        files.forEach(f -> System.out.println("File: " + f));
         Map<String, String> replaces = filesToReplacements(path, templatePrefix, templateFile, outputFile, files);
 
         final Gson gson = new GsonBuilder()
                 .disableHtmlEscaping().registerTypeAdapter(String.class, new MustacheStringReader(replaces)).create();
         final Template renderedTemplate = gson.fromJson(template, Template.class);
-
-        final String testDataPath = "/viestintapalvelu-service/src/main/resources";
-        final String viestintapalveluPath = new File("").getAbsolutePath();
-        final String outputUrl = String.format("%s/%s/%s%s", viestintapalveluPath, testDataPath, path, outputFile);
+        final String outputUrl = String.format("%s/%s", path, outputFile);
 
         System.out.println("Writing to output file " + outputFile);
 
@@ -82,10 +84,9 @@ public class TemplateTestDataGenerator {
     private static Map<String, String> filesToReplacements(String path, String templatePrefix, String templateFile, String outputFile, List<String> files) throws IOException {
         Map<String,String> replaces = new HashMap<>();
         for(String file : files) {
-            if(!file.equals(templateFile) && !file.equals(outputFile) && file.startsWith(templatePrefix)) {
+            if(!file.equals(templateFile) && !file.equals(outputFile) && file.contains(templatePrefix)) {
                 String replaceKey = file.substring(templatePrefix.length() + 1);
-                final String replaceData = IOUtils.toString(new ClassPathResource(
-                        String.format("%s%s", path, file)).getInputStream())
+                final String replaceData = IOUtils.toString(Files.newInputStream(new File(String.format("%s/%s", path, file)).toPath()))
                         .replaceAll("\\r\\n|\\r|\\n", " ");
                 replaces.put(replaceKey, replaceData);
             }
@@ -93,9 +94,12 @@ public class TemplateTestDataGenerator {
         return replaces;
     }
 
-    private static List filesInPath(String path) throws IOException {
-        return IOUtils.readLines(TemplateTestDataGenerator.class.getClassLoader()
-                .getResourceAsStream(StringUtils.cleanPath(path)), Charsets.UTF_8.displayName());
+    private static List<String> filesInPath(String path) throws IOException {
+        return Files.walk(Paths.get(path))
+                .filter(Files::isRegularFile)
+                .map(Path::toFile)
+                .map(File::getName)
+                .collect(Collectors.toList());
     }
 
 
