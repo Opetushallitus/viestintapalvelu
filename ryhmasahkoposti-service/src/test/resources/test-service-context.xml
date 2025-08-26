@@ -3,22 +3,10 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+       http://camel.apache.org/schema/spring">
 
     <context:annotation-config/>
     <context:component-scan base-package="fi.vm.sade.ryhmasahkoposti"/>
-
-    <!-- Apache Camel routing context -->
-    <camelContext xmlns="http://camel.apache.org/schema/spring">
-        <routeBuilder ref="omattiedotRoute"/>
-        <routeBuilder ref="henkiloRoute"/>
-        <routeBuilder ref="organisaatioRoute"/>
-    </camelContext>
-
-    <!-- Routes to external services -->
-    <bean id="omattiedotRoute" class="fi.vm.sade.ryhmasahkoposti.externalinterface.route.OmattiedotRoute"/>
-    <bean id="henkiloRoute" class="fi.vm.sade.ryhmasahkoposti.externalinterface.route.HenkiloRoute"/>
-    <bean id="organisaatioRoute" class="fi.vm.sade.ryhmasahkoposti.externalinterface.route.OrganisaatioRoute"/>
 
     <!-- Resourcebundle for localizing -->
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
