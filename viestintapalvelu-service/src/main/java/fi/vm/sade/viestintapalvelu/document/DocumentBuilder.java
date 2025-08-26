@@ -22,6 +22,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import javax.inject.Singleton;
+import javax.xml.transform.TransformerException;
 
 import com.google.common.base.Supplier;
 import org.apache.commons.io.IOUtils;
@@ -36,6 +37,8 @@ import com.lowagie.text.DocumentException;
 import fi.vm.sade.viestintapalvelu.FlyingSaucerReplaceElementFactory;
 import fi.vm.sade.viestintapalvelu.OPHUserAgent;
 import fi.vm.sade.viestintapalvelu.SLF4JLogChute;
+import org.xhtmlrenderer.util.XRRuntimeException;
+import org.xml.sax.SAXParseException;
 
 import static fi.vm.sade.viestintapalvelu.Constants.UTF_8;
 
@@ -110,15 +113,27 @@ public class DocumentBuilder {
     }
 
     private ITextRenderer newITextRenderer(byte[] input) {
-        ITextRenderer renderer = new ITextRenderer();
-        OPHUserAgent uac = new OPHUserAgent(renderer.getOutputDevice());
-        FlyingSaucerReplaceElementFactory mref = new FlyingSaucerReplaceElementFactory(renderer.getSharedContext().getReplacedElementFactory());
-        uac.setSharedContext(renderer.getSharedContext());
-        renderer.getSharedContext().setUserAgentCallback(uac);
-        renderer.getSharedContext().setReplacedElementFactory(mref);
-        renderer.setDocumentFromString(new String(input, UTF_8));
-        renderer.layout();
-        return renderer;
+        String inputString = new String(input, UTF_8);
+        try {
+            ITextRenderer renderer = new ITextRenderer();
+            OPHUserAgent uac = new OPHUserAgent(renderer.getOutputDevice());
+            FlyingSaucerReplaceElementFactory mref = new FlyingSaucerReplaceElementFactory(renderer.getSharedContext().getReplacedElementFactory());
+            uac.setSharedContext(renderer.getSharedContext());
+            renderer.getSharedContext().setUserAgentCallback(uac);
+            renderer.getSharedContext().setReplacedElementFactory(mref);
+            renderer.setDocumentFromString(inputString);
+            renderer.layout();
+            return renderer;
+        } catch (XRRuntimeException e) {
+            if (e.getCause() instanceof TransformerException && e.getCause().getCause() instanceof SAXParseException) {
+                SAXParseException spe = (SAXParseException) e.getCause().getCause();
+                String line = inputString.split("\n")[spe.getLineNumber() - 1];
+                int contextStart = Math.max(0, spe.getColumnNumber() - 40);
+                int contextEnd = Math.min(spe.getColumnNumber() + 40, line.length());
+                throw new RuntimeException(String.format("Failed to parse page HTML: %s", line.substring(contextStart, contextEnd)), e);
+            }
+            throw e;
+        }
     }
 
     private byte[] readTemplate(String templateName) throws IOException {
