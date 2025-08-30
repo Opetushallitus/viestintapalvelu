@@ -577,7 +577,7 @@
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>s3</artifactId>
-            <version>2.20.162</version>
+            <version>2.32.33</version>
         </dependency>
 
         <!-- Apache PDFBox API library for PDF document handling -->
@@ -781,7 +781,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
