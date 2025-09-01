@@ -92,7 +92,10 @@
             <groupId>fi.vm.sade.java-utils</groupId>
             <artifactId>legacy-caching-rest-client</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>opiskelijavalinnat-utils.java-utils</groupId>
+            <artifactId>java-cas</artifactId>
+        </dependency>
 
         <!-- Audit logging -->
         <dependency>
