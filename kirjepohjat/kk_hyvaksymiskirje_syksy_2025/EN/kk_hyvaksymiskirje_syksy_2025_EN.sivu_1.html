@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <style type="text/css">$tyylit</style>
+    <title>Notification of the admission results in autumn 2024 joint application</title>
+</head>
+
+<body>
+<div class='header'>
+    <div class="row">
+        <div class="organisaatio">
+            #if($hakijapalveluidenOsoite)
+            <p>
+                Sender:<br/>
+                $hakijapalveluidenOsoite.organisaationimi,<br/>
+                $hakijapalveluidenOsoite.addressline #if($hakijapalveluidenOsoite.postalCode != ''),<br/>
+                $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city #end
+            </p>
+            #end
+        </div>
+        <div class="letterdate">
+            <div class="date">$letterDate</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class='osoitetarra'>
+            <div>$osoite</div>
+            <div>
+                <br/>National learner ID:<br/>$hakijaOid
+            </div>
+            <div>
+                <br/>Application number:<br/>$hakemusOid
+            </div>
+        </div>
+        <div class="syntymaaika">
+            <div class="date">$syntymaaika</div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div>
+    <h1>$kirjeotsikko</h1>
+    <p><b>Study Programme(s)</b></p>
+    #foreach( $tulos in $tulokset )
+    #if($tulos.hyvaksytty=='true')
+    <p><b>$tulos.hakukohteenNimi - $tulos.organisaationNimi</b></p>
+    #end
+    #end
+    
+<p>Congratulations! You have been accepted from a waiting list to the study programme(s) mentioned above in the autumn 2024 joint application.</p>
+
+<p>This letter also includes information about the situation of your other study options. If you have been placed on a
+                waiting list for any of your higher preference study options, you can still be accepted to one of them if a place
+                becomes available. You can find more information on the admission criteria of each study programme you have applied
+                to from <a href="https://opintopolku.fi/konfo/en">Studyinfo.fi</a> and the higher education institution in question.</p>
+       
+
+<section>
+    <h2>Accepting an offer of admission</h2>
+
+    <p>You have to accept an offer of admission mentioned above by 28th November 2024 at 3 pm (UTC+2/EET) or you will lose the offered study place 
+        (Universities Act 38 § and 43 § / Polytechnics Act 28c § 32 §). You can only accept an offer of admission once and you cannot change the answer you have made afterwards. 
+        You can only accept one higher education offer of admission to a study programme starting in the same academic term (1st January 2025 to 31st July 2025). When you accept 
+        an offer of admission rest of the offered study places will be cancelled automatically. 
+    <p> You cannot be offered admission to other programmes starting in the same academic term 
+        after you have accepted an offer of admission. The one place per term provision applies to both joint application and separate applications in higher education 
+        (transfer student applications are not included in the provision).</p>
+
+        <p>Accept the offer of admission or decline it preferably with the link that has been sent to your email or in My Studyinfo. If you choose not to accept your offer, you should decline it. 
+            When you decline the offer, the study place is freed for the person next on the waiting list.</p>
+
+    <p>If you have Finnish online banking credentials, a mobile certificate or a smart ID card and a reader, 
+        you can accept the offer of admission by 
+        logging in to My Studyinfo from the link on top of the <a href="https://opintopolku.fi/konfo/en/">Studyinfo.fi</a> 
+        front page. You can find instructions on how 
+        to accept the offer of admission electronically from My Studyinfo-service as well as on 
+        <a href="https://opintopolku.fi/konfo/en/sivu/how-to-accept-an-offer-of-admission-in-joint-application-to-higher-education">Studyinfo.fi</a></p>
+
+    <p>If you cannot accept the offer of admission electronically, contact the higher education institution from which you want to accept the offer. Make sure that the higher education institution receives 
+        your written confirmation no later than by 28th November 2024 at 3 pm (UTC+2/EET). If the confirmation arrives to the higher education institution late, you will lose the offered place.</p>
+
+    <p>When you accept the offer of admission, you will not be considered a first-time applicant in future applications.</p>
+</section>
+    
+    $sisalto
+    <h2>Instructions for new students</h2>
+    <p>#if($ohjeetUudelleOpiskelijalle)${ohjeetUudelleOpiskelijalle}#end</p>
+    <h2>Welcome to study!</h2>
+
+</div>
+</body>
+
+</html>
