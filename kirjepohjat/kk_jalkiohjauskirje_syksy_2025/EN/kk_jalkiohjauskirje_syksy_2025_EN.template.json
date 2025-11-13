@@ -114,19 +114,19 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Notification of the admission results in autumn 2024 joint application",
+      "defaultValue": "Notification of the admission results in autumn 2025 joint application",
       "mandatory": false
     },
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Notification of the admission results in autumn 2024 joint application",
+      "defaultValue": "Notification of the admission results in autumn 2025 joint application",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Your current situation in autumn 2024 joint application",
+      "defaultValue": "Your current situation in autumn 2025 joint application",
       "mandatory": false
     }
   ]
