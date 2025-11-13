@@ -114,19 +114,19 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen syksyn 2024 yhteishaussa",
+      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen syksyn 2025 yhteishaussa",
       "mandatory": false
     },
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen syksyn 2024 yhteishaussa",
+      "defaultValue": "Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen syksyn 2025 yhteishaussa",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Tilanteesi korkeakoulujen syksyn 2024 yhteishaussa",
+      "defaultValue": "Tilanteesi korkeakoulujen syksyn 2025 yhteishaussa",
       "mandatory": false
     }
   ]
