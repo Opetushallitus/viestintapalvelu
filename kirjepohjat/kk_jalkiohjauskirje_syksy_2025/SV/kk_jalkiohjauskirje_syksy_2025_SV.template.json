@@ -114,19 +114,19 @@
     {
       "id": 3,
       "name": "subject",
-      "defaultValue": "Meddelande om antagningsresultatet i högskolornas gemensamma ansökan hösten 2024",
+      "defaultValue": "Meddelande om antagningsresultatet i högskolornas gemensamma ansökan hösten 2025",
       "mandatory": false
     },
     {
       "id": 4,
       "name": "kirjeotsikko",
-      "defaultValue": "Meddelande om antagningsresultatet i högskolornas gemensamma ansökan hösten 2024",
+      "defaultValue": "Meddelande om antagningsresultatet i högskolornas gemensamma ansökan hösten 2025",
       "mandatory": false
     },
     {
       "id": 9,
       "name": "sivu_2_otsikko",
-      "defaultValue": "Din situation i högskolornas gemensamma ansökan hösten 2024",
+      "defaultValue": "Din situation i högskolornas gemensamma ansökan hösten 2025",
       "mandatory": false
     }
   ]
