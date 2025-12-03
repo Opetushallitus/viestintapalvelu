@@ -197,7 +197,7 @@
     </beans:bean>
 
     <beans:bean id="casAuthenticationProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
-        <beans:property name="userDetailsService" ref="userDetailsService"/>
+        <beans:property name="authenticationUserDetailsService" ref="authenticationUserDetailsService"/>
         <beans:property name="serviceProperties" ref="casServiceProperties"/>
         <beans:property name="ticketValidator" ref="casTicketValidator"/>
         <beans:property name="key" value="${cas_key}"/>
