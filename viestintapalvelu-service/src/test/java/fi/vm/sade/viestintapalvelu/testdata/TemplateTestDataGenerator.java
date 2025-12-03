@@ -41,7 +41,8 @@ public class TemplateTestDataGenerator {
         //String templateKeys = "kk_jalkiohjauskirje_syksy_2024,kk_hyvaksymiskirje_syksy_2024";
         //String templateKeys = "kk_ensimmainen_hyvaksymiskirje_2025,kk_ensimmainen_jalkiohjauskirje_2025";
         //String templateKeys = "2aste_hyvaksymiskirje_2025,2aste_jalkiohjauskirje_2025";
-        String templateKeys = "kk_toinen_hyvaksymiskirje_2025,kk_toinen_jalkiohjauskirje_2025";
+        //String templateKeys = "kk_toinen_hyvaksymiskirje_2025,kk_toinen_jalkiohjauskirje_2025";
+        String templateKeys = "kk_jalkiohjauskirje_syksy_2025,kk_hyvaksymiskirje_syksy_2025";
 
         if(templateKeys != null) {
             for(String templateKey : templateKeys.split(",")) {
