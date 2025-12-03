@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <style type="text/css">$tyylit</style>
+    <title>Taulukkoliite</title>
+</head>
+
+<body>
+<div class="liiteSisalto">
+    <div style="text-align: center;">
+        <div class="date">$letterDate</div>
+    </div>
+    <div class="pull-left">$addressLabel.firstName <b>$addressLabel.lastName</b></div>
+    <div class="pull-right">$sivu_2_otsikko</div>
+    <br/>
+    <p>Du ser här dina ansökningsmål i den ordning du satt dem i</p>
+    <br/>
+    <table>
+        <thead>
+        <tr>
+            <th>Antagningsresultat</th>
+            <th>Ansökningsmål</th>
+            <th>Antagningssätt</th>
+            <th>Dina poäng</th>
+            <th>Lägsta godk.</th>
+            <th>Antagningsresultat</th>
+        </tr>
+        </thead>
+        <tbody>
+            #foreach( $tulos in $tulokset )
+            #set($hyvaksytty = "#if($tulos.hyvaksytty=='true')hyvaksytty#{else}#end")
+            #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
+            #set($jonojenmaara = $tulos.sijoitukset.size() + 1)
+            <tr class="$hyvaksytty $even">
+                <td rowspan="$jonojenmaara">
+                    $tulos.valinnanTulos
+                    #if($tulos.hyvaksymisenEhto)<br /><span class="ehdollinensyy">$tulos.hyvaksymisenEhto</span>#end
+                </td>
+                <td rowspan="$jonojenmaara">$tulos.hakukohteenNimi - $tulos.organisaationNimi</td>
+            </tr>
+
+            #foreach( $sijoitus in $tulos.sijoitukset )
+            <tr class="$hyvaksytty $even">
+                <td>$sijoitus.nimi</td>
+                <td>#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                <td>#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                <td>
+                    $sijoitus.tila
+                    #if($sijoitus.tilanKuvaus)<br /><span class="hylkayssyy">$sijoitus.tilanKuvaus</span>#end
+                    #if($sijoitus.hyvaksymisenEhto)<br /><span class="ehdollinensyy">$sijoitus.hyvaksymisenEhto</span>#end
+                </td>
+            </tr>
+            #end
+            #end
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6"></td>
+            </tr>
+        </tfoot>
+    </table>
+    $sis2
+</div>
+</body>
+
+</html>
