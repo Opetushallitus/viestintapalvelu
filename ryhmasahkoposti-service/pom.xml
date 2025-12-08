@@ -146,10 +146,6 @@
         </dependency>
         <dependency>
             <groupId>fi.vm.sade.java-utils</groupId>
-            <artifactId>opintopolku-user-details-service</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>fi.vm.sade.java-utils</groupId>
             <artifactId>legacy-caching-rest-client</artifactId>
         </dependency>
 
