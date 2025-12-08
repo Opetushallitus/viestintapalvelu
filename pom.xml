@@ -54,7 +54,7 @@
         <commons-io.version>1.4</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commonscodec.version>1.2</commonscodec.version>
-        <commonsbean.version>1.9.3</commonsbean.version>
+        <commonsbean.version>1.11.0</commonsbean.version>
         <commons-httpclient.version>3.1</commons-httpclient.version>
         <cxf.version>3.3.3</cxf.version>
         <dom4j.version>1.6.1</dom4j.version>
