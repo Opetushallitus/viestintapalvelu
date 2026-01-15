@@ -59,9 +59,6 @@
     <mockito:mock id="tarjontaHakuResourceClient" class="fi.vm.sade.viestintapalvelu.externalinterface.api.TarjontaHakuResource"/>
     <mockito:mock id="asiointitiliViranomaispalvelutClient" class="fi.suomi.asiointitili.Viranomaispalvelut"/>
 
-    <camelContext xmlns="http://camel.apache.org/schema/spring">
-        <contextScan/>
-    </camelContext>
     
     <!-- HyperSQL datasource -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">   
