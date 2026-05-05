@@ -36,3 +36,6 @@ node/
 
 fakemailer/incoming/*
 fakemailer/bounces/*
+
+## Claude Code
+.claude
