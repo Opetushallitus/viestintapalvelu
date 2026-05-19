@@ -1,10 +1,10 @@
 {
   "name": "jalkiohjauskirje",
-  "language": "FI",
+  "language": "EN",
   "description": null,
   "structure": {
     "name": "nivel_hyvaksymiskirje_rakenne",
-    "language": "FI",
+    "language": "EN",
     "description": null,
     "contentStructures": [
       {
