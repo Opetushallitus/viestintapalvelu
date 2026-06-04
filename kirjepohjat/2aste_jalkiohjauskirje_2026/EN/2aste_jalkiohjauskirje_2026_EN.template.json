@@ -128,19 +128,19 @@
     {
       "id": 2,
       "name": "kirjeotsikko",
-      "defaultValue": "Ilmoitus perusopetuksen jälkeisen koulutuksen yhteishaun tuloksista keväällä 2025",
+      "defaultValue": "Notification of the results in the spring 2026 joint application to upper secondary education and preparatory education",
       "mandatory": false
     },
     {
       "id": 3,
       "name": "liiteotsikko",
-      "defaultValue": "Tilanteesi kevään 2025 yhteishaussa",
+      "defaultValue": "Your situation in the spring 2026 joint application to upper secondary education and preparatory education",
       "mandatory": false
     },
     {
       "id": 4,
       "name": "subject",
-      "defaultValue": "Ilmoitus perusopetuksen jälkeisen koulutuksen yhteishaun tuloksista",
+      "defaultValue": "Notification of the results in the joint application to upper secondary education and preparatory education",
       "mandatory": false
     },
     {
