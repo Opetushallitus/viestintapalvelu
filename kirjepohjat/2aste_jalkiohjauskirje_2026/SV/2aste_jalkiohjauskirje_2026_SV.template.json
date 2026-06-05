@@ -128,7 +128,7 @@
     {
       "id": 2,
       "name": "kirjeotsikko",
-      "defaultValue": "Meddelande om antagningsresultaten i gemensam ansökan till utbildning efter den grundläggande utbildningen",
+      "defaultValue": "Meddelande om antagningsresultaten i gemensam ansökan till utbildning efter den grundläggande utbildningen våren 2026",
       "mandatory": false
     },
     {
