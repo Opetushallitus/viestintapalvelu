@@ -102,3 +102,19 @@ Ominaisuus otetaan käyttöön suorittamalla palvelu "aws"-spring profiililla.
 Profiili annetaan komentoriviparametrina tyyliin `-Dspring.profiles.active=aws`.
 Palvelu tallentaa tiedostot palvelimelle jos profiilia ei käytetä. AWS-profiili vaatii toimiakseen toimivat
 AWS tunnarit. [Dokumentaatio](http://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/credentials.html)
+
+# Tuloskirjeiden muodostus
+
+Kopioi aikaisemman hakukierroksen hakemistot (hyväksymiskirje ja jälkiohjauskirje) sisältöineen uuden pohjaksi, 
+esim kk_ensimmainen_hyvaksymiskirje_2025 -> kk_ensimmainen_hyvaksymiskirje_2026.
+
+Päivitä oikeat kirjepohjien eli hakemistojen nimet testiluokkaan [TemplateTestDataGenerator.java](src/test/java/fi/vm/sade/viestintapalvelu/testdata/TemplateTestDataGenerator.java)
+ja generoi json-tiedostot ajamalla TemplateTestDataGenerator. 
+
+Liitä json-kirjepohjat hakuun testiympäristössä ajamalla skripti liita_pohja_hakuun.bash.
+
+Komento on muotoa (jokainen kirjepohja pitää viedä erikseen eli 6 kpl):
+`./liita_pohja_hakuun.bash JSESSIONID_TAHAN virkailija.hahtuvaopintopolku.fi HAKU-OID_TAHAN CALLER_ID_TAHAN < kk_ensimmainen_hyvaksymiskirje_2026/FI/kk_ensimmainen_hyvaksymiskirje_2026_FI.json`
+
+JSESSIONID pitää käydä kaivamassa selaimella viestintäpalvelun kirjepohjat-osioon tehtävältä pyynnöltä. Eli avaa testiympäristössä kirjepohjat-käyttöliittymä ja kaiva network-tabilta viestintäpalvelun backendille menevän pyynnön headereista JSESSIONID.
+Caller-id:ksi voi laittaa jotain sopivaa.
