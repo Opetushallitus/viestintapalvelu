@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <style type="text/css">
+    $tyylit
+  </style>
+  <title>Tabellen</title>
+</head>
+
+<body>
+<div class="liiteSisalto">
+  <p><div class="pull-left"><b>$addressLabel.firstName $addressLabel.lastName</b></div><div class="pull-right">$liiteotsikko</div></p>
+  <br/>
+  <p>Du ser här dina ansökningsönskemål i den ordning du angett dem i ansökan</p>
+  <br/>
+  <table>
+    <thead>
+    <tr>
+      <th>Dina ansökningsmål samt prioritering</th>
+      <th>Antagna / alla sökande</th>
+      <th>Dina poäng / Lägsta godkända poängtal</th>
+      <th>Resultat från inträdes- eller lämplighetsprov</th>
+      <th>Antagningsresultat</th>
+    </tr>
+    </thead>
+    <tbody> #foreach( $tulos in $tulokset )
+    #set($hyvaksytty = "#if($tulos.hyvaksytty=='true')hyvaksytty#{else}#end")
+    #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
+    #set($jonojenmaara = $tulos.sijoitukset.size() + 1)
+    <tr class="$hyvaksytty $even">
+      <td>$tulos.organisaationNimi, $tulos.hakukohteenNimi<br/></td>
+      <td>$tulos.hyvaksytyt</td>
+      <td>#if($tulos.omatPisteet)$tulos.omatPisteet#{else} - #end</td>
+      <td>#if($tulos.paasyJaSoveltuvuuskoe)$tulos.paasyJaSoveltuvuuskoe#{else} - #end</td>
+      <td>
+          #if($tulos.valinnanTulos)<span>$tulos.valinnanTulos</span>#end
+          #if($tulos.hylkaysperuste)<br /><span>$tulos.hylkaysperuste</span>#end
+      </td>
+    </tr>
+    #end
+    </tbody>
+    <tfoot>
+    <tr><td colspan="7"></td></tr>
+    </tfoot>
+  </table>
+  $sis2
+</div>
+
+
+</body>
+
+</html>

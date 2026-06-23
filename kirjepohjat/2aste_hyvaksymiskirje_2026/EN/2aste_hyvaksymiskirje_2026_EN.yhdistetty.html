@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <style type="text/css">$tyylit</style>
+    <title>Acceptance Letter</title>
+  </head>
+
+  <body>
+    <header role="banner">
+      <dl>
+        <dt>Date</dt><dd>$letterDate</dd>
+        <dt>Recipient</dt><dd>$osoite</dd>
+        <dt>Student Number</dt><dd>$hakijaOid</dd>
+      </dl>
+    </header>
+
+    <main role="main">
+      <article>
+        <h1>$kirjeotsikko</h1>
+
+        <section>
+          <dl>
+            <dt>Educational Institution</dt><dd>$koulu</dd>
+            <dt>Study Programme</dt><dd>$koulutus</dd>
+          </dl>
+
+          <h2>
+            Congratulations!
+          </h2>
+
+          <p>
+            You have been accepted to study in the above-mentioned programme in the spring 2026 joint application to upper secondary education and preparatory education.
+          </p>
+
+          <p>
+            Please remember to accept your study place no later than 25th of June 2026. If you do not accept the place by the deadline, you will lose the study place reserved for you.
+          </p>
+
+          <p>
+            You will receive an email containing a link through which you can accept the study place. Alternatively, you may accept the study place by logging in to the My Studyinfo (Oma Opintopolku) service. Logging in requires strong authentication (e.g. online banking credentials). Please note that the educational institution may also require you to accept the study place in writing or by registering in person. Carefully read the instructions in the admission letter sent to you by the institution by post or email.
+          </p>
+
+          <p>
+            This letter also contains information about the status of your other application preferences in the student admission process. Application preferences ranked lower than the one to which you have been accepted have been automatically cancelled, and you can no longer be accepted for them. However, you may still be accepted from a waiting list to any application preferences ranked higher. Information about the admission criteria and scoring factors can be found in Studyinfo under Student admission in the joint application to upper secondary education and preparatory education.
+          </p>
+        </section>
+
+        <section>
+          <h2>$liiteotsikko</h2>
+
+          <table class="tulokset-table">
+            <caption>Your application preferences in the order you listed them on your application</caption>
+            <thead>
+              <tr>
+                <th class="sarake sarake-kapea">Your Application Preferences</th>
+                <th class="sarake sarake-kapea">Accepted / All Applicants</th>
+                <th class="sarake sarake-kapea">Your Score / Lowest Accepted Score</th>
+                <th class="sarake sarake-kapea">Entrance and Aptitude Test Result</th>
+                <th class="sarake sarake-kapea">Admission Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              #foreach( $tulos in $tulokset )
+              #set($even = "#if($foreach.count % 2 == 0)even#{else}#end")
+              <tr class="$even">
+                  <th scope="row" class="sarake sarake-kapea#if($tulos.hyvaksytty=='true') bold#end">
+                      $tulos.organisaationNimi, $tulos.hakukohteenNimi
+                  </th>
+                <td class="sarake sarake-kapea">$tulos.hyvaksytyt</td>
+                <td class="sarake sarake-kapea">#if($tulos.omatPisteet)$tulos.omatPisteet #end</td>
+                <td class="sarake sarake-kapea">#if($tulos.paasyJaSoveltuvuuskoe)$tulos.paasyJaSoveltuvuuskoe #end</td>
+                <td class="sarake sarake-kapea">
+                    <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
+                    #if($tulos.hylkaysperuste)<br /><span>$tulos.hylkaysperuste</span>#end
+                </td>
+              </tr>
+              #end
+            </tbody>
+          </table>
+
+          <h3 class="tulokset-list-heading" aria-hidden="true">
+              Your application preferences in the order you listed them on your application
+          </h3>
+          <ol class="tulokset-list" aria-hidden="true" tabindex="-1">
+              #foreach( $tulos in $tulokset )
+              <li class="tulokset-list-tulos">
+                  <div class="hakukohde-nimi#if($tulos.hyvaksytty=='true') bold#end">
+                      $tulos.organisaationNimi, $tulos.hakukohteenNimi
+                  </div>
+                  <table class="tulokset-list-table">
+                      <tr>
+                          <th scope="row" class="sarake">Accepted / All Applicants</th>
+                          <td class="sarake">$tulos.hyvaksytyt</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="sarake">Your Score / Lowest Accepted Score</th>
+                          <td class="sarake">#if($tulos.omatPisteet)$tulos.omatPisteet#{else} - #end</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="sarake">Entrance and Aptitude Test Result</th>
+                          <td class="sarake">#if($tulos.paasyJaSoveltuvuuskoe)$tulos.paasyJaSoveltuvuuskoe#{else} - #end</td>
+                      </tr>
+                      <tr>
+                          <th scope="row" class="sarake">Admission Result</th>
+                          <td class="sarake">
+                              <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
+                              #if($tulos.hylkaysperuste)<br /><span>$tulos.hylkaysperuste</span>#end
+                          </td>
+                      </tr>
+                  </table>
+              </li>
+              #end
+          </ol>
+        </section>
+
+        <section>
+          <h2>How to Read the Table</h2>
+
+          <h3>Your Application Preferences</h3>
+
+          <p>
+            All your application preferences in the order you listed them on your application.
+          </p>
+
+          <h3>Accepted / All Applicants</h3>
+
+          <p>
+            The number of applicants accepted to the programme in relation to the total number of applicants.
+          </p>
+
+          <h3>Your Score / Lowest Accepted Score</h3>
+
+          <p>
+            The total score consists of several components. Information about the criteria and scoring factors can be found in Studyinfo under Student admission in the joint application to upper secondary education and preparatory education. The lowest accepted score is the minimum score with which applicants have been admitted to the programme. If you applied with a foreign certificate, without a school-leaving certificate, or if you have studied mathematics and mother tongue according to an individualised curriculum, no score will be calculated for you.
+          </p>
+          <p>
+            If you applied for vocational education provided with demanding special support, preparatory education and training for work and independent living (TELMA), preparatory education for vocational education (TUVA), a folk high school study year programme or general upper secondary education in English, no score will be calculated for you.
+          </p>
+
+          <h3>Entrance and Aptitude Test Result</h3>
+
+          <p>
+            If you participated in an entrance or aptitude test, your test score is shown here.
+            If you applied with a foreign certificate, without a school-leaving certificate, or with an individualised curriculum in mathematics and your mother tongue, you applied through discretionary admission, and no score will be calculated for you. Further information about the results can be obtained directly from the institution where you took the test.
+          </p>
+
+          <h3>Admission Result</h3>
+
+          <p>
+            The admission result may be accepted, accepted through discretionary admission, on a waiting list, you were not offered admission or cancelled.
+            The result is marked as cancelled if you have been accepted to a higher-ranked application preference.
+          </p>
+
+          <p>
+            If your status is on a waiting list, your waiting list position is shown in this column. If your result is you were not offered admission or cancelled, you cannot be on a waiting list.
+          </p>
+        </section>
+
+        <section>
+          <h2>Additional Information on Admission Results</h2>
+
+          <section>
+            <h3>Tie-Breaking in Vocational Education</h3>
+
+            <p>
+              In case of a tie, applicants to vocational education are ranked according to the following criteria:
+            </p>
+
+            <ol>
+              <li>
+                Order of application preferences
+              </li>
+              <li>
+                Score from any entrance or aptitude test
+              </li>
+              <li>
+                Overall academic performance
+              </li>
+              <li>
+                Weighted grades. 
+              </li>
+            </ol>
+
+            <p>
+              After this, applicants with identical scores are admitted in a random order.
+            </p>
+          </section>
+
+          <section>
+            <h3>Tie-Breaking in General Upper Secondary Education</h3>
+
+            <p>
+              Upper secondary schools admit students based on grade point average. If several applicants have the same average, the admission is decided by:
+            </p>
+
+            <ol>
+              <li>
+                Order of application preferences
+              </li>
+              <li>
+                Grade point average calculated from academic subjects as well as physical education, crafts, home economics, music, and visual arts
+              </li>
+            </ol>
+
+            <p>
+              After this, applicants with identical scores are admitted in a random order.
+            </p>
+          </section>
+
+          <section>
+            <h3>Discretionary Admission</h3>
+
+            <p>
+              The education provider may admit an applicant regardless of score for a special reason. If you applied through discretionary admission due to social reasons, learning difficulties, or insufficient language skills, you also participate in the normal score-based admission process. If your prior education was completed abroad, you do not have a school-leaving certificate, or you studied mathematics and your mother tongue according to an individualised curriculum, you can only be accepted through discretionary admission. In this case, the admission result is either accepted through discretionary admission or you were not offered admission.
+            </p>
+          </section>
+
+          <section>
+            <h3>Contact Information</h3>
+            <p>
+              Further information is available in Studyinfo
+              (<a href="https://studyinfo.fi">studyinfo.fi</a>). If you need
+              help interpreting the result letter or if there are
+              uncertainties related to the admission that cannot be resolved by contacting the institution directly,
+              You may contact Studyinfo application advisory services at
+              (<a href="mailto:neuvonta@opintopolku.fi">neuvonta@opintopolku.fi</a>
+              or by phone at <a href="tel:0295331010">029&nbsp;533&nbsp;1010<a/>). Telephone advisory services are available on 11–12th of June from 9:30 a.m. to 1:00 p.m.
+            </p>
+          </section>
+        </section>
+        
+        
+        <section>
+          <h2>Right of Appeal</h2>
+
+          <p>
+            If you are dissatisfied with the result of the student admission, you may request rectification of the admission decision from the The Finnish Supervisory Agency. To do so, you must request a written decision from the educational institution whose decision you wish to appeal. The decision must be requested within 30 days of receiving information about the admission result. The request for rectification must be submitted within 14 days of receiving the decision. An appeal for rectification concerning a student admission decision must be submitted to the The Finnish Supervisory Agency. The request for rectification is made using an electronic form, but it can also be sent by email to kirjaamo@lvv.fi or by post to The Finnish Supervisory Agency, P.O. Box 20, FI-13035 LVV, Finland. More detailed instructions can be found on the website of <a href="https://lvv.fi/en/frontpage">The Finnish Supervisory Agency</a>. If, for any reason, you do not receive the decision from the institution, please contact Studyinfo application advisory services.
+          </p>
+
+          
+        </section>
+      </article>
+    </main>
+  </body>
+</html>

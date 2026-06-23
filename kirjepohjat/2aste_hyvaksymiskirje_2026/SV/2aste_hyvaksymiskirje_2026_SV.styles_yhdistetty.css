@@ -1,0 +1,166 @@
+html {
+  color: #2C3A40;
+  font-family: OpenSans, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60em;
+  padding: 0.5em;
+}
+
+@media (max-width: 599px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+dt, dd {
+  margin-bottom: 0.2em;
+}
+
+dt {
+  font-weight: 600;
+}
+
+blockquote {
+  background-color: #ebebeb;
+  margin: 0;
+  padding: 0.5em 1em;
+}
+
+.tulokset-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tulokset-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 0.15em solid #2C3A40;
+}
+
+.sarake {
+  width: 50%;
+  padding: 0.5em 1em;
+  border-bottom: 0.1em solid #2C3A40;
+  text-align: left;
+  vertical-align: top;
+  font-weight: 400;
+}
+
+.sarake-kapea {
+  width: 20%;
+}
+
+.sarake:first-child {
+  padding-left: 0;
+}
+
+.sarake:last-child {
+  padding-right: 0;
+}
+
+tr.even {
+  background: #ebebeb;
+}
+
+.tulokset-list {
+  list-style: inside none;
+  padding: 0;
+  margin: 0;
+}
+
+.tulokset-list-tulos {
+  background-color: #ebebeb;
+  padding: 1em;
+  margin-bottom: 2em;
+}
+
+.tulokset-list-tulos:last-child {
+  margin-bottom: 0;
+}
+
+.hakukohde-nimi {
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+@media (max-width: 599px) {
+  .tulokset-table {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+}
+
+@media (min-width: 600px) {
+  .tulokset-list-heading {
+    display: none;
+  }
+
+  .tulokset-list {
+    display: none;
+  }
+}
+
+ol {
+  padding: 0;
+  list-style-position: inside;
+}
+
+.avi-osoitteet {
+  list-style: none;
+  padding: 0;
+}
+
+.avi-osoitteet > li {
+  margin-bottom: 1em;
+}
+
+.avi-osoitteet > li:last-child {
+  margin-bottom: 0;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+@media only print {
+  html {
+    font-size: 14px;
+  }
+
+  article:not(:last-of-type) {
+    page-break-after: always;
+  }
+}
+
+.hylkayssyy, em {
+  font-style: italic;
+}
+
+.peruuntumisensyy, em {
+  font-style: italic;
+}
+
+.hyvaksytty > td {
+  font-weight: 600;
+}
