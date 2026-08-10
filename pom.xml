@@ -46,7 +46,7 @@
         <clover.base>${bamboo.data.home}/clover/${project.groupId}</clover.base>
         <!-- end-of-build-parent properties -->
 
-        <assertj.version>1.6.1</assertj.version>
+        <assertj.version>3.27.7</assertj.version>
         <camel.version>2.17.7</camel.version>
         <cas-client.version>3.1.10</cas-client.version>
         <cglib.version>2.2.2</cglib.version>
