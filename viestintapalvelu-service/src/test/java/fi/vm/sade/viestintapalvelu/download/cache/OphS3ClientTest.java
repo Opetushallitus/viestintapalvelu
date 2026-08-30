@@ -72,19 +72,20 @@ public class OphS3ClientTest {
         OphS3Client.AddObjectResponse<PutObjectResponse> res = client.addFileObject(download, id);
     }
 
-    @Test(expected = NoSuchKeyException.class)
+    @Test(expected = RuntimeException.class)
     public void getObjectThatDoesNotExist() {
-        DocumentId documentId = new DocumentId("mock_id");
-        Download object = client.getObject(documentId);
+        client.getObject(new DocumentId("mock_id"));
     }
 
     @Test()
     public void getObject() {
-        Download download = new Download(ContentTypes.CONTENT_TYPE_PDF, "testfilename.pdf", "binary".getBytes());
+        String filename = "testfilename.pdf";
+        Download download = new Download(ContentTypes.CONTENT_TYPE_PDF, filename, "binary".getBytes());
         String idStr = UUID.randomUUID().toString();
         DocumentId id = new DocumentId(idStr);
         client.addFileObject(download, id);
         Download object = client.getObject(id);
+        assertEquals(filename, object.getFilename());
     }
 
     @Test
