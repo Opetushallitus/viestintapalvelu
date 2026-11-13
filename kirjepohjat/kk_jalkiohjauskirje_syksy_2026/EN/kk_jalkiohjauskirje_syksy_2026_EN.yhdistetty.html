@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fi" dir="ltr">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Notification of the admission results in autumn 2025 joint application</title>
+    <style>$tyylit</style>
+</head>
+
+<body>
+<header role="banner">
+    <dl>
+        #if($hakijapalveluidenOsoite)
+        <dt>
+            Sender
+        </dt>
+        <dd>
+            $hakijapalveluidenOsoite.organisaationimi <br/>
+            $hakijapalveluidenOsoite.addressline
+            #if($hakijapalveluidenOsoite.postalCode != '')
+            <br/>
+            $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city
+            #end
+        </dd>
+        <dd>
+        </dd>
+        #end
+        <dt>
+            Date
+        </dt>
+        <dd>
+            $letterDate
+        </dd>
+        <dt>
+            Recipient
+        </dt>
+        <dd>
+            $osoite
+        </dd>
+        <dt>
+            Date of birth
+        </dt>
+        <dd>
+            $syntymaaika
+        </dd>
+        <dt>
+            National learner ID
+        </dt>
+        <dd>
+            $hakijaOid
+        </dd>
+        <dt>
+            Application number
+        </dt>
+        <dd>
+            $hakemusOid
+        </dd>
+    </dl>
+</header>
+
+<main role="main">
+    <article>
+        <h1>$kirjeotsikko</h1>
+
+        <section>
+            <p>Dear applicant</p>
+
+            <p>You have applied for a study place in the autumn 2025 joint application.
+                Unfortunately you have
+                not been accepted to the study programmes you applied to. In this letter you can find
+                information
+                about the situation of your study options in the student selection. If you have been placed on the
+                waiting list for
+                any of your study options, you can still be accepted to one of them if a place becomes available. The
+                places that
+                become available will be filled according to the reserve place order. You will be contacted by email if
+                you are
+                offered admission from the waiting list. Admissions from the waiting list end on 8th December 2025 at 3 pm (UTC+2/EET) at
+                the latest. You can also see your waiting list situation from My Studyinfo. In order to log
+                in to the
+                service you will need Finnish online banking credentials, a mobile certificate or a smart ID card and
+                reader.</p>
+
+            <p>If the selection result for a study option is "You were not offered admission" or "Cancelled", you cannot be admitted from the
+                waiting
+                list.</p>
+
+            <p>The admission criteria of each higher education institution are applied in the student selection process.
+                You can get
+                additional information about the admission criteria and the selection result from the higher education
+                institution
+                in question. If you need help with interpreting the selection results or more detailed information about
+                the basis
+                for rejection, you can contact the admission services of the higher education institution you have
+                applied to.</p>
+        </section>
+
+        <section>
+            <h2>Appeals</h2>
+            <p>If you believe there has been a mistake in the student selection and the admission criteria have not been
+                applied
+                correctly, you can make a written request for rectification within 14 days after the student selection
+                results have
+                been published, that is before 4th December 2025 at 3 pm (UTC+2/EET).
+                Always check the admission criteria of the study programme and the instructions regarding rectifications
+                first. If
+                necessary, you can then contact the higher education institution in question. You can make a written,
+                individualized
+                request for rectification by the deadline mentioned above. More detailed information about making a
+                request for
+                rectification and contact information can be found on the website and in the application material of the
+                higher
+                education institution in question. The request for rectification must be addressed to a recipient
+                defined by the
+                higher education institution and must be submitted to the address stated in the admission criteria by
+                the deadline
+                mentioned above.</p>
+
+            <p><strong>If you were not accepted to any of your study options, you can look into the following options:</strong></p>
+        </section>
+
+        <section>
+            <h2>Supplementary application rounds</h2>
+            <p>Some higher education institutions arrange their own supplementary application rounds in November and December, if all study
+                places are not
+                filled in the joint application. Check the exact dates for each possible supplementary application round from
+                Studyinfo.fi.</p>
+
+        </section>
+
+        <section>
+            <h2>Open studies</h2>
+            <p>Both open university and open university of applied sciences offer open studies according to the higher
+                education
+                institution’s own curriculum. These studies are open for anyone and can contribute towards a degree, if
+                you apply to
+                study for a degree later. The studies will also give you an idea of what studying the field you are
+                interested in is
+                like and what it requires. You can find more information about open studies from each higher education
+                institution’s
+                own website and from Studyinfo.fi.</p>
+
+        </section>
+
+        <section>
+            <h2>Spring joint application</h2>
+            <p>The next joint application to higher education starts on 7th January and ends 21st January 2026 at
+                Studyinfo.fi. You
+                can find more information about the study programmes included in the spring joint application from
+                <a href="https://opintopolku.fi/konfo/en/haku?order=desc&size=20&sort=score&yhteishaku=1.2.246.562.29.00000000000000072413">Studyinfo.fi</a>.</p>
+
+        </section>
+
+        <section>
+            <h2>$sivu_2_otsikko</h2>
+                <p>Here you can see all your study options in the order stated on your application</p>
+
+            <ol class="tulokset">
+                #foreach( $tulos in $tulokset )
+                <li class="hakukohde">
+                    <div class="hakukohde-tiedot">
+                        <div class="hakukohde-nimi#if($tulos.hyvaksytty=='true') bold#end">
+                            $tulos.hakukohteenNimi - $tulos.organisaationNimi
+                        </div>
+                        <div class="hakukohde-tulos">
+                            <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
+                            #if($tulos.hyvaksymisenEhto)<br /><span>$tulos.hyvaksymisenEhto</span>#end
+                        </div>
+                    </div>
+                    <table class="valintatapajonot-table">
+                        <thead>
+                            <tr>
+                                <th class="sarake sarake-kapea">Selection method</th>
+                                <th class="sarake sarake-kapea">Your score</th>
+                                <th class="sarake sarake-kapea">The lowest accepted score</th>
+                                <th class="sarake sarake-levea">Admission result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            #foreach( $sijoitus in $tulos.sijoitukset )
+                            <tr>
+                                <th scope="row" class="sarake sarake-kapea">$sijoitus.nimi</th>
+                                <td class="sarake sarake-kapea">#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                                <td class="sarake sarake-kapea">#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                                <td class="sarake sarake-levea">
+                                    <span#if($sijoitus.hyvaksytty=='true') class="bold"#end>$sijoitus.tila</span>
+                                    #if($sijoitus.tilanKuvaus)<br /><span>$sijoitus.tilanKuvaus</span>#end
+                                    #if($sijoitus.hyvaksymisenEhto)<br /><span>$sijoitus.hyvaksymisenEhto</span>#end
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                    <ol class="valintatapajonot-list" aria-hidden="true" tabindex="-1">
+                        #foreach( $sijoitus in $tulos.sijoitukset )
+                        <li class="valintatapajono">
+                            <table class="valintatapajono-table">
+                                <tr>
+                                    <th scope="row" class="sarake">Selection method</th>
+                                    <td class="sarake">$sijoitus.nimi</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Your score</th>
+                                    <td class="sarake">#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">The lowest accepted score</th>
+                                    <td class="sarake">#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Admission result</th>
+                                    <td class="sarake">
+                                        <span#if($sijoitus.hyvaksytty=='true') class="bold"#end>$sijoitus.tila</span>
+                                        #if($sijoitus.tilanKuvaus)<br /><span>$sijoitus.tilanKuvaus</span>#end
+                                        #if($sijoitus.hyvaksymisenEhto)<br /><span>$sijoitus.hyvaksymisenEhto</span>#end
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        #end
+                    </ol>
+                    #end
+        </section>
+
+        <section>
+            <dl>
+                <dt>
+                    The admission result
+                </dt>
+                <dd>The admission result can be accepted, accepted (conditional), on the waiting list, cancelled or "You were not offered admission". The
+                    admission result will state "cancelled", if you have been accepted to a higher preference. The
+                    admission result will
+                    also be cancelled if all the study places and reserve places for that study option have been filled
+                    and your score
+                    has not been sufficient for you to be admitted or placed on the waiting list. The higher education
+                    institutions can
+                    determine the number of reserve places for each study programme, and not all study programmes have
+                    reserve places.
+                    If your admission result states "You were not offered admission", you cannot be accepted to that study programme because
+                    you have not met
+                    the minimum of the admission requirements necessary to be admitted this time. In that case, you will see the
+                    reason for why
+                    you have not been admitted under the admission result in each selection method.
+                </dd>
+                <dt>
+                    Selection method - Your score / The lowest accepted score
+                </dt>
+                <dd>
+                    Here you can see your own score in each of the
+                    study options’ selection methods and the lowest score that an applicant has been accepted with by
+                    the selection
+                    method in question. If the study programme uses a quota for first-time applicants, the lowest score
+                    for
+                    non-first-time applicants may be higher than the lowest score shown in the table with the results.
+                    The score may
+                    consist of several different parts. You can find information on how points are given from the study
+                    programme’s
+                    admission criteria. The total score may not always be the only deciding factor for student
+                    selections. For example,
+                    a failed language test or one failed section of the entrance examination may prevent the selection
+                    despite the total
+                    score. You can see the score only if it is possible to count the points for you according to this
+                    selection method.
+                    The column is empty if there are no points given in the selection method or if it is not possible to
+                    count your
+                    points.
+                </dd>
+                <dt>
+                    Your reserve place status
+                </dt>
+                <dd>
+                    Here you can see your reserve place status if you have been placed on a waiting
+                    list. It is possible that you have been placed on a waiting list in several queues in the same study
+                    programme. The
+                    selection methods are applied according to the higher education institution’s admission criteria.
+                    You can find more
+                    detailed information on the selection methods from the admission criteria of the study programme in
+                    question.
+                </dd>
+                <dt>
+                    Accepted (conditional)
+                </dt>
+                <dd>
+                    This admission result means that the admission decision is conditional and will be
+                    confirmed only after you have proven to the higher education institution that the condition has been
+                    met.
+                    Universities of applied sciences also use the term "Accepted" for conditional acceptance.
+                </dd>
+            </dl>
+            <p>If you need help with interpreting the admission results or if you need more detailed information your admission result, you can contact the admission services of the higher education institution in question. You can find the contact information of the admissions services
+                 on <a href="https://opintopolku.fi/konfo/en/sivu/admissions-services-of-finnish-higher-education-institutions">Studyinfo.fi</a></p>
+        </section>
+    </article>
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <bookmarks>
+        <bookmark name="Hyväksymiskirje" href="hyvaksymiskirje" />
+    </bookmarks>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <style type="text/css">$tyylit</style>
+    <title>Meddelande om antagningsresultatet i högskolornas gemensamma ansökan hösten 2024</title>
+</head>
+
+<body>
+<div class='header'>
+    <div class="row">
+        <div class="organisaatio">
+            #if($hakijapalveluidenOsoite)
+            <p>
+                Avsändare:<br/>
+                $hakijapalveluidenOsoite.organisaationimi,<br/>
+                $hakijapalveluidenOsoite.addressline #if($hakijapalveluidenOsoite.postalCode != ''),<br/>
+                $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city #end
+            </p>
+            #end
+        </div>
+        <div class="letterdate">
+            <div class="date">$letterDate</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class='osoitetarra'>
+            <div>$osoite</div>
+            <div>
+                <br/>Studerandenummer:<br/>$hakijaOid
+            </div>
+            <div>
+                <br/>Ansökningsnummer:<br/>$hakemusOid
+            </div>
+        </div>
+        <div class="syntymaaika">
+            <div class="date">$syntymaaika</div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div>
+    <h1 name="hyvaksymiskirje">$kirjeotsikko</h1>
+    <p><b>Ansökningsmål</b></p>
+    #foreach( $tulos in $tulokset )
+    #if($tulos.hyvaksytty=='true')
+    <p><b>$tulos.hakukohteenNimi - $tulos.organisaationNimi</b></p>
+    #end
+    #end
+
+<p>Gratulerar! Du har blivit antagen från reservplats som studerande till ovan nämnda studieplats i högskolornas gemensamma ansökan hösten 2024.</p>
+
+<p>I detta brev ingår också information om din situation för dina övriga ansökningsmål. När du har antagits som
+    studerande har dina eventuella lägre ansökningsmål automatiskt annullerats. Om du är på reservplats för ett högre
+    ansökningsmål, kan du ännu bli antagen till detta förutsatt att en plats blir ledig. Du får mera information om
+    antagningsgrunderna för varje ansökningsmål i Studieinfo.fi och av den högskola som ordnar utbildningen.</p>
+
+<h2>Att ta emot studieplatsen</h2>
+
+<p>För att bekräfta studieplatsen som nämns ovan ska du före <b>$palautusTimestampSv</b> ta emot studieplatsen. Du går miste om
+    studieplatsen om du inte inom utsatt tid tar emot den (Universitetslag 38 §, 43 § /Yrkeshögskolelag 28 c §, 32 §). Meddela om du tar emot platsen eller inte i första hand via tjänsten Min Studieinfo. 
+                Annullera gärna studieplatsen om du inte kommer att ta emot den, så frigörs platsen till den person som är följande i antagningskön.</p>
+
+<p>Förutom att du tar emot studieplatsen ska du också anmäla dig till högskolan inom utsatt tid. Om du inte anmäler dig
+    inom utsatt tid går du miste om din studierätt. Om du tar emot studieplatsen via Min Studieinfo-tjänsten, kan du
+    direkt gå över till den elektroniska anmälningstjänsten. Du kan bekanta dig med anmälningsinstruktionerna och
+    informationen om studierna på högskolornas webbplatser. Se länken nere på sidan "Anvisningar för nya
+    studerande".</p>
+
+    $sisalto
+    <h2>Anvisningar för nya studerande</h2>
+    <p>#if($ohjeetUudelleOpiskelijalle)${ohjeetUudelleOpiskelijalle}#end</p>
+    <h2>Välkommen!</h2>
+
+</div>
+</body>
+
+</html>

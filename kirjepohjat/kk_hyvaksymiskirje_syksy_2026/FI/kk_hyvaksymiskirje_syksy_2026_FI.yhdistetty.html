@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fi" dir="ltr">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Ilmoitus opiskelijavalinnan tuloksesta korkeakoulujen syksyn 2025 yhteishaussa</title>
+    <style>$tyylit</style>
+</head>
+
+<body>
+<header role="banner">
+    <dl>
+        #if($hakijapalveluidenOsoite)
+        <dt>
+            Lähettäjä
+        </dt>
+        <dd>
+            $hakijapalveluidenOsoite.organisaationimi <br/>
+            $hakijapalveluidenOsoite.addressline
+            #if($hakijapalveluidenOsoite.postalCode != '')
+            <br/>
+            $hakijapalveluidenOsoite.postalCode $hakijapalveluidenOsoite.city
+            #end
+        </dd>
+        <dd>
+        </dd>
+        #end
+        <dt>
+            Päiväys
+        </dt>
+        <dd>
+            $letterDate
+        </dd>
+        <dt>
+            Vastaanottaja
+        </dt>
+        <dd>
+            $osoite
+        </dd>
+        <dt>
+            Syntymäaika
+        </dt>
+        <dd>
+            $syntymaaika
+        </dd>
+        <dt>
+            Oppijanumero
+        </dt>
+        <dd>
+            $hakijaOid
+        </dd>
+        <dt>
+            Hakemusnumero
+        </dt>
+        <dd>
+            $hakemusOid
+        </dd>
+    </dl>
+</header>
+
+<main role="main">
+    <article>
+        <h1>$kirjeotsikko</h1>
+
+        <section>
+            <h2>Hakukohteet</h2>
+            <ol class="hakukohteet">
+                #foreach( $tulos in $tulokset )
+                #if($tulos.hyvaksytty=='true')
+                <li>$tulos.hakukohteenNimi - $tulos.organisaationNimi</li>
+                #end
+                #end
+            </ol>
+
+            <p>Onneksi olkoon! Sinut on hyväksytty korkeakoulujen syksyn 2025 yhteishaussa yllä mainittuun
+                opiskelupaikkaan.</p>
+
+            <p>Tässä kirjeessä on tietoa myös muiden hakukohteittesi tilanteesta. Opiskelijaksi hyväksymisen jälkeen
+                mahdolliset
+                alemmat hakukohteesi ovat peruuntuneet automaattisesti. Jos olet varalla johonkin ylempään
+                hakukohteeseesi,
+                voit
+                vielä tulla siihen valituksi, jos paikkoja vapautuu. Lisätietoa kunkin hakukohteesi valintaperusteista
+                saat
+                <a href="https://opintopolku.fi">Opintopolku.fi -sivustolta</a> sekä kyseessä olevasta korkeakoulusta.</p>
+        </section>
+
+        <section>
+            <h2>Opiskelupaikan vastaanottaminen</h2>
+
+            <p>Ilmoita <a href="https://opintopolku.fi/oma-opintopolku/">Oma Opintopolku</a> -palvelussa ennen 27.11.2025 klo 15.00, otatko opiskelupaikan vastaan vai et, jos et ole tätä vielä tehnyt. Et voi muuttaa ilmoitustasi enää jälkikäteen. Ellet ota paikkaa vastaan määräaikana, menetät sen (Yliopistolaki 38 §, 43§ /Ammattikorkeakoululaki 28 c §, 32§).  
+                
+            <p>Voit vastaanottaa vain yhden korkeakoulupaikan samana lukukautena alkavasta koulutuksesta (1.1-31.7.2026). 
+                Yhden korkeakoulupaikan sääntö koskee sekä korkeakoulujen yhteis- että erillishakuja (pois lukien siirtohaut). </p>
+
+            <p>Myös ilmoitus siitä, että et ota paikkaa vastaan on tärkeä tehdä. Näin paikkaa voidaan tarjota jonossa seuraavaksi olevalle mahdollisimman nopeasti.</p>
+                
+            <p>Voidaksesi kirjautua sisään ja tunnistautua vahvasti tarvitset verkkopankkitunnukset, mobiilivarmenteen tai sirullisen henkilökortin ja sen lukijalaitteen. Oma Opintopolku -palvelussa on ohjeet opiskelupaikan sähköiseen vastaanottoon.</p>
+            
+             <p>Jos et voi ottaa opiskelupaikkaa vastaan sähköisesti, ota yhteyttä korkeakouluun, mistä haluat ottaa opiskelupaikan vastaan. 
+                Tieto opiskelupaikan vastaanottamisesta tulee olla kirjallisesti korkeakoululla tiedossa 27.11.2025 kello 15.00 mennessä.
+                 Jos vastaanottoilmoitus saapuu korkeakouluun myöhässä, menetät opiskelupaikan.</p>
+
+            <p>Kun otat opiskelupaikan vastaan, et ole tulevissa hauissa ensikertalainen. Löydät lisätietoa <a href="https://opintopolku.fi/konfo/fi/sivu/usein-kysyttya-korkeakouluun-hakemisesta#ensikertalaisuus">Opintopolku.fi</a>-sivustolta.</p>
+        </section>
+        
+        <section>
+            <h2>Korkeakouluun ilmoittautuminen</h2>
+            <p> Opiskelupaikan vastaanotettuasi sinun täytyy lisäksi ilmoittautua hakukohteesi korkeakoulun asettamassa määräajassa läsnä tai poissa olevaksi opiskelijaksi 
+                kevätlukukaudeksi 2026 tai menetät opiskeluoikeutesi. Otettuasi paikan vastaan voit ilmoittautua korkeakouluun joko sähköisesti 
+                (linkki ilmoittautumiseen avautuu, kun olet ottanut paikan vastaan Oma Opintopolku -palvelun kautta), tai muulla korkeakoulusi ilmoittamalla tavalla.</p>
+            <p>Jos otat opiskelupaikan vastaan mutta jäät odottamaan hakukohdejärjestyksessä ylemmällä sijalla olevaa opiskelupaikkaa, voit 
+                ilmoittautua läsnä tai poissa olevaksi opiskelijaksi vasta, kun opiskelupaikkasi on vahvistunut. </p>
+            <p>Voit ilmoittautua ensimmäisenä opiskeluvuonna poissa olevaksi vain lakisääteisestä syystä. 
+                Hyväksyttyjä poissaolon syitä ovat ase- tai siviilipalvelus, vapaat opinnoista lapsen hoitamiseksi syntymän tai 
+                adoption yhteydessä tai opiskelijan oma sairaus tai vamma. Ilmoittautumisen tekemättä jättäminen johtaa opiskeluoikeuden
+                 menettämiseen. (Yliopistolaki 43 §/Ammattikorkeakoululaki 32 §).</p>
+        </section>
+        
+        #if($ohjeetUudelleOpiskelijalle)
+        <section>
+            <h2 id="ohjeet_uusille_opiskelijoille">Ohjeet uudelle opiskelijalle</h2>
+            <p>Perehdy huolellisesti korkeakoulun uuden opiskelijan ohjeisiin:</p>
+            <p><a href="$ohjeetUudelleOpiskelijalle">$ohjeetUudelleOpiskelijalle</a></p>
+        </section>
+        #end
+
+        <section>
+            <h2>Valintapäätöksen ehdollisuus</h2>
+
+            <p>Sinua koskeva valintapäätös voi hakukohteen valintaperusteiden mukaan olla ehdollinen. Ehdollisia ovat valinnat, jotka on tehty sellaisen tutkinnon perusteella, josta ei vielä ole ollut saatavissa lopullista tutkintotodistusta tai jotka on tehty antamiesi, myöhemmin tarkistettavien tietojen perusteella (kuten epäviralliset kopiot, ammattikorkeakoulujen valinnoissa lukion päättötodistukset, ammatillisen perustutkinnon päättötodistukset ja korkeakoulututkinnon todistukset sekä mahdolliset työtodistukset). Ehdollinen valintapäätös raukeaa, jos et toimita asiakirjoja korkeakouluusi määräaikana. Tarkista määräaika valintaperusteista. Ehdollinen valintapäätös voi raueta myös, jos se on tehty vahvistamattomien ennakkoarvosanojen perusteella ja arvosanat laskevat. Jos ilmoittamasi tiedot osoittautuvat tarkistuksessa virheellisiksi, opiskelijavalintasi voidaan purkaa.</p>
+        </section>
+
+        <section>
+            <h2>Muutoksenhaku</h2>
+
+            <p>Jos opiskelijavalinnassa ja valintaperusteiden soveltamisessa on mielestäsi tapahtunut virhe, voit vaatia siihen kirjallisesti oikaisua 14 vuorokauden kuluessa opiskelijavalinnan tuloksen julkistamisesta eli viimeistään 4.12.2025 kello 15.00. Tutustu ensin kyseisen hakukohteen valintaperusteisiin sekä oikaisumenettelyä koskevaan ohjeistukseen. Ota tämän jälkeen tarvittaessa yhteyttä siihen korkeakouluun, jonka hakukohdetta tyytymättömyytesi koskee. Sinun on mahdollista tehdä edellä mainittuna määräaikana kirjallinen, yksilöity oikaisuvaatimus. Tarkemmat tiedot oikaisuvaatimuksen tekemisestä ja yhteystiedot löytyvät kyseessä olevan korkeakoulun verkkosivulta sekä hakumateriaalista.</p>
+            <p>Korkeakoulu ei käsittele oikaisuvaatimusta, jos se koskee hakukohdetta, joka on hakukohdejärjestyksessä alempana kuin se, johon sinut on valittu.
+
+</p>
+            <p>Oikaisuvaatimus on osoitettava kyseessä olevan hakukohteen korkeakoulun määrittelemälle toimielimelle ja toimitettava perille valintaperusteissa ilmoitettuun osoitteeseen edellä mainittuna määräaikana.</p>
+
+            <p>Tervetuloa opiskelemaan!</p>
+        </section>
+
+        <section>
+            <h2>$sivu_2_otsikko</h2>
+                        <p>Hakukohteesi asettamassasi järjestyksessä</p>
+
+            
+            <ol class="tulokset">
+                #foreach( $tulos in $tulokset )
+                <li class="hakukohde">
+                    <div class="hakukohde-tiedot">
+                        <div class="hakukohde-nimi#if($tulos.hyvaksytty=='true') bold#end">
+                            $tulos.hakukohteenNimi - $tulos.organisaationNimi
+                        </div>
+                        <div class="hakukohde-tulos">
+                            <span#if($tulos.hyvaksytty=='true') class="bold"#end>$tulos.valinnanTulos</span>
+                            #if($tulos.hyvaksymisenEhto)<br /><span>$tulos.hyvaksymisenEhto</span>#end
+                        </div>
+                    </div>
+                    <table class="valintatapajonot-table">
+                        <thead>
+                            <tr>
+                                <th class="sarake sarake-kapea">Valintatapa</th>
+                                <th class="sarake sarake-kapea">Pisteesi</th>
+                                <th class="sarake sarake-kapea">Alin hyväksytty pistemäärä</th>
+                                <th class="sarake sarake-levea">Valinnan tulos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            #foreach( $sijoitus in $tulos.sijoitukset )
+                            <tr>
+                                <th scope="row" class="sarake sarake-kapea">$sijoitus.nimi</th>
+                                <td class="sarake sarake-kapea">#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                                <td class="sarake sarake-kapea">#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                                <td class="sarake sarake-levea">
+                                    <span#if($sijoitus.hyvaksytty=='true') class="bold"#end>$sijoitus.tila</span>
+                                    #if($sijoitus.tilanKuvaus)<br /><span>$sijoitus.tilanKuvaus</span>#end
+                                    #if($sijoitus.hyvaksymisenEhto)<br /><span>$sijoitus.hyvaksymisenEhto</span>#end
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                    <ol class="valintatapajonot-list" aria-hidden="true" tabindex="-1">
+                        #foreach( $sijoitus in $tulos.sijoitukset )
+                        <li class="valintatapajono">
+                            <table class="valintatapajono-table">
+                                <tr>
+                                    <th scope="row" class="sarake">Valintatapa</th>
+                                    <td class="sarake">$sijoitus.nimi</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Pisteesi</th>
+                                    <td class="sarake">#if($sijoitus.pisteet.oma)${sijoitus.pisteet.oma}#{else} - #end</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Alin hyväksytty pistemäärä</th>
+                                    <td class="sarake">#if($sijoitus.pisteet.minimi)${sijoitus.pisteet.minimi}#{else} - #end</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="sarake">Valinnan tulos</th>
+                                    <td class="sarake">
+                                        <span#if($sijoitus.hyvaksytty=='true') class="bold"#end>$sijoitus.tila</span>
+                                        #if($sijoitus.tilanKuvaus)<br /><span>$sijoitus.tilanKuvaus</span>#end
+                                        #if($sijoitus.hyvaksymisenEhto)<br /><span>$sijoitus.hyvaksymisenEhto</span>#end
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        #end
+                    </ol>
+                </li>
+                #end
+            </ol>
+        </section>
+
+        <section>
+            <dl>
+                <dt>
+                    Valinnan tulos
+                </dt>
+                <dd>Valinnan tulos voi olla hyväksytty, hyväksytty (ehdollinen), varalla, peruuntunut tai Et saanut opiskelupaikkaa.
+                    Valinnan
+                    tulos
+                    on peruuntunut, jos sinut on hyväksytty johonkin ylempään hakukohteeseesi. Valinnan tulos on
+                    peruuntunut
+                    myös,
+                    jos
+                    hakukohteen kaikki aloituspaikat ja varasijat ovat täyttyneet, eikä pistemääräsi ole riittänyt
+                    opiskelupaikan
+                    saamiseen tai varasijalle. Korkeakoulut voivat rajoittaa varasijojen määrää hakukohteissaan, eivätkä
+                    varasijat
+                    ole
+                    välttämättä lainkaan käytössä. Jos valintatietonasi on Et saanut opiskelupaikkaa, et voi tulla hyväksytyksi kyseiseen hakukohteeseen, 
+                    koska et täytä hyväksymisen edellytyksenä olevia vähimmäisvaatimuksia tällä kertaa. Näet tällöin
+                    valintatapakohtaisen tiedon, miksi et tullut valituksi.
+                </dd>
+                <dt>
+                    Valintatapa - Pisteesi / Alin hyväksytty pistemäärä
+                </dt>
+                <dd>
+                    Näet tässä oman pistemääräsi eriteltynä hakukohteen jokaisen valintatavan mukaan sekä alimman pistemäärän, jolla koulutukseen on hyväksytty kyseisen valintatavan mukaan. Jos hakukohteessa on käytössä ensikertalaisten kiintiö, saattaa ei-ensikertalaisten alin pisteraja olla korkeampi kuin taulukossa näkyvä alin pisteraja. Pistemäärä voi koostua useasta eri osasta, ja tietoa pisteytettävistä tekijöistä löydät hakukohteen valintaperusteista. Näet pistemäärän vain, jos sinulle on voitu laskea pisteet kyseisen valintatavan mukaisesti. Jos valintatavassa ei lasketa pisteitä tai sinulle ei voida niitä laskea, niin sarake on tyhjä.
+                </dd>
+                <dt>
+                    Varasijasi
+                </dt>
+                <dd>
+                    Näet varasijasi kyseisessä jonossa, jos olet varalla. Voit olla varasijalla yhdessä
+                    hakukohteessa
+                    useammassa jonossa. Valintatavat vastaavat korkeakoulun valintaperusteissaan ilmoittamia
+                    valintatapoja
+                    ja
+                    löydät
+                    niistä tarkempaa tietoa hakukohteen valintaperusteista.
+                </dd>
+                <dt>
+                    Hyväksytty (ehdollinen)
+                </dt>
+                <dd>
+                    Valinnan tulos tarkoittaa, että valintapäätös on ehdollinen. Valinta vahvistuu vasta, kun olet osoittanut korkeakoululle, että ehto on täyttynyt. Ammattikorkeakoulut käyttävät myös ehdollisten valintojen kohdalla valintojen tuloksesta termiä "Hyväksytty".
+                </dd>
+            </dl>
+            <p>Jos tarvitset apua valinnan tuloksen tulkitsemisessa tai tarkempaa tietoa valinnan perusteista, ota
+                yhteyttä
+                kyseessä olevan
+                hakukohteen korkeakoulun hakijapalveluihin. Hakijapalveluiden yhteystiedot löydät <a href="https://opintopolku.fi/konfo/fi/sivu/korkeakoulujen-hakijapalvelut">Opintopolku.fi-sivustolta.</a></p>
+        </section>
+    </article>
+
+</main>
+
+</body>
+
+</html>
