@@ -1,0 +1,133 @@
+{
+  "name": "jalkiohjauskirje",
+  "language": "EN",
+  "description": null,
+  "structure": {
+    "name": "kk_jalkiohjauskirje_rakenne",
+    "language": "EN",
+    "description": null,
+    "contentStructures": [
+      {
+        "type": "accessibleHtml",
+        "styleName": "kk_jalkiohjauskirje_tyyli",
+        "style": "{{styles_yhdistetty.css}}",
+        "contents": [
+          {
+            "role": "body",
+            "name": "jalkiohjauskirje_yhdistetty",
+            "contentType": "html",
+            "content": "{{yhdistetty.html}}"
+          }
+        ]
+      },
+      {
+        "type": "letter",
+        "styleName": "kk_jalkiohjauskirje_tyyli",
+        "style": "{{styles.css}}",
+        "contents": [
+          {
+            "role": "body",
+            "name": "jalkiohjauskirje_sivu_1",
+            "contentType": "html",
+            "content": "{{sivu_1.html}}"
+          },
+          {
+            "role": "body",
+            "name": "sivu_2",
+            "contentType": "html",
+            "content": "{{sivu_2.html}}"
+          }
+        ]
+      },
+      {
+        "type": "email",
+        "styleName": "kk_jalkiohjauskirje_tyyli",
+        "contents": [
+          {
+            "role": "header",
+            "name": "email_subject",
+            "contentType": "plain",
+            "content": "$subject"
+          },
+          {
+            "role": "body",
+            "name": "email_body",
+            "contentType": "html",
+            "content": "{{email.html}}"
+          }
+        ]
+      }
+    ],
+    "replacements": [
+      {
+        "key": "subject",
+        "name": "Otsikko",
+        "description": "Sähköpostiviestin otsikko",
+        "contentType": "plain",
+        "numberOfRows": 1
+      },
+      {
+        "key": "sisalto",
+        "name": "sisalto",
+        "description": "Kirjeen ensimmäisen sivun sisältö",
+        "contentType": "html",
+        "numberOfRows": 20
+      },
+      {
+        "key": "sis2",
+        "name": "sis2",
+        "description": "Kirjeen tilanteet sivun sisältö",
+        "contentType": "html",
+        "numberOfRows": 20
+      },
+      {
+        "key": "kirjeotsikko",
+        "name": "kirjeotsikko",
+        "description": "Kirjeen otsikko",
+        "contentType": "html",
+        "numberOfRows": 1
+      },
+      {
+        "key": "sivu_2_otsikko",
+        "name": "sivu_2_otsikko",
+        "description": "Sivun 2 otsikko",
+        "contentType": "html",
+        "numberOfRows": 1
+      }
+    ]
+  },
+  "replacements": [
+    {
+      "id": 0,
+      "name": "sisalto",
+      "defaultValue": "{{sisalto_1.html}}",
+      "timestamp": null,
+      "mandatory": false
+    },
+    {
+      "id": 1,
+      "name": "sis2",
+      "defaultValue": "{{sisalto_2.html}}",
+      "timestamp": null,
+      "mandatory": false
+    },
+    {
+      "id": 3,
+      "name": "subject",
+      "defaultValue": "Notification of the admission results in autumn 2025 joint application",
+      "mandatory": false
+    },
+    {
+      "id": 4,
+      "name": "kirjeotsikko",
+      "defaultValue": "Notification of the admission results in autumn 2025 joint application",
+      "mandatory": false
+    },
+    {
+      "id": 9,
+      "name": "sivu_2_otsikko",
+      "defaultValue": "Your current situation in autumn 2025 joint application",
+      "mandatory": false
+    }
+  ]
+}
